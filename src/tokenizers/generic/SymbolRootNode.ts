@@ -1,0 +1,51 @@
+import { SymbolNode } from './SymbolNode';
+import { Token } from '../Token';
+import { TokenType } from '../TokenType';
+import { IPushbackReader } from '../../io/IPushbackReader';
+
+/**
+ * This class is a special case of a <code>SymbolNode</code>. A <code>SymbolRootNode</code>
+ * object has no symbol of its own, but has children that represent all possible symbols.
+ */
+export class SymbolRootNode extends SymbolNode {
+    /**
+     * Creates and initializes a root node.
+     */
+    public constructor() {
+        super(null, 0);
+    }
+
+    /**
+     * Add the given string as a symbol.
+     * @param value The character sequence to add.
+     * @param tokenType 
+     */
+    public add(value: string, tokenType: TokenType): void {
+        if (value == '') {
+            throw new Error("Value must have at least 1 character");
+        }
+        let childNode = this.ensureChildWithChar(value.charCodeAt(0));
+        if (childNode.tokenType == TokenType.Unknown) {
+            childNode.valid = true;
+            childNode.tokenType = TokenType.Symbol;
+        }
+        childNode.addDescendantLine(value.substring(1), tokenType);
+    }
+
+    /**
+     * Return a symbol string from a reader.
+     * @param reader A reader to read from
+     * @returns A symbol string from a reader
+     */
+    public nextToken(reader: IPushbackReader): Token {
+        let nextSymbol = reader.read();
+        let childNode = this.findChildWithChar(nextSymbol);
+        if (childNode != null) {
+            childNode = childNode.deepestRead(reader);
+            childNode = childNode.unreadToValid(reader);
+            return new Token(childNode.tokenType, childNode.ancestry());
+        } else {
+            return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol));
+        }
+    }
+}
