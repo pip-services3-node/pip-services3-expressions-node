@@ -1,11 +1,10 @@
-import { CalculationStack } from "../CalculationStack";
 import { Variant } from "../../variants/Variant";
 import { IVariantOperations } from "../../variants/IVariantOperations";
 import { IFunction } from "./IFunction";
 /**
  * Defines a delegate to implement a function
  */
-export declare type FunctionCalculator = (stack: CalculationStack, variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void) => void;
+export declare type FunctionCalculator = (params: Variant[], variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void) => void;
 export declare class DelegatedFunction implements IFunction {
     private _name;
     private _calculator;
@@ -22,9 +21,9 @@ export declare class DelegatedFunction implements IFunction {
     readonly name: string;
     /**
      * The function calculation method.
-     * @param stack The stack to get function parameters and place
+     * @param params an array with function parameters.
      * @param variantOperations Variants operations manager.
      * @param callback a callback to return function result.
      */
-    calculate(stack: CalculationStack, variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void): void;
+    calculate(params: Variant[], variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void): void;
 }

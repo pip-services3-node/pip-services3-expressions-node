@@ -48,40 +48,29 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         this.add(new DelegatedFunction_1.DelegatedFunction("Contains", this.containsFunctionCalculator, this));
     }
     /**
-     * Checks if stack contains the correct number of function parameters (must be stored on the top of the stack).
-     * @param stack The stack with function parameters.
+     * Checks if params contains the correct number of function parameters (must be stored on the top of the params).
+     * @param params A list of function parameters.
      * @param expectedParamCount The expected number of function parameters.
      */
-    checkParamCount(stack, expectedParamCount) {
-        let paramCount = stack.peek();
-        if (paramCount.type != VariantType_1.VariantType.Integer) {
-            throw new Error("Internal error.");
-        }
-        if (expectedParamCount != paramCount.asInteger) {
+    checkParamCount(params, expectedParamCount) {
+        let paramCount = params.length;
+        if (expectedParamCount != paramCount) {
             throw new Error("Expected " + expectedParamCount
-                + " parameters but was found " + paramCount.asInteger);
+                + " parameters but was found " + paramCount);
         }
-        if (stack.length < paramCount.asInteger) {
-            throw new Error("Stack does not contain sufficient numeber of function parameters.");
-        }
-        return null;
     }
     /// <summary>
     /// Gets function parameter by it's index.
     /// </summary>
-    /// <param name="stack">The stack with function parameters.</param>
+    /// <param name="params">A list of function parameters.</param>
     /// <param name="paramIndex">Index for the function parameter (0 for the first parameter).</param>
     /// <returns>Function parameter value.</returns>
-    getParameter(stack, paramIndex) {
-        let paramCount = stack.peek();
-        if (paramCount.type != VariantType_1.VariantType.Integer) {
-            throw new Error("Internal error.");
-        }
-        return stack.peekAt(stack.length - 1 - paramCount.asInteger + paramIndex);
+    getParameter(params, paramIndex) {
+        return params[paramIndex];
     }
-    timeFunctionCalculator(stack, variantOperations, callback) {
+    timeFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 0);
+            this.checkParamCount(params, 0);
             let result = new Variant_1.Variant(new Date().getTime());
             try {
                 callback(null, result);
@@ -92,15 +81,15 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    minFunctionCalculator(stack, variantOperations, callback) {
+    minFunctionCalculator(params, variantOperations, callback) {
         try {
-            let paramCount = stack.peek().asInteger;
+            let paramCount = params.length;
             if (paramCount < 2) {
                 throw new Error("Expected at least 2 parameters");
             }
-            let result = this.getParameter(stack, 0);
+            let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
-                let value = this.getParameter(stack, i);
+                let value = this.getParameter(params, i);
                 if (variantOperations.more(result, value).asBoolean) {
                     result = value;
                 }
@@ -114,15 +103,15 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    maxFunctionCalculator(stack, variantOperations, callback) {
+    maxFunctionCalculator(params, variantOperations, callback) {
         try {
-            let paramCount = stack.peek().asInteger;
+            let paramCount = params.length;
             if (paramCount < 2) {
                 throw new Error("Expected at least 2 parameters");
             }
-            let result = this.getParameter(stack, 0);
+            let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
-                let value = this.getParameter(stack, i);
+                let value = this.getParameter(params, i);
                 if (variantOperations.less(result, value).asBoolean) {
                     result = value;
                 }
@@ -136,15 +125,15 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    sumFunctionCalculator(stack, variantOperations, callback) {
+    sumFunctionCalculator(params, variantOperations, callback) {
         try {
-            let paramCount = stack.peek().asInteger;
+            let paramCount = params.length;
             if (paramCount < 2) {
                 throw new Error("Expected at least 2 parameters");
             }
-            let result = this.getParameter(stack, 0);
+            let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
-                let value = this.getParameter(stack, i);
+                let value = this.getParameter(params, i);
                 result = variantOperations.add(result, value);
             }
             try {
@@ -156,12 +145,12 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    ifFunctionCalculator(stack, variantOperations, callback) {
+    ifFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 3);
-            let value1 = this.getParameter(stack, 0);
-            let value2 = this.getParameter(stack, 1);
-            let value3 = this.getParameter(stack, 2);
+            this.checkParamCount(params, 3);
+            let value1 = this.getParameter(params, 0);
+            let value2 = this.getParameter(params, 1);
+            let value3 = this.getParameter(params, 2);
             let condition = variantOperations.convert(value1, VariantType_1.VariantType.Boolean);
             let result = condition.asBoolean ? value2 : value3;
             try {
@@ -173,19 +162,19 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    chooseFunctionCalculator(stack, variantOperations, callback) {
+    chooseFunctionCalculator(params, variantOperations, callback) {
         try {
-            let paramCount = stack.peek().asInteger;
+            let paramCount = params.length;
             if (paramCount < 3) {
                 throw new Error("Expected at least 3 parameters");
             }
-            let value1 = this.getParameter(stack, 0);
+            let value1 = this.getParameter(params, 0);
             let condition = variantOperations.convert(value1, VariantType_1.VariantType.Integer);
             let paramIndex = condition.asInteger;
             if (paramCount < paramIndex + 1) {
                 throw new Error("Expected at least " + (paramIndex + 1) + " parameters");
             }
-            let result = this.getParameter(stack, paramIndex);
+            let result = this.getParameter(params, paramIndex);
             try {
                 callback(null, result);
             }
@@ -195,9 +184,9 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    eFunctionCalculator(stack, variantOperations, callback) {
+    eFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 0);
+            this.checkParamCount(params, 0);
             let result = new Variant_1.Variant(Math.E);
             try {
                 callback(null, result);
@@ -208,9 +197,9 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    piFunctionCalculator(stack, variantOperations, callback) {
+    piFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 0);
+            this.checkParamCount(params, 0);
             let result = new Variant_1.Variant(Math.PI);
             try {
                 callback(null, result);
@@ -221,9 +210,9 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    rndFunctionCalculator(stack, variantOperations, callback) {
+    rndFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 0);
+            this.checkParamCount(params, 0);
             let result = new Variant_1.Variant(Math.random());
             try {
                 callback(null, result);
@@ -234,10 +223,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    absFunctionCalculator(stack, variantOperations, callback) {
+    absFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = this.getParameter(stack, 0);
+            this.checkParamCount(params, 1);
+            let value = this.getParameter(params, 0);
             let result = new Variant_1.Variant();
             switch (value.type) {
                 case VariantType_1.VariantType.Integer:
@@ -266,10 +255,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    acosFunctionCalculator(stack, variantOperations, callback) {
+    acosFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.acos(value.asDouble));
             try {
                 callback(null, result);
@@ -280,10 +269,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    asinFunctionCalculator(stack, variantOperations, callback) {
+    asinFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.asin(value.asDouble));
             try {
                 callback(null, result);
@@ -294,10 +283,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    atanFunctionCalculator(stack, variantOperations, callback) {
+    atanFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.atan(value.asDouble));
             try {
                 callback(null, result);
@@ -308,10 +297,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    expFunctionCalculator(stack, variantOperations, callback) {
+    expFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.exp(value.asDouble));
             try {
                 callback(null, result);
@@ -322,10 +311,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    logFunctionCalculator(stack, variantOperations, callback) {
+    logFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.log(value.asDouble));
             try {
                 callback(null, result);
@@ -336,10 +325,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    log10FunctionCalculator(stack, variantOperations, callback) {
+    log10FunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.log10(value.asDouble));
             try {
                 callback(null, result);
@@ -350,10 +339,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    ceilFunctionCalculator(stack, variantOperations, callback) {
+    ceilFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.ceil(value.asDouble));
             try {
                 callback(null, result);
@@ -364,10 +353,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    floorFunctionCalculator(stack, variantOperations, callback) {
+    floorFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.floor(value.asDouble));
             try {
                 callback(null, result);
@@ -378,10 +367,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    roundFunctionCalculator(stack, variantOperations, callback) {
+    roundFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.round(value.asDouble));
             try {
                 callback(null, result);
@@ -392,10 +381,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    truncFunctionCalculator(stack, variantOperations, callback) {
+    truncFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant();
             result.asInteger = Math.trunc(value.asDouble);
             try {
@@ -407,10 +396,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    cosFunctionCalculator(stack, variantOperations, callback) {
+    cosFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.cos(value.asDouble));
             try {
                 callback(null, result);
@@ -421,10 +410,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    sinFunctionCalculator(stack, variantOperations, callback) {
+    sinFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.sin(value.asDouble));
             try {
                 callback(null, result);
@@ -435,10 +424,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    tanFunctionCalculator(stack, variantOperations, callback) {
+    tanFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.tan(value.asDouble));
             try {
                 callback(null, result);
@@ -449,10 +438,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    sqrtFunctionCalculator(stack, variantOperations, callback) {
+    sqrtFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.Double);
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Double);
             let result = new Variant_1.Variant(Math.sqrt(value.asDouble));
             try {
                 callback(null, result);
@@ -463,10 +452,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    emptyFunctionCalculator(stack, variantOperations, callback) {
+    emptyFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 1);
-            let value = this.getParameter(stack, 0);
+            this.checkParamCount(params, 1);
+            let value = this.getParameter(params, 0);
             let result = new Variant_1.Variant(value.isEmpty());
             try {
                 callback(null, result);
@@ -477,9 +466,9 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    nullFunctionCalculator(stack, variantOperations, callback) {
+    nullFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 0);
+            this.checkParamCount(params, 0);
             let result = new Variant_1.Variant();
             try {
                 callback(null, result);
@@ -490,11 +479,11 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
-    containsFunctionCalculator(stack, variantOperations, callback) {
+    containsFunctionCalculator(params, variantOperations, callback) {
         try {
-            this.checkParamCount(stack, 2);
-            let containerstr = variantOperations.convert(this.getParameter(stack, 0), VariantType_1.VariantType.String);
-            let substring = variantOperations.convert(this.getParameter(stack, 1), VariantType_1.VariantType.String);
+            this.checkParamCount(params, 2);
+            let containerstr = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.String);
+            let substring = variantOperations.convert(this.getParameter(params, 1), VariantType_1.VariantType.String);
             if (containerstr.isEmpty() || containerstr.isNull()) {
                 let result = new Variant_1.Variant(false);
                 try {

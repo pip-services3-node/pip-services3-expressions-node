@@ -8,23 +8,23 @@ import { TypeUnsafeVariantOperations } from '../../../src/variants/TypeUnsafeVar
 
 suite('DefaultFunctionCollection', ()=> {
 
-    let testFunc = (stack, operations, callback) => {
+    let testFunc = (params, operations, callback) => {
         callback(null, new Variant("ABC"));
     }
 
     test('CalculateFunctions', (callback) => {
         let collection = new DefaultFunctionCollection();
-        let stack = new CalculationStack();
-        stack.push(new Variant(1));
-        stack.push(new Variant(2));
-        stack.push(new Variant(3));
-        stack.push(new Variant(3));
+        let params = [
+            new Variant(1),
+            new Variant(2),
+            new Variant(3)
+        ];
         let operations = new TypeUnsafeVariantOperations();
 
         let func = collection.findByName("sum");
         assert.isNotNull(func);
 
-        func.calculate(stack, operations, (err, result) => {
+        func.calculate(params, operations, (err, result) => {
             assert.isNull(err);
             assert.equal(VariantType.Integer, result.type);
             assert.equal(6, result.asInteger);

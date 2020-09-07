@@ -28,17 +28,17 @@ class DelegatedFunction {
     }
     /**
      * The function calculation method.
-     * @param stack The stack to get function parameters and place
+     * @param params an array with function parameters.
      * @param variantOperations Variants operations manager.
      * @param callback a callback to return function result.
      */
-    calculate(stack, variantOperations, callback) {
+    calculate(params, variantOperations, callback) {
         try {
             if (this._context == null) {
-                this._calculator(stack, variantOperations, callback);
+                this._calculator(params, variantOperations, callback);
             }
             else {
-                this._calculator.apply(this._context, [stack, variantOperations, callback]);
+                this._calculator.apply(this._context, [params, variantOperations, callback]);
             }
         }
         catch (err) {

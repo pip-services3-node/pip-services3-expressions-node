@@ -1,4 +1,3 @@
-import { CalculationStack } from "../CalculationStack";
 import { Variant } from "../../variants/Variant";
 import { IVariantOperations } from "../../variants/IVariantOperations";
 import { IFunction } from "./IFunction";
@@ -6,7 +5,7 @@ import { IFunction } from "./IFunction";
 /**
  * Defines a delegate to implement a function
  */
-export type FunctionCalculator = (stack: CalculationStack, variantOperations: IVariantOperations,
+export type FunctionCalculator = (params: Variant[], variantOperations: IVariantOperations,
     callback: (err: any, result: Variant) => void) => void;
 
 /// <summary>
@@ -43,17 +42,17 @@ export class DelegatedFunction implements IFunction {
 
     /**
      * The function calculation method.
-     * @param stack The stack to get function parameters and place
+     * @param params an array with function parameters.
      * @param variantOperations Variants operations manager.
      * @param callback a callback to return function result.
      */
-    public calculate(stack: CalculationStack, variantOperations: IVariantOperations,
+    public calculate(params: Variant[], variantOperations: IVariantOperations,
         callback: (err: any, result: Variant) => void): void  {
         try {
             if (this._context == null) { 
-                this._calculator(stack, variantOperations, callback);
+                this._calculator(params, variantOperations, callback);
             } else {
-                this._calculator.apply(this._context, [stack, variantOperations, callback]);
+                this._calculator.apply(this._context, [params, variantOperations, callback]);
             }
         } catch (err) {
             callback(err, null);

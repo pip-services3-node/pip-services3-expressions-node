@@ -288,21 +288,21 @@ export class ExpressionCalculator {
             return;
         }
 
-        func.calculate(stack, this._variantOperations, (err, functionResult) => {
+        // Retrieve function parameters
+        let params: Variant[] = [];
+        let paramCount = stack.pop().asInteger;
+        while (paramCount > 0) {
+            params.splice(0, 0, stack.pop());
+            paramCount--;
+        }
+
+        func.calculate(params, this._variantOperations, (err, functionResult) => {
             if (err) {
                 callback(err, false);
                 return;
             }
 
-            try {
-                for (let paramCount = stack.pop().asInteger; paramCount > 0; paramCount--) {
-                    stack.pop();
-                }
-                stack.push(functionResult);
-            } catch (err) {
-                callback(err, false);
-                return;
-            }
+            stack.push(functionResult);
 
             callback(null, true);        
         });

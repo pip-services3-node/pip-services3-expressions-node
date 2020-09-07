@@ -1,6 +1,5 @@
 import { Variant } from "../../variants/Variant";
 import { IVariantOperations } from "../../variants/IVariantOperations";
-import { CalculationStack } from "../CalculationStack";
 /**
  * Defines an interface for expression function.
  */
@@ -15,5 +14,5 @@ export interface IFunction {
      * @param variantOperations Variants operations manager.
      * @param callback
      */
-    calculate(stack: CalculationStack, variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void): void;
+    calculate(params: Variant[], variantOperations: IVariantOperations, callback: (err: any, result: Variant) => void): void;
 }

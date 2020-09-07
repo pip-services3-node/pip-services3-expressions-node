@@ -1,5 +1,4 @@
 import { FunctionCollection } from "./FunctionCollection";
-import { CalculationStack } from "../CalculationStack";
 import { Variant } from "../../variants/Variant";
 /**
  * Implements a list filled with standard functions.
@@ -10,12 +9,12 @@ export declare class DefaultFunctionCollection extends FunctionCollection {
      */
     constructor();
     /**
-     * Checks if stack contains the correct number of function parameters (must be stored on the top of the stack).
-     * @param stack The stack with function parameters.
+     * Checks if params contains the correct number of function parameters (must be stored on the top of the params).
+     * @param params A list of function parameters.
      * @param expectedParamCount The expected number of function parameters.
      */
-    protected checkParamCount(stack: CalculationStack, expectedParamCount: number): void;
-    protected getParameter(stack: CalculationStack, paramIndex: number): Variant;
+    protected checkParamCount(params: Variant[], expectedParamCount: number): void;
+    protected getParameter(params: Variant[], paramIndex: number): Variant;
     private timeFunctionCalculator;
     private minFunctionCalculator;
     private maxFunctionCalculator;
