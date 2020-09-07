@@ -5,7 +5,6 @@ import { CalculationStack } from '../../../src/calculator/CalculationStack';
 import { Variant } from '../../../src/variants/Variant';
 import { VariantType } from '../../../src/variants/VariantType';
 import { TypeUnsafeVariantOperations } from '../../../src/variants/TypeUnsafeVariantOperations';
-import { callbackify } from 'util';
 
 suite('DefaultFunctionCollection', ()=> {
 

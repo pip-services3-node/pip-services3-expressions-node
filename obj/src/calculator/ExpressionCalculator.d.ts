@@ -1,5 +1,5 @@
-import { VariableCollection } from "./variables/VariableCollection";
-import { FunctionCollection } from "./functions/FunctionCollection";
+import { IVariableCollection } from "./variables/IVariableCollection";
+import { IFunctionCollection } from "./functions/IFunctionCollection";
 import { ExpressionToken } from "./parsers/ExpressionToken";
 import { IVariantOperations } from "../variants/IVariantOperations";
 import { Token } from "../tokenizers/Token";
@@ -43,11 +43,11 @@ export declare class ExpressionCalculator {
     /**
      * The list with default variables.
      */
-    readonly defaultVariables: VariableCollection;
+    readonly defaultVariables: IVariableCollection;
     /**
      * The list with default functions.
      */
-    readonly defaultFunctions: FunctionCollection;
+    readonly defaultFunctions: IFunctionCollection;
     /**
      * The list of original expression tokens.
      */
@@ -60,7 +60,7 @@ export declare class ExpressionCalculator {
      * Populates the specified variables list with variables from parsed expression.
      * @param variables The list of variables to be populated.
      */
-    createVariables(variables: VariableCollection): void;
+    createVariables(variables: IVariableCollection): void;
     /**
      * Cleans up this calculator from all data.
      */
@@ -75,14 +75,14 @@ export declare class ExpressionCalculator {
      * @param variables The list of variables
      * @param callback The callback to receive the evaluation results
      */
-    evaluateWithVariables(variables: VariableCollection, callback: (err: any, result: Variant) => void): void;
+    evaluateWithVariables(variables: IVariableCollection, callback: (err: any, result: Variant) => void): void;
     /**
      * Evaluates this expression using specified variables and functions.
      * @param variables The list of variables
      * @param functions The list of functions
      * @param callback The callback to receive the evaluation results
      */
-    evaluateWithVariablesAndFunctions(variables: VariableCollection, functions: FunctionCollection, callback: (err: any, result: Variant) => void): void;
+    evaluateWithVariablesAndFunctions(variables: IVariableCollection, functions: IFunctionCollection, callback: (err: any, result: Variant) => void): void;
     private evaluateConstant;
     private evaluateVariable;
     private evaluateFunction;

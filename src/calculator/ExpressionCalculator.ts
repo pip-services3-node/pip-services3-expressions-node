@@ -1,8 +1,9 @@
 const async = require('async');
 
+import { IVariableCollection } from "./variables/IVariableCollection";
 import { VariableCollection } from "./variables/VariableCollection";
 import { Variable } from "./variables/Variable";
-import { FunctionCollection } from "./functions/FunctionCollection";
+import { IFunctionCollection } from "./functions/IFunctionCollection";
 import { DefaultFunctionCollection } from "./functions/DefaultFunctionCollection";
 import { ExpressionParser } from "./parsers/ExpressionParser";
 import { ExpressionToken } from "./parsers/ExpressionToken";
@@ -18,8 +19,8 @@ import { ExpressionException } from "./ExpressionException";
  * Implements an expression calculator class.
  */
 export class ExpressionCalculator {
-    private _defaultVariables: VariableCollection = new VariableCollection();
-    private _defaultFunctions: FunctionCollection = new DefaultFunctionCollection();
+    private _defaultVariables: IVariableCollection = new VariableCollection();
+    private _defaultFunctions: IFunctionCollection = new DefaultFunctionCollection();
     private _variantOperations: IVariantOperations = new TypeUnsafeVariantOperations();
     private _parser: ExpressionParser = new ExpressionParser();
     private _autoVariables: boolean = true;
@@ -93,14 +94,14 @@ export class ExpressionCalculator {
     /**
      * The list with default variables.
      */
-    public get defaultVariables(): VariableCollection {
+    public get defaultVariables(): IVariableCollection {
         return this._defaultVariables;
     }
 
     /**
      * The list with default functions.
      */
-    public get defaultFunctions(): FunctionCollection {
+    public get defaultFunctions(): IFunctionCollection {
         return this._defaultFunctions;
     }
 
@@ -122,7 +123,7 @@ export class ExpressionCalculator {
      * Populates the specified variables list with variables from parsed expression.
      * @param variables The list of variables to be populated.
      */
-    public createVariables(variables: VariableCollection): void {
+    public createVariables(variables: IVariableCollection): void {
         for (let variableName of this._parser.variableNames) {
             if (variables.findByName(variableName) == null) {
                 variables.add(new Variable(variableName));
@@ -151,7 +152,7 @@ export class ExpressionCalculator {
      * @param variables The list of variables
      * @param callback The callback to receive the evaluation results
      */
-    public evaluateWithVariables(variables: VariableCollection,
+    public evaluateWithVariables(variables: IVariableCollection,
         callback: (err: any, result: Variant) => void): void {
         this.evaluateWithVariablesAndFunctions(variables, null, callback);
     }
@@ -162,7 +163,7 @@ export class ExpressionCalculator {
      * @param functions The list of functions
      * @param callback The callback to receive the evaluation results
      */
-    public evaluateWithVariablesAndFunctions(variables: VariableCollection, functions: FunctionCollection,
+    public evaluateWithVariablesAndFunctions(variables: IVariableCollection, functions: IFunctionCollection,
         callback: (err: any, result: Variant) => void): void {
         let stack = new CalculationStack();
         variables = variables || this._defaultVariables;
@@ -253,7 +254,7 @@ export class ExpressionCalculator {
     }
 
     private evaluateVariable(token: ExpressionToken, stack: CalculationStack,
-        variables: VariableCollection, callback: (err: any, processed: boolean) => void): void {
+        variables: IVariableCollection, callback: (err: any, processed: boolean) => void): void {
 
         if (token.type != ExpressionTokenType.Variable) {
             callback(null, false);
@@ -272,7 +273,7 @@ export class ExpressionCalculator {
     }
 
     private evaluateFunction(token: ExpressionToken, stack: CalculationStack,
-        functions: FunctionCollection,
+        functions: IFunctionCollection,
         callback: (err: any, processed: boolean) => void): void {
 
         if (token.type != ExpressionTokenType.Function) {
