@@ -1,10 +1,8 @@
 import { IVariable } from "./IVariable";
-import { IVariableCollection } from "./IVariableCollection";
 /**
- * Implements a variables list.
+ * Defines a variables list.
  */
-export declare class VariableCollection implements IVariableCollection {
-    private _variables;
+export interface IVariableCollection {
     /**
      * Adds a new variable to the collection.
      * @param variable a variable to be added.
@@ -14,7 +12,7 @@ export declare class VariableCollection implements IVariableCollection {
      * Gets a number of variables stored in the collection.
      * @returns a number of stored variables.
      */
-    readonly length: number;
+    length: number;
     /**
      * Get a variable by its index.
      * @param index a variable index.

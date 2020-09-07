@@ -1,9 +1,10 @@
 import { IFunction } from "./IFunction";
+import { IFunctionCollection } from "./IFunctionCollection";
 
 /**
  * Implements a functions list.
  */
-export class FunctionCollection {
+export class FunctionCollection implements IFunctionCollection {
     private _functions: IFunction[] = [];
 
     /**

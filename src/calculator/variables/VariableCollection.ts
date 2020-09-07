@@ -1,11 +1,12 @@
 import { IVariable } from "./IVariable";
 import { Variable } from './Variable';
 import { Variant } from "../../variants/Variant";
+import { IVariableCollection } from "./IVariableCollection";
 
 /**
  * Implements a variables list.
  */
-export class VariableCollection {
+export class VariableCollection implements IVariableCollection {
     private _variables: IVariable[] = [];
 
     /**

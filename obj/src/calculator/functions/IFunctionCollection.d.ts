@@ -1,10 +1,8 @@
 import { IFunction } from "./IFunction";
-import { IFunctionCollection } from "./IFunctionCollection";
 /**
- * Implements a functions list.
+ * Defines a functions list.
  */
-export declare class FunctionCollection implements IFunctionCollection {
-    private _functions;
+export interface IFunctionCollection {
     /**
      * Adds a new function to the collection.
      * @param function a function to be added.
@@ -14,7 +12,7 @@ export declare class FunctionCollection implements IFunctionCollection {
      * Gets a number of functions stored in the collection.
      * @returns a number of stored functions.
      */
-    readonly length: number;
+    length: number;
     /**
      * Get a function by its index.
      * @param index a function index.
