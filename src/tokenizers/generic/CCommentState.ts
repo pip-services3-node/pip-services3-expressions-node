@@ -3,6 +3,7 @@ import { TokenType } from '../TokenType';
 import { ITokenizer } from '../ITokenizer';
 import { IPushbackReader } from '../../io/IPushbackReader';
 import { CppCommentState } from './CppCommentState';
+import { CharValidator } from '../utilities';
 
 /**
  * This state will either delegate to a comment-handling state, or return a token with just a slash in it.
@@ -25,8 +26,12 @@ export class CCommentState extends CppCommentState {
         if (secondSymbol == this.STAR) {
             return new Token(TokenType.Comment, "/*" + this.getMultiLineComment(reader));
         } else {
-            reader.pushback(secondSymbol);
-            reader.pushback(firstSymbol);
+            if (!CharValidator.isEof(secondSymbol)) {
+                reader.pushback(secondSymbol);
+            }
+            if (!CharValidator.isEof(firstSymbol)) {
+                reader.pushback(firstSymbol);
+            }
             return tokenizer.symbolState.nextToken(reader, tokenizer);
         }
     }

@@ -65,8 +65,12 @@ class CppCommentState extends GenericCommentState_1.GenericCommentState {
             return new Token_1.Token(TokenType_1.TokenType.Comment, "//" + this.getSingleLineComment(reader));
         }
         else {
-            reader.pushback(secondSymbol);
-            reader.pushback(firstSymbol);
+            if (!CharValidator_1.CharValidator.isEof(secondSymbol)) {
+                reader.pushback(secondSymbol);
+            }
+            if (!CharValidator_1.CharValidator.isEof(firstSymbol)) {
+                reader.pushback(firstSymbol);
+            }
             return tokenizer.symbolState.nextToken(reader, tokenizer);
         }
     }

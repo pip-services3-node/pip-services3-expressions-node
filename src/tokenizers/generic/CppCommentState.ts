@@ -67,8 +67,12 @@ export class CppCommentState extends GenericCommentState {
         } else if (secondSymbol == this.SLASH) {
             return new Token(TokenType.Comment, "//" + this.getSingleLineComment(reader));
         } else {
-            reader.pushback(secondSymbol);
-            reader.pushback(firstSymbol);
+            if (!CharValidator.isEof(secondSymbol)) {
+                reader.pushback(secondSymbol);
+            }
+            if (!CharValidator.isEof(firstSymbol)) {
+                reader.pushback(firstSymbol);
+            }
             return tokenizer.symbolState.nextToken(reader, tokenizer);
         }
     }

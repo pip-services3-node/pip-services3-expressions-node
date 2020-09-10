@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Token_1 = require("../Token");
 const TokenType_1 = require("../TokenType");
 const CppCommentState_1 = require("./CppCommentState");
+const utilities_1 = require("../utilities");
 /**
  * This state will either delegate to a comment-handling state, or return a token with just a slash in it.
  */
@@ -24,8 +25,12 @@ class CCommentState extends CppCommentState_1.CppCommentState {
             return new Token_1.Token(TokenType_1.TokenType.Comment, "/*" + this.getMultiLineComment(reader));
         }
         else {
-            reader.pushback(secondSymbol);
-            reader.pushback(firstSymbol);
+            if (!utilities_1.CharValidator.isEof(secondSymbol)) {
+                reader.pushback(secondSymbol);
+            }
+            if (!utilities_1.CharValidator.isEof(firstSymbol)) {
+                reader.pushback(firstSymbol);
+            }
             return tokenizer.symbolState.nextToken(reader, tokenizer);
         }
     }
