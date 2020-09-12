@@ -4,6 +4,7 @@ const FunctionCollection_1 = require("./FunctionCollection");
 const DelegatedFunction_1 = require("./DelegatedFunction");
 const Variant_1 = require("../../variants/Variant");
 const VariantType_1 = require("../../variants/VariantType");
+const ExpressionException_1 = require("../ExpressionException");
 /**
  * Implements a list filled with standard functions.
  */
@@ -55,7 +56,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
     checkParamCount(params, expectedParamCount) {
         let paramCount = params.length;
         if (expectedParamCount != paramCount) {
-            throw new Error("Expected " + expectedParamCount
+            throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected " + expectedParamCount
                 + " parameters but was found " + paramCount);
         }
     }
@@ -85,7 +86,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         try {
             let paramCount = params.length;
             if (paramCount < 2) {
-                throw new Error("Expected at least 2 parameters");
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected at least 2 parameters");
             }
             let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
@@ -107,7 +108,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         try {
             let paramCount = params.length;
             if (paramCount < 2) {
-                throw new Error("Expected at least 2 parameters");
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected at least 2 parameters");
             }
             let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
@@ -129,7 +130,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         try {
             let paramCount = params.length;
             if (paramCount < 2) {
-                throw new Error("Expected at least 2 parameters");
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected at least 2 parameters");
             }
             let result = this.getParameter(params, 0);
             for (let i = 1; i < paramCount; i++) {
@@ -166,13 +167,13 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         try {
             let paramCount = params.length;
             if (paramCount < 3) {
-                throw new Error("Expected at least 3 parameters");
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected at least 3 parameters");
             }
             let value1 = this.getParameter(params, 0);
             let condition = variantOperations.convert(value1, VariantType_1.VariantType.Integer);
             let paramIndex = condition.asInteger;
             if (paramCount < paramIndex + 1) {
-                throw new Error("Expected at least " + (paramIndex + 1) + " parameters");
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected at least " + (paramIndex + 1) + " parameters");
             }
             let result = this.getParameter(params, paramIndex);
             try {
