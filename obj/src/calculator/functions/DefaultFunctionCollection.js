@@ -15,7 +15,8 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
     constructor() {
         super();
         this.add(new DelegatedFunction_1.DelegatedFunction("Time", this.timeFunctionCalculator, this));
-        this.add(new DelegatedFunction_1.DelegatedFunction("Now", this.timeFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("Now", this.nowFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("Date", this.dateFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Min", this.minFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Max", this.maxFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Sum", this.sumFunctionCalculator, this));
@@ -78,6 +79,46 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
                 callback(null, result);
             }
             catch ( /* Ignore... */_a) { /* Ignore... */ }
+        }
+        catch (err) {
+            callback(err, null);
+        }
+    }
+    nowFunctionCalculator(params, variantOperations, callback) {
+        try {
+            this.checkParamCount(params, 0);
+            let result = Variant_1.Variant.fromDateTime(new Date());
+            try {
+                callback(null, result);
+            }
+            catch ( /* Ignore... */_a) { /* Ignore... */ }
+        }
+        catch (err) {
+            callback(err, null);
+        }
+    }
+    dateFunctionCalculator(params, variantOperations, callback) {
+        try {
+            let paramCount = params.length;
+            if (paramCount < 1 || paramCount > 7) {
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected from 1 to 7 parameters");
+            }
+            if (paramCount == 1) {
+                let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Long);
+                let result1 = Variant_1.Variant.fromDateTime(new Date(value.asLong));
+                callback(null, result1);
+                return;
+            }
+            let value1 = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Integer);
+            let value2 = paramCount > 1 ? variantOperations.convert(this.getParameter(params, 1), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(1);
+            let value3 = paramCount > 2 ? variantOperations.convert(this.getParameter(params, 2), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(1);
+            let value4 = paramCount > 3 ? variantOperations.convert(this.getParameter(params, 3), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+            let value5 = paramCount > 4 ? variantOperations.convert(this.getParameter(params, 4), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+            let value6 = paramCount > 5 ? variantOperations.convert(this.getParameter(params, 5), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+            let value7 = paramCount > 6 ? variantOperations.convert(this.getParameter(params, 6), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+            let date = new Date(value1.asInteger, value2.asInteger - 1, value3.asInteger, value4.asInteger, value5.asInteger, value6.asInteger, value7.asInteger);
+            let result = Variant_1.Variant.fromDateTime(date);
+            callback(null, result);
         }
         catch (err) {
             callback(err, null);
