@@ -451,7 +451,18 @@ class ExpressionCalculator {
                     {
                         let value2 = stack.pop();
                         let value1 = stack.pop();
-                        stack.push(this._variantOperations.in(value1, value2));
+                        let rvalue = this._variantOperations.in(value2, value1);
+                        stack.push(rvalue);
+                        result = true;
+                        break;
+                    }
+                case ExpressionTokenType_1.ExpressionTokenType.NotIn:
+                    {
+                        let value2 = stack.pop();
+                        let value1 = stack.pop();
+                        let rvalue = this._variantOperations.in(value2, value1);
+                        rvalue = Variant_1.Variant.fromBoolean(!rvalue.asBoolean);
+                        stack.push(rvalue);
                         result = true;
                         break;
                     }
@@ -459,19 +470,22 @@ class ExpressionCalculator {
                     {
                         let value2 = stack.pop();
                         let value1 = stack.pop();
-                        stack.push(this._variantOperations.getElement(value1, value2));
+                        let rvalue = this._variantOperations.getElement(value1, value2);
+                        stack.push(rvalue);
                         result = true;
                         break;
                     }
                 case ExpressionTokenType_1.ExpressionTokenType.IsNull:
                     {
-                        stack.push(new Variant_1.Variant(stack.pop().isNull()));
+                        let rvalue = new Variant_1.Variant(stack.pop().isNull());
+                        stack.push(rvalue);
                         result = true;
                         break;
                     }
                 case ExpressionTokenType_1.ExpressionTokenType.IsNotNull:
                     {
-                        stack.push(new Variant_1.Variant(!stack.pop().isNull()));
+                        let rvalue = new Variant_1.Variant(!stack.pop().isNull());
+                        stack.push(rvalue);
                         result = true;
                         break;
                     }

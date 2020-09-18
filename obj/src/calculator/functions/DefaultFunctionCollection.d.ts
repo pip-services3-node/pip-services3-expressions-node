@@ -42,4 +42,5 @@ export declare class DefaultFunctionCollection extends FunctionCollection {
     private emptyFunctionCalculator;
     private nullFunctionCalculator;
     private containsFunctionCalculator;
+    private arrayFunctionCalculator;
 }

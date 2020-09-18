@@ -1,5 +1,4 @@
 import { FunctionCollection } from "./FunctionCollection";
-import { CalculationStack } from "../CalculationStack";
 import { DelegatedFunction } from "./DelegatedFunction";
 import { Variant } from "../../variants/Variant";
 import { VariantType } from "../../variants/VariantType";
@@ -49,6 +48,7 @@ export class DefaultFunctionCollection extends FunctionCollection {
         this.add(new DelegatedFunction("Empty", this.emptyFunctionCalculator, this));
         this.add(new DelegatedFunction("Null", this.nullFunctionCalculator, this));
         this.add(new DelegatedFunction("Contains", this.containsFunctionCalculator, this));
+        this.add(new DelegatedFunction("Array", this.arrayFunctionCalculator, this));
     }
 
     /**
@@ -462,4 +462,12 @@ export class DefaultFunctionCollection extends FunctionCollection {
             callback(err, null);
         }
     }
+
+    private arrayFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
+        callback: (err: any, result: Variant) => void) : void {
+        
+        let result = Variant.fromArray(params);
+        callback(null, result);
+    }
+
 }

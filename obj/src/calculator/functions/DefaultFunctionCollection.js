@@ -47,6 +47,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         this.add(new DelegatedFunction_1.DelegatedFunction("Empty", this.emptyFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Null", this.nullFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Contains", this.containsFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("Array", this.arrayFunctionCalculator, this));
     }
     /**
      * Checks if params contains the correct number of function parameters (must be stored on the top of the params).
@@ -502,6 +503,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
         catch (err) {
             callback(err, null);
         }
+    }
+    arrayFunctionCalculator(params, variantOperations, callback) {
+        let result = Variant_1.Variant.fromArray(params);
+        callback(null, result);
     }
 }
 exports.DefaultFunctionCollection = DefaultFunctionCollection;

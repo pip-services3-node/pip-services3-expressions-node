@@ -365,6 +365,10 @@ class ExpressionParser {
             else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Is, ExpressionTokenType_1.ExpressionTokenType.Not, ExpressionTokenType_1.ExpressionTokenType.Null)) {
                 this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.IsNotNull, Variant_1.Variant.Empty);
             }
+            else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Not, ExpressionTokenType_1.ExpressionTokenType.In)) {
+                this.performSyntaxAnalysisAtLevel4();
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.NotIn, Variant_1.Variant.Empty);
+            }
             else {
                 break;
             }

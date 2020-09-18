@@ -388,6 +388,9 @@ export class ExpressionParser {
             } else if (this.matchTokensWithTypes(ExpressionTokenType.Is, ExpressionTokenType.Not,
                 ExpressionTokenType.Null)) {
                 this.addTokenToResult(ExpressionTokenType.IsNotNull, Variant.Empty);
+            } else if (this.matchTokensWithTypes(ExpressionTokenType.Not, ExpressionTokenType.In)) {
+                this.performSyntaxAnalysisAtLevel4();
+                this.addTokenToResult(ExpressionTokenType.NotIn, Variant.Empty);
             } else {
                 break;
             }

@@ -1,4 +1,5 @@
 const assert = require('chai').assert;
+const async = require('async');
 
 import { ExpressionCalculator } from '../../src/calculator/ExpressionCalculator';
 import { VariantType } from '../../src/variants/VariantType';
@@ -78,6 +79,43 @@ suite('ExpressionCalculator', ()=> {
 
             done();
         });
+    });    
+
+    test('InExpression', (done) => {
+        async.series([
+            (callback) => {
+                try {
+                    let calculator = new ExpressionCalculator();
+        
+                    calculator.expression = "2 IN ARRAY(1,2,3)";
+                    calculator.evaluate((err, result) => {
+                        assert.isNull(err);
+                        assert.equal(VariantType.Boolean, result.type);
+                        assert.isTrue(result.asBoolean);
+                
+                        callback(err);
+                    });
+                } catch (err) {
+                    callback(err);
+                }        
+            },
+            (callback) => {
+                try {
+                    let calculator = new ExpressionCalculator();
+        
+                    calculator.expression = "5 NOT IN ARRAY(1,2,3)";
+                    calculator.evaluate((err, result) => {
+                        assert.isNull(err);
+                        assert.equal(VariantType.Boolean, result.type);
+                        assert.isTrue(result.asBoolean);
+                
+                        callback(err);
+                    });
+                } catch (err) {
+                    callback(err);
+                }        
+            }
+        ], done);
     });    
 
 });

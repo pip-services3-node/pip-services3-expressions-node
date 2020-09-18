@@ -26,6 +26,7 @@ export enum ExpressionTokenType {
     Xor,
     Is,
     In,
+    NotIn,
     Element,
     Null,
     Not,
