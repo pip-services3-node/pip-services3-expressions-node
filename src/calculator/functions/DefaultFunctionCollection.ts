@@ -15,7 +15,7 @@ export class DefaultFunctionCollection extends FunctionCollection {
     public constructor() {
         super();
 
-        this.add(new DelegatedFunction("Time", this.timeFunctionCalculator, this));
+        this.add(new DelegatedFunction("Ticks", this.ticksFunctionCalculator, this));
         this.add(new DelegatedFunction("TimeSpan", this.timeSpanFunctionCalculator, this));
         this.add(new DelegatedFunction("Now", this.nowFunctionCalculator, this));
         this.add(new DelegatedFunction("Date", this.dateFunctionCalculator, this));
@@ -78,7 +78,7 @@ export class DefaultFunctionCollection extends FunctionCollection {
         return params[paramIndex];
     }
 
-    private timeFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
+    private ticksFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
         callback: (err: any, result: Variant) => void) : void {
         try {
             this.checkParamCount(params, 0);

@@ -14,7 +14,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
      */
     constructor() {
         super();
-        this.add(new DelegatedFunction_1.DelegatedFunction("Time", this.timeFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("Ticks", this.ticksFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("TimeSpan", this.timeSpanFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Now", this.nowFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Date", this.dateFunctionCalculator, this));
@@ -73,7 +73,7 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
     getParameter(params, paramIndex) {
         return params[paramIndex];
     }
-    timeFunctionCalculator(params, variantOperations, callback) {
+    ticksFunctionCalculator(params, variantOperations, callback) {
         try {
             this.checkParamCount(params, 0);
             let result = new Variant_1.Variant(new Date().getTime());

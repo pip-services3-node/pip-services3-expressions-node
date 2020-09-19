@@ -15,7 +15,7 @@ export declare class DefaultFunctionCollection extends FunctionCollection {
      */
     protected checkParamCount(params: Variant[], expectedParamCount: number): void;
     protected getParameter(params: Variant[], paramIndex: number): Variant;
-    private timeFunctionCalculator;
+    private ticksFunctionCalculator;
     private timeSpanFunctionCalculator;
     private nowFunctionCalculator;
     private dateFunctionCalculator;
