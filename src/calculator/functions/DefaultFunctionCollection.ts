@@ -16,8 +16,10 @@ export class DefaultFunctionCollection extends FunctionCollection {
         super();
 
         this.add(new DelegatedFunction("Time", this.timeFunctionCalculator, this));
+        this.add(new DelegatedFunction("TimeSpan", this.timeSpanFunctionCalculator, this));
         this.add(new DelegatedFunction("Now", this.nowFunctionCalculator, this));
         this.add(new DelegatedFunction("Date", this.dateFunctionCalculator, this));
+        this.add(new DelegatedFunction("DayOfWeek", this.dayOfWeekFunctionCalculator, this));
         this.add(new DelegatedFunction("Min", this.minFunctionCalculator, this));
         this.add(new DelegatedFunction("Max", this.maxFunctionCalculator, this));
         this.add(new DelegatedFunction("Sum", this.sumFunctionCalculator, this));
@@ -87,6 +89,35 @@ export class DefaultFunctionCollection extends FunctionCollection {
         }
     }
 
+    private timeSpanFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
+        callback: (err: any, result: Variant) => void) : void {
+        try {
+            let paramCount = params.length;
+            if (paramCount != 1 && paramCount != 3 && paramCount != 4 && paramCount != 5) {
+                throw new ExpressionException(null, "WRONG_PARAM_COUNT", "Expected 1, 3, 4 or 5 parameters");
+            }
+
+            let result = new Variant();
+
+            if (paramCount == 1) {
+                let value = variantOperations.convert(this.getParameter(params, 0), VariantType.Long);
+                result.asTimeSpan = value.asLong;
+            } else if (paramCount > 2) {
+                let value1 = variantOperations.convert(this.getParameter(params, 0), VariantType.Integer);
+                let value2 = variantOperations.convert(this.getParameter(params, 1), VariantType.Integer);
+                let value3 = variantOperations.convert(this.getParameter(params, 2), VariantType.Integer);
+                let value4 = paramCount > 3 ? variantOperations.convert(this.getParameter(params, 3), VariantType.Integer) : Variant.fromInteger(0);
+                let value5 = paramCount > 4 ? variantOperations.convert(this.getParameter(params, 4), VariantType.Integer) : Variant.fromInteger(0);
+
+                result.asTimeSpan = (((value1.asInteger * 24 + value2.asInteger) * 60 + value3.asInteger) * 60 + value4.asInteger) * 1000 + value5.asInteger;
+            }
+         
+            try { callback(null, result); } catch { /* Ignore... */ }
+        } catch (err) {
+            callback(err, null);
+        }
+    }
+
     private nowFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
         callback: (err: any, result: Variant) => void) : void {
         try {
@@ -124,7 +155,20 @@ export class DefaultFunctionCollection extends FunctionCollection {
             let date = new Date(value1.asInteger, value2.asInteger-1, value3.asInteger,
                 value4.asInteger, value5.asInteger, value6.asInteger, value7.asInteger);
             let result = Variant.fromDateTime(date);
-            callback(null, result);
+            try { callback(null, result); } catch { /* Ignore... */ }
+        } catch (err) {
+            callback(err, null);
+        }
+    }
+
+    private dayOfWeekFunctionCalculator(params: Variant[], variantOperations: IVariantOperations,
+        callback: (err: any, result: Variant) => void) : void {
+        try {
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType.DateTime);
+            let date = value.asDateTime;
+            let result = Variant.fromInteger(date.getDay());
+            try { callback(null, result); } catch { /* Ignore... */ }
         } catch (err) {
             callback(err, null);
         }

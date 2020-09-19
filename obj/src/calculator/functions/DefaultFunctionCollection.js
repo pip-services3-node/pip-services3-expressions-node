@@ -15,8 +15,10 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
     constructor() {
         super();
         this.add(new DelegatedFunction_1.DelegatedFunction("Time", this.timeFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("TimeSpan", this.timeSpanFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Now", this.nowFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Date", this.dateFunctionCalculator, this));
+        this.add(new DelegatedFunction_1.DelegatedFunction("DayOfWeek", this.dayOfWeekFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Min", this.minFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Max", this.maxFunctionCalculator, this));
         this.add(new DelegatedFunction_1.DelegatedFunction("Sum", this.sumFunctionCalculator, this));
@@ -84,6 +86,34 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             callback(err, null);
         }
     }
+    timeSpanFunctionCalculator(params, variantOperations, callback) {
+        try {
+            let paramCount = params.length;
+            if (paramCount != 1 && paramCount != 3 && paramCount != 4 && paramCount != 5) {
+                throw new ExpressionException_1.ExpressionException(null, "WRONG_PARAM_COUNT", "Expected 1, 3, 4 or 5 parameters");
+            }
+            let result = new Variant_1.Variant();
+            if (paramCount == 1) {
+                let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Long);
+                result.asTimeSpan = value.asLong;
+            }
+            else if (paramCount > 2) {
+                let value1 = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Integer);
+                let value2 = variantOperations.convert(this.getParameter(params, 1), VariantType_1.VariantType.Integer);
+                let value3 = variantOperations.convert(this.getParameter(params, 2), VariantType_1.VariantType.Integer);
+                let value4 = paramCount > 3 ? variantOperations.convert(this.getParameter(params, 3), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+                let value5 = paramCount > 4 ? variantOperations.convert(this.getParameter(params, 4), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
+                result.asTimeSpan = (((value1.asInteger * 24 + value2.asInteger) * 60 + value3.asInteger) * 60 + value4.asInteger) * 1000 + value5.asInteger;
+            }
+            try {
+                callback(null, result);
+            }
+            catch ( /* Ignore... */_a) { /* Ignore... */ }
+        }
+        catch (err) {
+            callback(err, null);
+        }
+    }
     nowFunctionCalculator(params, variantOperations, callback) {
         try {
             this.checkParamCount(params, 0);
@@ -118,7 +148,25 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
             let value7 = paramCount > 6 ? variantOperations.convert(this.getParameter(params, 6), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
             let date = new Date(value1.asInteger, value2.asInteger - 1, value3.asInteger, value4.asInteger, value5.asInteger, value6.asInteger, value7.asInteger);
             let result = Variant_1.Variant.fromDateTime(date);
-            callback(null, result);
+            try {
+                callback(null, result);
+            }
+            catch ( /* Ignore... */_a) { /* Ignore... */ }
+        }
+        catch (err) {
+            callback(err, null);
+        }
+    }
+    dayOfWeekFunctionCalculator(params, variantOperations, callback) {
+        try {
+            this.checkParamCount(params, 1);
+            let value = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.DateTime);
+            let date = value.asDateTime;
+            let result = Variant_1.Variant.fromInteger(date.getDay());
+            try {
+                callback(null, result);
+            }
+            catch ( /* Ignore... */_a) { /* Ignore... */ }
         }
         catch (err) {
             callback(err, null);
