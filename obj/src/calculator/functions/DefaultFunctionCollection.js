@@ -98,12 +98,12 @@ class DefaultFunctionCollection extends FunctionCollection_1.FunctionCollection 
                 result.asTimeSpan = value.asLong;
             }
             else if (paramCount > 2) {
-                let value1 = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Integer);
-                let value2 = variantOperations.convert(this.getParameter(params, 1), VariantType_1.VariantType.Integer);
-                let value3 = variantOperations.convert(this.getParameter(params, 2), VariantType_1.VariantType.Integer);
-                let value4 = paramCount > 3 ? variantOperations.convert(this.getParameter(params, 3), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
-                let value5 = paramCount > 4 ? variantOperations.convert(this.getParameter(params, 4), VariantType_1.VariantType.Integer) : Variant_1.Variant.fromInteger(0);
-                result.asTimeSpan = (((value1.asInteger * 24 + value2.asInteger) * 60 + value3.asInteger) * 60 + value4.asInteger) * 1000 + value5.asInteger;
+                let value1 = variantOperations.convert(this.getParameter(params, 0), VariantType_1.VariantType.Long);
+                let value2 = variantOperations.convert(this.getParameter(params, 1), VariantType_1.VariantType.Long);
+                let value3 = variantOperations.convert(this.getParameter(params, 2), VariantType_1.VariantType.Long);
+                let value4 = paramCount > 3 ? variantOperations.convert(this.getParameter(params, 3), VariantType_1.VariantType.Long) : Variant_1.Variant.fromLong(0);
+                let value5 = paramCount > 4 ? variantOperations.convert(this.getParameter(params, 4), VariantType_1.VariantType.Long) : Variant_1.Variant.fromLong(0);
+                result.asTimeSpan = (((value1.asLong * 24 + value2.asLong) * 60 + value3.asLong) * 60 + value4.asLong) * 1000 + value5.asLong;
             }
             try {
                 callback(null, result);
