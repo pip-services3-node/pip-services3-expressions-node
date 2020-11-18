@@ -1,0 +1,697 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AbstractTokenizer | pip-services3-expressions-node</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">pip-services3-expressions-node</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_tokenizers_abstracttokenizer_.html">&quot;tokenizers/AbstractTokenizer&quot;</a>
+				</li>
+				<li>
+					<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html">AbstractTokenizer</a>
+				</li>
+			</ul>
+			<h1>Class AbstractTokenizer</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AbstractTokenizer</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_calculator_tokenizers_expressiontokenizer_.expressiontokenizer.html" class="tsd-signature-type">ExpressionTokenizer</a>
+							</li>
+							<li>
+								<a href="_csv_csvtokenizer_.csvtokenizer.html" class="tsd-signature-type">CsvTokenizer</a>
+							</li>
+							<li>
+								<a href="_tokenizers_generic_generictokenizer_.generictokenizer.html" class="tsd-signature-type">GenericTokenizer</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html" class="tsd-signature-type">ITokenizer</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private-protected">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-protected"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#commentstate" class="tsd-kind-icon">comment<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#decodestrings" class="tsd-kind-icon">decode<wbr>Strings</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#mergewhitespaces" class="tsd-kind-icon">merge<wbr>Whitespaces</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#numberstate" class="tsd-kind-icon">number<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#quotestate" class="tsd-kind-icon">quote<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipcomments" class="tsd-kind-icon">skip<wbr>Comments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipeof" class="tsd-kind-icon">skip<wbr>Eof</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipunknown" class="tsd-kind-icon">skip<wbr>Unknown</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipwhitespaces" class="tsd-kind-icon">skip<wbr>Whitespaces</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#symbolstate" class="tsd-kind-icon">symbol<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#unifynumbers" class="tsd-kind-icon">unify<wbr>Numbers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#whitespacestate" class="tsd-kind-icon">whitespace<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#wordstate" class="tsd-kind-icon">word<wbr>State</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#reader" class="tsd-kind-icon">reader</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#clearcharacterstates" class="tsd-kind-icon">clear<wbr>Character<wbr>States</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#getcharacterstate" class="tsd-kind-icon">get<wbr>Character<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#hasnexttoken" class="tsd-kind-icon">has<wbr>Next<wbr>Token</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#nexttoken" class="tsd-kind-icon">next<wbr>Token</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#setcharacterstate" class="tsd-kind-icon">set<wbr>Character<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizebuffer" class="tsd-kind-icon">tokenize<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizebuffertostrings" class="tsd-kind-icon">tokenize<wbr>Buffer<wbr>ToStrings</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizestream" class="tsd-kind-icon">tokenize<wbr>Stream</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizestreamtostrings" class="tsd-kind-icon">tokenize<wbr>Stream<wbr>ToStrings</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-protected">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Abstract<wbr>Tokenizer<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html" class="tsd-signature-type">AbstractTokenizer</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:39</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html" class="tsd-signature-type">AbstractTokenizer</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="commentstate" class="tsd-anchor"></a>
+					<h3>comment<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">comment<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_icommentstate_.icommentstate.html" class="tsd-signature-type">ICommentState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#commentstate">commentState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:30</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="decodestrings" class="tsd-anchor"></a>
+					<h3>decode<wbr>Strings</h3>
+					<div class="tsd-signature tsd-kind-icon">decode<wbr>Strings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#decodestrings">decodeStrings</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:28</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="mergewhitespaces" class="tsd-anchor"></a>
+					<h3>merge<wbr>Whitespaces</h3>
+					<div class="tsd-signature tsd-kind-icon">merge<wbr>Whitespaces<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#mergewhitespaces">mergeWhitespaces</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:26</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="numberstate" class="tsd-anchor"></a>
+					<h3>number<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">number<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_inumberstate_.inumberstate.html" class="tsd-signature-type">INumberState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#numberstate">numberState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:31</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="quotestate" class="tsd-anchor"></a>
+					<h3>quote<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_iquotestate_.iquotestate.html" class="tsd-signature-type">IQuoteState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#quotestate">quoteState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:32</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="skipcomments" class="tsd-anchor"></a>
+					<h3>skip<wbr>Comments</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Comments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#skipcomments">skipComments</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:24</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="skipeof" class="tsd-anchor"></a>
+					<h3>skip<wbr>Eof</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Eof<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#skipeof">skipEof</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:25</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="skipunknown" class="tsd-anchor"></a>
+					<h3>skip<wbr>Unknown</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Unknown<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#skipunknown">skipUnknown</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:22</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="skipwhitespaces" class="tsd-anchor"></a>
+					<h3>skip<wbr>Whitespaces</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Whitespaces<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#skipwhitespaces">skipWhitespaces</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:23</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="symbolstate" class="tsd-anchor"></a>
+					<h3>symbol<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">symbol<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_isymbolstate_.isymbolstate.html" class="tsd-signature-type">ISymbolState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#symbolstate">symbolState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:33</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="unifynumbers" class="tsd-anchor"></a>
+					<h3>unify<wbr>Numbers</h3>
+					<div class="tsd-signature tsd-kind-icon">unify<wbr>Numbers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#unifynumbers">unifyNumbers</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:27</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="whitespacestate" class="tsd-anchor"></a>
+					<h3>whitespace<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">whitespace<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_iwhitespacestate_.iwhitespacestate.html" class="tsd-signature-type">IWhitespaceState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#whitespacestate">whitespaceState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:34</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="wordstate" class="tsd-anchor"></a>
+					<h3>word<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">word<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tokenizers_iwordstate_.iwordstate.html" class="tsd-signature-type">IWordState</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#wordstate">wordState</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:35</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="reader" class="tsd-anchor"></a>
+					<h3>reader</h3>
+					<div class="tsd-signature tsd-kind-icon">reader<span class="tsd-signature-symbol">:</span> </div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#reader">reader</a></p>
+						<ul>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:56</li>
+							<li>Defined in tokenizers/AbstractTokenizer.ts:60</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clearcharacterstates" class="tsd-anchor"></a>
+					<h3>clear<wbr>Character<wbr>States</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Character<wbr>States<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:52</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcharacterstate" class="tsd-anchor"></a>
+					<h3>get<wbr>Character<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Character<wbr>State<span class="tsd-signature-symbol">(</span>symbol<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_tokenizers_itokenizerstate_.itokenizerstate.html" class="tsd-signature-type">ITokenizerState</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:44</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>symbol: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_tokenizers_itokenizerstate_.itokenizerstate.html" class="tsd-signature-type">ITokenizerState</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="hasnexttoken" class="tsd-anchor"></a>
+					<h3>has<wbr>Next<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Next<wbr>Token<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#hasnexttoken">hasNextToken</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:66</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="nexttoken" class="tsd-anchor"></a>
+					<h3>next<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">next<wbr>Token<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#nexttoken">nextToken</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:71</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setcharacterstate" class="tsd-anchor"></a>
+					<h3>set<wbr>Character<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Character<wbr>State<span class="tsd-signature-symbol">(</span>fromSymbol<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, toSymbol<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_tokenizers_itokenizerstate_.itokenizerstate.html" class="tsd-signature-type">ITokenizerState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:48</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fromSymbol: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>toSymbol: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>state: <a href="../interfaces/_tokenizers_itokenizerstate_.itokenizerstate.html" class="tsd-signature-type">ITokenizerState</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tokenizebuffer" class="tsd-anchor"></a>
+					<h3>tokenize<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Buffer<span class="tsd-signature-symbol">(</span>buffer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#tokenizebuffer">tokenizeBuffer</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:166</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>buffer: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tokenizebuffertostrings" class="tsd-anchor"></a>
+					<h3>tokenize<wbr>Buffer<wbr>ToStrings</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Buffer<wbr>ToStrings<span class="tsd-signature-symbol">(</span>buffer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#tokenizebuffertostrings">tokenizeBufferToStrings</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:180</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>buffer: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tokenizestream" class="tsd-anchor"></a>
+					<h3>tokenize<wbr>Stream</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="../interfaces/_io_ipushbackreader_.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#tokenizestream">tokenizeStream</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:157</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reader: <a href="../interfaces/_io_ipushbackreader_.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_tokenizers_token_.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tokenizestreamtostrings" class="tsd-anchor"></a>
+					<h3>tokenize<wbr>Stream<wbr>ToStrings</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<wbr>ToStrings<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="../interfaces/_io_ipushbackreader_.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html">ITokenizer</a>.<a href="../interfaces/_tokenizers_itokenizer_.itokenizer.html#tokenizestreamtostrings">tokenizeStreamToStrings</a></p>
+								<ul>
+									<li>Defined in tokenizers/AbstractTokenizer.ts:171</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reader: <a href="../interfaces/_io_ipushbackreader_.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_tokenizers_abstracttokenizer_.html">"tokenizers/<wbr>Abstract<wbr>Tokenizer"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html" class="tsd-kind-icon">Abstract<wbr>Tokenizer</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-protected">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#commentstate" class="tsd-kind-icon">comment<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#decodestrings" class="tsd-kind-icon">decode<wbr>Strings</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#mergewhitespaces" class="tsd-kind-icon">merge<wbr>Whitespaces</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#numberstate" class="tsd-kind-icon">number<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#quotestate" class="tsd-kind-icon">quote<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipcomments" class="tsd-kind-icon">skip<wbr>Comments</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipeof" class="tsd-kind-icon">skip<wbr>Eof</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipunknown" class="tsd-kind-icon">skip<wbr>Unknown</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#skipwhitespaces" class="tsd-kind-icon">skip<wbr>Whitespaces</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#symbolstate" class="tsd-kind-icon">symbol<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#unifynumbers" class="tsd-kind-icon">unify<wbr>Numbers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#whitespacestate" class="tsd-kind-icon">whitespace<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#wordstate" class="tsd-kind-icon">word<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#reader" class="tsd-kind-icon">reader</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#clearcharacterstates" class="tsd-kind-icon">clear<wbr>Character<wbr>States</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#getcharacterstate" class="tsd-kind-icon">get<wbr>Character<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#hasnexttoken" class="tsd-kind-icon">has<wbr>Next<wbr>Token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#nexttoken" class="tsd-kind-icon">next<wbr>Token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#setcharacterstate" class="tsd-kind-icon">set<wbr>Character<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizebuffer" class="tsd-kind-icon">tokenize<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizebuffertostrings" class="tsd-kind-icon">tokenize<wbr>Buffer<wbr>ToStrings</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizestream" class="tsd-kind-icon">tokenize<wbr>Stream</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tokenizers_abstracttokenizer_.abstracttokenizer.html#tokenizestreamtostrings" class="tsd-kind-icon">tokenize<wbr>Stream<wbr>ToStrings</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

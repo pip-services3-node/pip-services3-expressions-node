@@ -1,0 +1,31 @@
+FROM node:8.4.0-alpine
+
+# Configure npm
+RUN npm set progress=false && npm config set depth 0
+
+# Install global packages
+RUN npm install typescript@3.6.2 -g \
+  && npm install mocha -g \
+  && npm install chai -g \
+  && npm install sinon -g \
+  && npm install matcha -g
+
+# Install git and ssh
+RUN apk update && apk add git && apk add openssh
+
+# Install python
+RUN apk add --update python python-dev py-pip build-base \
+  && pip install virtualenv \
+  && rm -rf /var/cache/apk/*
+
+RUN npm -g config set user root \
+    && npm install -g typedoc@^0.11.1 \
+    && npm install -g git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git
+
+# Set working directory
+WORKDIR /app
+
+# copy the entire project
+COPY . .
+
+RUN typedoc --out docs src --mode modules --excludeExternals --excludePrivate --target ES6 --ignoreCompilerErrors
