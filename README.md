@@ -3,7 +3,7 @@
 This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
 It provides syntax and lexical analyzers and expression calculator optimized for repeated calculations.
 
-This module contains the following packages:
+The module contains the following packages:
 - **Calculator** - Expression calculator
 - **CSV** - CSV tokenizer
 - **IO** - input/output utility classes to support lexical analysis
