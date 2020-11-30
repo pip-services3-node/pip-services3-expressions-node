@@ -30,9 +30,7 @@
         "build": "tsc",
         "watch": "tsc --watch",
         "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
-        "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
-        "docgen": "typedoc --out doc/api src --mode modules --excludeExternals --excludePrivate --target ES6 --ignoreCompilerErrors",
-        "docgen2": "typedoc --out doc/api src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors --readme doc/ApiReference.md"
+        "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./obj/test"
     },
     "dependencies": {
         "pip-services3-commons-node": "^3.0.4"
@@ -44,8 +42,6 @@
         "@types/mocha": "^7.0.0",
         "@types/chai": "*",
         "chai": "^3.5.0",
-        "mocha": "^7.0.0",
-        "typedoc": "^0.11.1",
-        "typedoc-plugin-external-module-name": "git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git"
+        "mocha": "^7.0.0"
     }
 }
