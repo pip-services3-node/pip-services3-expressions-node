@@ -1,3 +1,8 @@
+/**
+ * @module tokenizers
+ * @preferred
+ */
+
 export * from './generic';
 export * from './utilities';
 

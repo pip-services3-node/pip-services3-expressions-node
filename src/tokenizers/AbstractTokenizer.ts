@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { ITokenizer } from './ITokenizer';
 import { ITokenizerState } from './ITokenizerState';
 import { ICommentState } from './ICommentState';

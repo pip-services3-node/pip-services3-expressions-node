@@ -1,3 +1,7 @@
+/**
+ * @module calculator
+ */
+
 export { DefaultFunctionCollection } from './DefaultFunctionCollection';
 export { DelegatedFunction } from './DelegatedFunction';
 export { FunctionCalculator } from './DelegatedFunction';

@@ -1,3 +1,5 @@
+/** @module io */
+
 import { IPushbackReader } from './IPushbackReader';
 
 /**

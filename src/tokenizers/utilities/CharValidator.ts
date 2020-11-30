@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 /**
  * Validates characters that are processed by Tokenizers.
  */

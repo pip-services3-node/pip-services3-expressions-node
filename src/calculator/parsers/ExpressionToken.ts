@@ -1,3 +1,4 @@
+/** @module calculator */
 import { ExpressionTokenType } from "./ExpressionTokenType";
 import { Variant } from "../../variants/Variant";
 

@@ -1,3 +1,8 @@
+/**
+ * @module variants
+ * @preferred
+ */
+
 export { AbstractVariantOperations } from './AbstractVariantOperations';
 export { IVariantOperations } from './IVariantOperations';
 export { TypeSafeVariantOperations } from './TypeSafeVariantOperations';

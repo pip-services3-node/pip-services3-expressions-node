@@ -1,3 +1,5 @@
+/** @module calculator */
+/** @hidden */
 const async = require('async');
 
 import { IVariableCollection } from "./variables/IVariableCollection";

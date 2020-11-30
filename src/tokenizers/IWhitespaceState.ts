@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { ITokenizerState } from './ITokenizerState';
 
 /**

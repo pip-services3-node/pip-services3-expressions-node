@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { SymbolNode } from './SymbolNode';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';

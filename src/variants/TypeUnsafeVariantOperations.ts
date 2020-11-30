@@ -1,3 +1,4 @@
+/** @module variants */
 import { StringConverter } from 'pip-services3-commons-node';
 import { IntegerConverter } from 'pip-services3-commons-node';
 import { LongConverter } from 'pip-services3-commons-node';

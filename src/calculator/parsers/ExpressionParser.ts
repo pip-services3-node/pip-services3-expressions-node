@@ -1,3 +1,5 @@
+/** @module calculator */
+/** @hidden */
 const _ = require('lodash');
 
 import { ExpressionTokenType } from "./ExpressionTokenType";

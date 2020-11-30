@@ -1,3 +1,4 @@
+/** @module calculator */
 import { IVariable } from "./IVariable";
 import { Variable } from './Variable';
 import { Variant } from "../../variants/Variant";

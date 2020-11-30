@@ -1,3 +1,4 @@
+/** @module calculator */
 /**
  * Define types of expression tokens.
  */

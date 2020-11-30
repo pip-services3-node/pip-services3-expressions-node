@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { ISymbolState } from '../ISymbolState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';

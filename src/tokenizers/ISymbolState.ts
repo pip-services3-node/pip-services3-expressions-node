@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { ITokenizerState } from './ITokenizerState';
 import { TokenType } from './TokenType';
 

@@ -1,3 +1,5 @@
+/** @module csv */
+
 import { GenericWordState } from "../tokenizers/generic/GenericWordState";
 import { CsvConstant } from "./CsvConstant";
 

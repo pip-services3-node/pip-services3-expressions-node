@@ -1,6 +1,8 @@
+/** @module tokenizers */
+
 /**
  * Represents a character interval that keeps a reference.
- * This class is internal and used by CharacterReferenceMap.
+ * This class is internal and used by [[CharReferenceMap]].
  */
 export class CharReferenceInterval<T> {
     private _start: number;

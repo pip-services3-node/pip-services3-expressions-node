@@ -1,3 +1,4 @@
+/** @module calculator */
 import { TokenType } from "../../tokenizers/TokenType";
 import { GenericSymbolState } from "../../tokenizers/generic/GenericSymbolState";
 

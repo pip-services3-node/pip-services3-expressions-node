@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { ICommentState } from '../ICommentState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';

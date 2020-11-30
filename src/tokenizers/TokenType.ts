@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 /**
  * Types (categories) of tokens such as "number", "symbol" or "word".
  */

@@ -1,3 +1,5 @@
+/** @module calculator */
+
 import { Variant } from "../../variants/Variant";
 import { IVariantOperations } from "../../variants/IVariantOperations";
 

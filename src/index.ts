@@ -1,3 +1,4 @@
+/** @module index */
 export * from './io';
 export * from './variants';
 export * from './tokenizers';

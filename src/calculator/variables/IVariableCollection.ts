@@ -1,3 +1,4 @@
+/** @module calculator */
 import { IVariable } from "./IVariable";
 
 /**

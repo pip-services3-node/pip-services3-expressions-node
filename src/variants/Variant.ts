@@ -1,3 +1,5 @@
+/** @module variants */
+/** @hidden */ 
 const _ = require('lodash');
 
 import { StringConverter } from 'pip-services3-commons-node';

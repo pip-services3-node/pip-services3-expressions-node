@@ -1,3 +1,4 @@
+/** @module calculator */
 import { AbstractTokenizer } from "../../tokenizers/AbstractTokenizer";
 import { GenericWhitespaceState } from "../../tokenizers/generic/GenericWhitespaceState";
 import { ExpressionSymbolState } from "./ExpressionSymbolState";

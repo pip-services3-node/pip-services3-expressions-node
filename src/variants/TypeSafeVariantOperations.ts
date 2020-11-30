@@ -1,3 +1,4 @@
+/** @module variants */
 import { Variant } from './Variant';
 import { VariantType } from './VariantType';
 import { AbstractVariantOperations } from './AbstractVariantOperations';

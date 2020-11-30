@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { TokenType } from './TokenType';
 
 /**

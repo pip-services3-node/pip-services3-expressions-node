@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { INumberState } from '../INumberState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';

@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { CharReferenceMap } from '../utilities/CharReferenceMap';
 import { CharValidator } from '../utilities/CharValidator';
 import { IPushbackReader } from '../../io/IPushbackReader';

@@ -1,3 +1,6 @@
+/**
+ * @module calculator
+ */
 export { ExpressionNumberState } from './ExpressionNumberState';
 export { ExpressionQuoteState } from './ExpressionQuoteState';
 export { ExpressionSymbolState } from './ExpressionSymbolState';

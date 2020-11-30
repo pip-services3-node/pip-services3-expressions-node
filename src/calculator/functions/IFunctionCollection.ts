@@ -1,3 +1,5 @@
+/** @module calculator */
+
 import { IFunction } from "./IFunction";
 
 /**

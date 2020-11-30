@@ -1,3 +1,5 @@
+/** @module csv */
+
 import { AbstractTokenizer } from "../tokenizers/AbstractTokenizer";
 import { CsvConstant } from "./CsvConstant";
 import { CsvWordState } from "./CsvWordState";

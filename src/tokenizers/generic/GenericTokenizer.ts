@@ -1,3 +1,5 @@
+/** @module tokenizers */
+
 import { AbstractTokenizer } from "../AbstractTokenizer";
 import { TokenType } from "../TokenType";
 import { GenericSymbolState } from "./GenericSymbolState";
