@@ -1,6 +1,6 @@
 {
-    "name": "pip-services3-expressions",
+    "name": "pip-services3-expressions-node",
     "registry": "pipdevs",
     "version": "3.0.5",
-    "build": "0"
+    "build": 0
 }
