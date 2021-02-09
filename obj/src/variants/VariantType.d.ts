@@ -1,3 +1,4 @@
+/** @module variants */
 /**
  * Defines supported types of variant values.
  */

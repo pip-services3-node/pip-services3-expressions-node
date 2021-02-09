@@ -1,5 +1,7 @@
 "use strict";
+/** @module csv */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CsvConstant = void 0;
 class CsvConstant {
 }
 exports.CsvConstant = CsvConstant;

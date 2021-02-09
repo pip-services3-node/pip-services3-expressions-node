@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { IWhitespaceState } from '../IWhitespaceState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';

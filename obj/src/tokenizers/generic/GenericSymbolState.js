@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GenericSymbolState = void 0;
 const SymbolRootNode_1 = require("./SymbolRootNode");
 /**
   * The idea of a symbol is a character that stands on its own, such as an ampersand or a parenthesis.

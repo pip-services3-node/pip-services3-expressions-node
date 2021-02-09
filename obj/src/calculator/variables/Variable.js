@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Variable = void 0;
+/** @module calculator */
 const Variant_1 = require("../../variants/Variant");
 /**
  * Implements a variable holder object.

@@ -1,3 +1,4 @@
+/** @module calculator */
 /**
  * General syntax errors.
  */

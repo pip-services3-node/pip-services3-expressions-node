@@ -1,3 +1,4 @@
+/** @module calculator */
 import { FunctionCollection } from "./FunctionCollection";
 import { Variant } from "../../variants/Variant";
 /**

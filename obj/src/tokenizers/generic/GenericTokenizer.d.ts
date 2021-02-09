@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { AbstractTokenizer } from "../AbstractTokenizer";
 /**
  * Implements a default tokenizer class.

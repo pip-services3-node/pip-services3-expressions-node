@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CharValidator = void 0;
 /**
  * Validates characters that are processed by Tokenizers.
  */

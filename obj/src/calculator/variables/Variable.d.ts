@@ -1,3 +1,4 @@
+/** @module calculator */
 import { Variant } from '../../variants/Variant';
 import { IVariable } from './IVariable';
 /**
@@ -15,12 +16,13 @@ export declare class Variable implements IVariable {
     /**
      * The variable name.
      */
-    readonly name: string;
+    get name(): string;
     /**
      * The variable value.
      */
+    get value(): Variant;
     /**
-    * The variable value.
-    */
-    value: Variant;
+     * The variable value.
+     */
+    set value(value: Variant);
 }

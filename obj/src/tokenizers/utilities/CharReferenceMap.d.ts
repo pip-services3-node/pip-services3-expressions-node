@@ -1,3 +1,4 @@
+/** @module tokenizers */
 /**
  * This class keeps references associated with specific characters
  */

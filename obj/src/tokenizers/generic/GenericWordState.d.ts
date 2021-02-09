@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { IWordState } from '../IWordState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';

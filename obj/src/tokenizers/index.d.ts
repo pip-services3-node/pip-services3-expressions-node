@@ -1,3 +1,7 @@
+/**
+ * @module tokenizers
+ * @preferred
+ */
 export * from './generic';
 export * from './utilities';
 export { AbstractTokenizer } from './AbstractTokenizer';

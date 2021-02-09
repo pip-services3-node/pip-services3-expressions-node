@@ -1,5 +1,7 @@
 "use strict";
+/** @module calculator */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionException = void 0;
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 /**
  * Exception that can be thrown by Expression Calculator.

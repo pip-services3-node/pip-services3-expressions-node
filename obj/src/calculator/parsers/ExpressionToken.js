@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionToken = void 0;
 /**
  * Defines an expression token holder.
  */

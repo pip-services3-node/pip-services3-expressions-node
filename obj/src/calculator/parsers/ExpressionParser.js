@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionParser = void 0;
+/** @module calculator */
+/** @hidden */
 const _ = require('lodash');
 const ExpressionTokenType_1 = require("./ExpressionTokenType");
 const ExpressionTokenizer_1 = require("../tokenizers/ExpressionTokenizer");

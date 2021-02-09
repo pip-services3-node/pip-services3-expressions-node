@@ -1,3 +1,4 @@
+/** @module calculator */
 import { IFunction } from "./IFunction";
 /**
  * Defines a functions list.

@@ -1,3 +1,4 @@
+/** @module calculator */
 import { GenericWordState } from "../../tokenizers/generic/GenericWordState";
 import { IPushbackReader } from "../../io/IPushbackReader";
 import { ITokenizer } from "../../tokenizers/ITokenizer";

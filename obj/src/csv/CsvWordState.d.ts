@@ -1,3 +1,4 @@
+/** @module csv */
 import { GenericWordState } from "../tokenizers/generic/GenericWordState";
 /**
  * Implements a word state to tokenize CSV stream.

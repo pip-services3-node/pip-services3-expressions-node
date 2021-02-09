@@ -1,3 +1,4 @@
+/** @module calculator */
 import { IVariable } from "./IVariable";
 import { IVariableCollection } from "./IVariableCollection";
 /**
@@ -14,7 +15,7 @@ export declare class VariableCollection implements IVariableCollection {
      * Gets a number of variables stored in the collection.
      * @returns a number of stored variables.
      */
-    readonly length: number;
+    get length(): number;
     /**
      * Get a variable by its index.
      * @param index a variable index.

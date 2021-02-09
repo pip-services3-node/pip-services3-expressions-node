@@ -1,5 +1,7 @@
 "use strict";
+/** @module calculator */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FunctionCollection = void 0;
 /**
  * Implements a functions list.
  */

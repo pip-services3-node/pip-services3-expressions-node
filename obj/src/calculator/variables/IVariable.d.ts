@@ -1,3 +1,4 @@
+/** @module calculator */
 import { Variant } from "../../variants/Variant";
 /**
  * Defines a variable interface.

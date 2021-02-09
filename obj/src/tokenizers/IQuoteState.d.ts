@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { ITokenizerState } from './ITokenizerState';
 /**
  * Defines an interface for tokenizer state that processes quoted strings.

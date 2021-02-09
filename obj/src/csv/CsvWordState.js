@@ -1,5 +1,7 @@
 "use strict";
+/** @module csv */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CsvWordState = void 0;
 const GenericWordState_1 = require("../tokenizers/generic/GenericWordState");
 const CsvConstant_1 = require("./CsvConstant");
 /**

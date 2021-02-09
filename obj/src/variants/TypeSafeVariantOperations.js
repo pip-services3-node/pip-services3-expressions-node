@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TypeSafeVariantOperations = void 0;
+/** @module variants */
 const Variant_1 = require("./Variant");
 const VariantType_1 = require("./VariantType");
 const AbstractVariantOperations_1 = require("./AbstractVariantOperations");

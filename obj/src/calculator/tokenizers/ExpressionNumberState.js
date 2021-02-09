@@ -1,5 +1,7 @@
 "use strict";
+/** @module calculator */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionNumberState = void 0;
 const GenericNumberState_1 = require("../../tokenizers/generic/GenericNumberState");
 const Token_1 = require("../../tokenizers/Token");
 const TokenType_1 = require("../../tokenizers/TokenType");

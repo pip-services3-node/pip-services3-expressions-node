@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { IQuoteState } from '../IQuoteState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';

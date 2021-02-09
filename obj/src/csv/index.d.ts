@@ -1,3 +1,7 @@
+/**
+ * @module csv
+ * @preferred
+ */
 export { CsvConstant } from './CsvConstant';
 export { CsvQuoteState } from './CsvQuoteState';
 export { CsvSymbolState } from './CsvSymbolState';

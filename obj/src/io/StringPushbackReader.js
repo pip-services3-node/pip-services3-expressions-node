@@ -1,5 +1,7 @@
 "use strict";
+/** @module io */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringPushbackReader = void 0;
 /**
  * Wraps string to provide unlimited pushback that allows tokenizers
  * to look ahead through stream to perform lexical analysis.

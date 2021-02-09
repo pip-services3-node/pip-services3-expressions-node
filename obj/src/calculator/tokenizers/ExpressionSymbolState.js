@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionSymbolState = void 0;
+/** @module calculator */
 const TokenType_1 = require("../../tokenizers/TokenType");
 const GenericSymbolState_1 = require("../../tokenizers/generic/GenericSymbolState");
 /**

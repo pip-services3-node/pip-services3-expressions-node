@@ -36,9 +36,9 @@ export abstract class AbstractTokenizer implements ITokenizer {
     public whitespaceState: IWhitespaceState;
     public wordState: IWordState;
 
-    private _reader: IPushbackReader;
-    private _nextToken: Token;
-    private _lastTokenType: TokenType = TokenType.Unknown;
+    protected _reader: IPushbackReader;
+    protected _nextToken: Token;
+    protected _lastTokenType: TokenType = TokenType.Unknown;
 
     protected constructor() {
     }
@@ -76,7 +76,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
         return token;
     }
 
-    private readNextToken(): Token {
+    protected readNextToken(): Token {
         if (this._reader == null) {
             return null;
         }

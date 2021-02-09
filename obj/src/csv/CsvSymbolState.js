@@ -1,5 +1,7 @@
 "use strict";
+/** @module csv */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CsvSymbolState = void 0;
 const Token_1 = require("../tokenizers/Token");
 const TokenType_1 = require("../tokenizers/TokenType");
 const GenericSymbolState_1 = require("../tokenizers/generic/GenericSymbolState");

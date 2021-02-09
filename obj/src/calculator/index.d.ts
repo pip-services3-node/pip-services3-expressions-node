@@ -1,3 +1,7 @@
+/**
+ * @module calculator
+ * @preferred
+ */
 export * from './parsers';
 export * from './tokenizers';
 export * from './functions';

@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SyntaxErrorCode = void 0;
+/** @module calculator */
 /**
  * General syntax errors.
  */

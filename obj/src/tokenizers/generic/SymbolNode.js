@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SymbolNode = void 0;
 const CharReferenceMap_1 = require("../utilities/CharReferenceMap");
 const CharValidator_1 = require("../utilities/CharValidator");
 const TokenType_1 = require("../TokenType");

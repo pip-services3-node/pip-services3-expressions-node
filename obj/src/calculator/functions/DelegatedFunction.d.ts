@@ -1,3 +1,4 @@
+/** @module calculator */
 import { Variant } from "../../variants/Variant";
 import { IVariantOperations } from "../../variants/IVariantOperations";
 import { IFunction } from "./IFunction";
@@ -18,7 +19,7 @@ export declare class DelegatedFunction implements IFunction {
     /**
      * The function name.
      */
-    readonly name: string;
+    get name(): string;
     /**
      * The function calculation method.
      * @param params an array with function parameters.

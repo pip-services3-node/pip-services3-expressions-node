@@ -21,41 +21,45 @@ export declare class ExpressionCalculator {
     /**
      * The expression string.
      */
+    get expression(): string;
     /**
-    * The expression string.
-    */
-    expression: string;
-    originalTokens: Token[];
+     * The expression string.
+     */
+    set expression(value: string);
+    get originalTokens(): Token[];
+    set originalTokens(value: Token[]);
     /**
      * Gets the flag to turn on auto creation of variables for specified expression.
      */
+    get autoVariables(): boolean;
     /**
-    * Sets the flag to turn on auto creation of variables for specified expression.
-    */
-    autoVariables: boolean;
+     * Sets the flag to turn on auto creation of variables for specified expression.
+     */
+    set autoVariables(value: boolean);
     /**
      * Gets the manager for operations on variant values.
      */
+    get variantOperations(): IVariantOperations;
     /**
-    * Sets the manager for operations on variant values.
-    */
-    variantOperations: IVariantOperations;
+     * Sets the manager for operations on variant values.
+     */
+    set variantOperations(value: IVariantOperations);
     /**
      * The list with default variables.
      */
-    readonly defaultVariables: IVariableCollection;
+    get defaultVariables(): IVariableCollection;
     /**
      * The list with default functions.
      */
-    readonly defaultFunctions: IFunctionCollection;
+    get defaultFunctions(): IFunctionCollection;
     /**
      * The list of original expression tokens.
      */
-    readonly initialTokens: ExpressionToken[];
+    get initialTokens(): ExpressionToken[];
     /**
      * The list of processed expression tokens.
      */
-    readonly resultTokens: ExpressionToken[];
+    get resultTokens(): ExpressionToken[];
     /**
      * Populates the specified variables list with variables from parsed expression.
      * @param variables The list of variables to be populated.

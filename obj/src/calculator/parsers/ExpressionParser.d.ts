@@ -23,23 +23,25 @@ export declare class ExpressionParser {
     /**
      * The expression string.
      */
+    get expression(): string;
     /**
-    * The expression string.
-    */
-    expression: string;
-    originalTokens: Token[];
+     * The expression string.
+     */
+    set expression(value: string);
+    get originalTokens(): Token[];
+    set originalTokens(value: Token[]);
     /**
      * The list of original expression tokens.
      */
-    readonly initialTokens: ExpressionToken[];
+    get initialTokens(): ExpressionToken[];
     /**
      * The list of parsed expression tokens.
      */
-    readonly resultTokens: ExpressionToken[];
+    get resultTokens(): ExpressionToken[];
     /**
      * The list of found variable names.
      */
-    readonly variableNames: string[];
+    get variableNames(): string[];
     /**
      * Sets a new expression string and parses it into internal byte code.
      * @param expression A new expression string.

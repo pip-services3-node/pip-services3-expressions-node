@@ -1,3 +1,6 @@
+/**
+ * @module tokenizers
+ */
 export { CCommentState } from './CCommentState';
 export { CppCommentState } from './CppCommentState';
 export { GenericCommentState } from './GenericCommentState';

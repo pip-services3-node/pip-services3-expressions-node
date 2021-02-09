@@ -1,3 +1,4 @@
+/** @module csv */
 import { IQuoteState } from "../tokenizers/IQuoteState";
 import { IPushbackReader } from "../io/IPushbackReader";
 import { ITokenizer } from "../tokenizers/ITokenizer";

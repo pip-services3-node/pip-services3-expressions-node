@@ -1,3 +1,4 @@
+/** @module calculator */
 import { IFunction } from "./IFunction";
 import { IFunctionCollection } from "./IFunctionCollection";
 /**
@@ -14,7 +15,7 @@ export declare class FunctionCollection implements IFunctionCollection {
      * Gets a number of functions stored in the collection.
      * @returns a number of stored functions.
      */
-    readonly length: number;
+    get length(): number;
     /**
      * Get a function by its index.
      * @param index a function index.

@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Variant = void 0;
+/** @module variants */
+/** @hidden */
 const _ = require('lodash');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const VariantType_1 = require("./VariantType");

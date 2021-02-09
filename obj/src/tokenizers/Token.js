@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Token = void 0;
 /**
  * A token represents a logical chunk of a string. For example, a typical tokenizer would break
  * the string "1.23 &lt;= 12.3" into three tokens: the number 1.23, a less-than-or-equal symbol,

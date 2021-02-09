@@ -1,5 +1,7 @@
 "use strict";
+/** @module calculator */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DelegatedFunction = void 0;
 /// <summary>
 /// Defines an interface for expression function.
 /// </summary>

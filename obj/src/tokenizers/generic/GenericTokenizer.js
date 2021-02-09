@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GenericTokenizer = void 0;
 const AbstractTokenizer_1 = require("../AbstractTokenizer");
 const TokenType_1 = require("../TokenType");
 const GenericSymbolState_1 = require("./GenericSymbolState");

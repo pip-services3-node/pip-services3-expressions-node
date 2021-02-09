@@ -1,3 +1,4 @@
+/** @module io */
 /**
  * Defines reader with ability to push back characters.
  * This reader is used by tokenizers to process input streams.

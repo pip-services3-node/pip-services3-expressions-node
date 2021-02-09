@@ -1,8 +1,10 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CharReferenceInterval = void 0;
 /**
  * Represents a character interval that keeps a reference.
- * This class is internal and used by CharacterReferenceMap.
+ * This class is internal and used by [[CharReferenceMap]].
  */
 class CharReferenceInterval {
     constructor(start, end, reference) {

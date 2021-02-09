@@ -1,3 +1,4 @@
+/** @module calculator */
 import { AbstractTokenizer } from "../../tokenizers/AbstractTokenizer";
 /**
  * Implement tokenizer to perform lexical analysis for expressions.

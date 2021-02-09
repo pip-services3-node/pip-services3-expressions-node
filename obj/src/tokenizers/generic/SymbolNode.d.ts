@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { IPushbackReader } from '../../io/IPushbackReader';
 import { TokenType } from '../TokenType';
 /**
@@ -65,8 +66,10 @@ export declare class SymbolNode {
      * @param reader
      */
     unreadToValid(reader: IPushbackReader): SymbolNode;
-    valid: boolean;
-    tokenType: TokenType;
+    get valid(): boolean;
+    set valid(value: boolean);
+    get tokenType(): TokenType;
+    set tokenType(value: TokenType);
     /**
      * Show the symbol this node represents.
      * @returns The symbol this node represents.

@@ -1,5 +1,7 @@
 "use strict";
+/** @module csv */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CsvTokenizer = void 0;
 const AbstractTokenizer_1 = require("../tokenizers/AbstractTokenizer");
 const CsvConstant_1 = require("./CsvConstant");
 const CsvWordState_1 = require("./CsvWordState");

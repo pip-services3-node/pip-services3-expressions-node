@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VariableCollection = void 0;
 const Variable_1 = require("./Variable");
 const Variant_1 = require("../../variants/Variant");
 /**

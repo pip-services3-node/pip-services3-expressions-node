@@ -1,9 +1,13 @@
 "use strict";
+/**
+ * @module tokenizers
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CharValidator = exports.CharReferenceMap = exports.CharReferenceInterval = void 0;
 var CharReferenceInterval_1 = require("./CharReferenceInterval");
-exports.CharReferenceInterval = CharReferenceInterval_1.CharReferenceInterval;
+Object.defineProperty(exports, "CharReferenceInterval", { enumerable: true, get: function () { return CharReferenceInterval_1.CharReferenceInterval; } });
 var CharReferenceMap_1 = require("./CharReferenceMap");
-exports.CharReferenceMap = CharReferenceMap_1.CharReferenceMap;
+Object.defineProperty(exports, "CharReferenceMap", { enumerable: true, get: function () { return CharReferenceMap_1.CharReferenceMap; } });
 var CharValidator_1 = require("./CharValidator");
-exports.CharValidator = CharValidator_1.CharValidator;
+Object.defineProperty(exports, "CharValidator", { enumerable: true, get: function () { return CharValidator_1.CharValidator; } });
 //# sourceMappingURL=index.js.map

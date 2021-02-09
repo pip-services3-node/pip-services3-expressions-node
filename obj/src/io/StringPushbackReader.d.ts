@@ -1,3 +1,4 @@
+/** @module io */
 import { IPushbackReader } from './IPushbackReader';
 /**
  * Wraps string to provide unlimited pushback that allows tokenizers

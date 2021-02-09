@@ -1,3 +1,4 @@
+/** @module csv */
 import { IPushbackReader } from "../io/IPushbackReader";
 import { ITokenizer } from "../tokenizers/ITokenizer";
 import { Token } from "../tokenizers/Token";

@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';
 import { IPushbackReader } from '../../io/IPushbackReader';

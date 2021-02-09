@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { IPushbackReader } from "../io/IPushbackReader";
 import { Token } from './Token';
 import { ICommentState } from './ICommentState';

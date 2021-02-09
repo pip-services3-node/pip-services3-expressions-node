@@ -1,3 +1,4 @@
+/** @module calculator */
 import { ExpressionTokenType } from "./ExpressionTokenType";
 import { Variant } from "../../variants/Variant";
 /**
@@ -15,9 +16,9 @@ export declare class ExpressionToken {
     /**
      * The type of this token.
      */
-    readonly type: ExpressionTokenType;
+    get type(): ExpressionTokenType;
     /**
      * The value of this token.
      */
-    readonly value: Variant;
+    get value(): Variant;
 }

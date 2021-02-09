@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionQuoteState = void 0;
 const Token_1 = require("../../tokenizers/Token");
 const TokenType_1 = require("../../tokenizers/TokenType");
 const CharValidator_1 = require("../../tokenizers/utilities/CharValidator");

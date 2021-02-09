@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { ITokenizer } from './ITokenizer';
 import { ITokenizerState } from './ITokenizerState';
 import { ICommentState } from './ICommentState';
@@ -7,6 +8,7 @@ import { ISymbolState } from './ISymbolState';
 import { IWhitespaceState } from './IWhitespaceState';
 import { IWordState } from './IWordState';
 import { Token } from './Token';
+import { TokenType } from './TokenType';
 import { IPushbackReader } from '../io/IPushbackReader';
 /**
  * Implements an abstract tokenizer class.
@@ -26,17 +28,18 @@ export declare abstract class AbstractTokenizer implements ITokenizer {
     symbolState: ISymbolState;
     whitespaceState: IWhitespaceState;
     wordState: IWordState;
-    private _reader;
-    private _nextToken;
-    private _lastTokenType;
+    protected _reader: IPushbackReader;
+    protected _nextToken: Token;
+    protected _lastTokenType: TokenType;
     protected constructor();
     getCharacterState(symbol: number): ITokenizerState;
     setCharacterState(fromSymbol: number, toSymbol: number, state: ITokenizerState): void;
     clearCharacterStates(): void;
-    reader: IPushbackReader;
+    get reader(): IPushbackReader;
+    set reader(value: IPushbackReader);
     hasNextToken(): boolean;
     nextToken(): Token;
-    private readNextToken;
+    protected readNextToken(): Token;
     tokenizeStream(reader: IPushbackReader): Token[];
     tokenizeBuffer(buffer: string): Token[];
     tokenizeStreamToStrings(reader: IPushbackReader): string[];

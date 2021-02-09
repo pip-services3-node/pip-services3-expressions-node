@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionCalculator = void 0;
+/** @module calculator */
+/** @hidden */
 const async = require('async');
 const VariableCollection_1 = require("./variables/VariableCollection");
 const Variable_1 = require("./variables/Variable");

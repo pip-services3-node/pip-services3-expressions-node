@@ -1,9 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionTokenType = exports.ExpressionToken = exports.ExpressionParser = void 0;
+/**
+ * @module calculator
+ */
 var ExpressionParser_1 = require("./ExpressionParser");
-exports.ExpressionParser = ExpressionParser_1.ExpressionParser;
+Object.defineProperty(exports, "ExpressionParser", { enumerable: true, get: function () { return ExpressionParser_1.ExpressionParser; } });
 var ExpressionToken_1 = require("./ExpressionToken");
-exports.ExpressionToken = ExpressionToken_1.ExpressionToken;
+Object.defineProperty(exports, "ExpressionToken", { enumerable: true, get: function () { return ExpressionToken_1.ExpressionToken; } });
 var ExpressionTokenType_1 = require("./ExpressionTokenType");
-exports.ExpressionTokenType = ExpressionTokenType_1.ExpressionTokenType;
+Object.defineProperty(exports, "ExpressionTokenType", { enumerable: true, get: function () { return ExpressionTokenType_1.ExpressionTokenType; } });
 //# sourceMappingURL=index.js.map

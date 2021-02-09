@@ -1,3 +1,4 @@
+/** @module tokenizers */
 import { TokenType } from './TokenType';
 /**
  * A token represents a logical chunk of a string. For example, a typical tokenizer would break
@@ -17,10 +18,10 @@ export declare class Token {
     /**
      * The token type.
      */
-    readonly type: TokenType;
+    get type(): TokenType;
     /**
      * The token value.
      */
-    readonly value: string;
+    get value(): string;
     equals(obj: any): boolean;
 }

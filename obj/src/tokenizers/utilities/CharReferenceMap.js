@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CharReferenceMap = void 0;
 const CharReferenceInterval_1 = require("./CharReferenceInterval");
 /**
  * This class keeps references associated with specific characters

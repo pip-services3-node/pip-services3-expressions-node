@@ -15,96 +15,107 @@ export declare class Variant {
      * Gets a type of the variant value
      * @returns the variant value type
      */
-    readonly type: VariantType;
+    get type(): VariantType;
     /**
      * Gets variant value as integer
      */
+    get asInteger(): number;
     /**
-    * Sets variant value as integer
-    * @param value a value to be set
-    */
-    asInteger: number;
+     * Sets variant value as integer
+     * @param value a value to be set
+     */
+    set asInteger(value: number);
     /**
      * Gets variant value as long
      */
+    get asLong(): number;
     /**
-    * Sets variant value as long
-    * @param value a value to be set
-    */
-    asLong: number;
+     * Sets variant value as long
+     * @param value a value to be set
+     */
+    set asLong(value: number);
     /**
      * Gets variant value as boolean
      */
+    get asBoolean(): boolean;
     /**
-    * Sets variant value as boolean
-    * @param value a value to be set
-    */
-    asBoolean: boolean;
+     * Sets variant value as boolean
+     * @param value a value to be set
+     */
+    set asBoolean(value: boolean);
     /**
      * Gets variant value as float
      */
+    get asFloat(): number;
     /**
-    * Sets variant value as float
-    * @param value a value to be set
-    */
-    asFloat: number;
+     * Sets variant value as float
+     * @param value a value to be set
+     */
+    set asFloat(value: number);
     /**
      * Gets variant value as double
      */
+    get asDouble(): number;
     /**
-    * Sets variant value as double
-    * @param value a value to be set
-    */
-    asDouble: number;
+     * Sets variant value as double
+     * @param value a value to be set
+     */
+    set asDouble(value: number);
     /**
      * Gets variant value as string
      */
+    get asString(): string;
     /**
-    * Sets variant value as string
-    * @param value a value to be set
-    */
-    asString: string;
+     * Sets variant value as string
+     * @param value a value to be set
+     */
+    set asString(value: string);
     /**
      * Gets variant value as DateTime
      */
+    get asDateTime(): Date;
     /**
-    * Sets variant value as DateTime
-    * @param value a value to be set
-    */
-    asDateTime: Date;
+     * Sets variant value as DateTime
+     * @param value a value to be set
+     */
+    set asDateTime(value: Date);
     /**
      * Gets variant value as TimeSpan
      */
+    get asTimeSpan(): number;
     /**
-    * Sets variant value as TimeSpan
-    * @param value a value to be set
-    */
-    asTimeSpan: number;
+     * Sets variant value as TimeSpan
+     * @param value a value to be set
+     */
+    set asTimeSpan(value: number);
     /**
      * Gets variant value as Object
      */
+    get asObject(): any;
     /**
-    * Sets variant value as Object
-    * @param value a value to be set
-    */
-    asObject: any;
+     * Sets variant value as Object
+     * @param value a value to be set
+     */
+    set asObject(value: any);
     /**
      * Gets variant value as variant array
      */
+    get asArray(): Variant[];
     /**
-    * Sets variant value as variant array
-    * @param value a value to be set
-    */
-    asArray: Variant[];
+     * Sets variant value as variant array
+     * @param value a value to be set
+     */
+    set asArray(value: Variant[]);
     /**
      * Gets length of the array
      * @returns The length of the array or 0
      */
+    get length(): number;
     /**
-    * Sets a new array length
-    * @param value a new array length
-    */
-    length: number;
+     * Sets a new array length
+     * @param value a new array length
+     */
+    set length(value: number);
     /**
      * Gets an array element by its index.
      * @param index an element index

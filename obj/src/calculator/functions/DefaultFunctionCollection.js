@@ -1,5 +1,7 @@
 "use strict";
+/** @module calculator */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultFunctionCollection = void 0;
 const FunctionCollection_1 = require("./FunctionCollection");
 const DelegatedFunction_1 = require("./DelegatedFunction");
 const Variant_1 = require("../../variants/Variant");

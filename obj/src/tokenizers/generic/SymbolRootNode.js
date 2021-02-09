@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SymbolRootNode = void 0;
 const SymbolNode_1 = require("./SymbolNode");
 const Token_1 = require("../Token");
 const TokenType_1 = require("../TokenType");

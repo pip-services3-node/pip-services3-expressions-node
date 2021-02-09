@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionTokenType = void 0;
+/** @module calculator */
 /**
  * Define types of expression tokens.
  */

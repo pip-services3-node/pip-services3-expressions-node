@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CCommentState = void 0;
 const Token_1 = require("../Token");
 const TokenType_1 = require("../TokenType");
 const CppCommentState_1 = require("./CppCommentState");

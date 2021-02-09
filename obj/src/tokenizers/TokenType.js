@@ -1,5 +1,7 @@
 "use strict";
+/** @module tokenizers */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenType = void 0;
 /**
  * Types (categories) of tokens such as "number", "symbol" or "word".
  */
