@@ -54,7 +54,7 @@ export class MustacheTokenizer extends AbstractTokenizer {
     }    
 
     protected readNextToken(): Token {
-        if (this._reader == null) {
+        if (this._scanner == null) {
             return null;
         }
 
@@ -65,7 +65,7 @@ export class MustacheTokenizer extends AbstractTokenizer {
 
         // Process quotes
         if (this._special) {
-            let token = this._specialState.nextToken(this._reader, this);
+            let token = this._specialState.nextToken(this._scanner, this);
             if (token != null && token.value != "") {
                 return token;
             }

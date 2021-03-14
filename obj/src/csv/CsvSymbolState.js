@@ -20,15 +20,15 @@ class CsvSymbolState extends GenericSymbolState_1.GenericSymbolState {
         this.add("\r\n", TokenType_1.TokenType.Eol);
         this.add("\n\r", TokenType_1.TokenType.Eol);
     }
-    nextToken(reader, tokenizer) {
+    nextToken(scanner, tokenizer) {
         // Optimization...
-        let nextSymbol = reader.read();
+        let nextSymbol = scanner.read();
         if (nextSymbol != CsvConstant_1.CsvConstant.LF && nextSymbol != CsvConstant_1.CsvConstant.CR) {
             return new Token_1.Token(TokenType_1.TokenType.Symbol, String.fromCharCode(nextSymbol));
         }
         else {
-            reader.pushback(nextSymbol);
-            return super.nextToken(reader, tokenizer);
+            scanner.unread();
+            return super.nextToken(scanner, tokenizer);
         }
     }
 }

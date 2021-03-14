@@ -1,6 +1,6 @@
 /** @module calculator */
 import { IQuoteState } from "../../tokenizers/IQuoteState";
-import { IPushbackReader } from "../../io/IPushbackReader";
+import { IScanner } from "../../io/IScanner";
 import { ITokenizer } from "../../tokenizers/ITokenizer";
 import { Token } from "../../tokenizers/Token";
 import { TokenType } from "../../tokenizers/TokenType";
@@ -14,20 +14,20 @@ export class ExpressionQuoteState implements IQuoteState {
 
     /**
       * Gets the next token from the stream started from the character linked to this state.
-      * @param reader A textual string to be tokenized.
+      * @param scanner A textual string to be tokenized.
       * @param tokenizer A tokenizer class that controls the process.
       * @returns The next token from the top of the stream.
       */
-     public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
-        let firstSymbol = reader.read();
+     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let firstSymbol = scanner.read();
         let tokenValue = "";
         tokenValue = tokenValue + String.fromCharCode(firstSymbol);
 
-        for (let nextSymbol = reader.read(); !CharValidator.isEof(nextSymbol); nextSymbol = reader.read()) {
+        for (let nextSymbol = scanner.read(); !CharValidator.isEof(nextSymbol); nextSymbol = scanner.read()) {
             tokenValue = tokenValue + String.fromCharCode(nextSymbol);
             if (nextSymbol == firstSymbol) {
-                if (reader.peek() == firstSymbol) {
-                    nextSymbol = reader.read();
+                if (scanner.peek() == firstSymbol) {
+                    nextSymbol = scanner.read();
                     tokenValue = tokenValue + String.fromCharCode(nextSymbol);
                 } else {
                     break;

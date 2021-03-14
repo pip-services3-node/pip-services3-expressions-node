@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 
-import { StringPushbackReader } from '../../../src/io/StringPushbackReader';
+import { StringScanner } from '../../../src/io/StringScanner';
 import { GenericSymbolState } from '../../../src/tokenizers/generic/GenericSymbolState';
 import { TokenType } from '../../../src/tokenizers/TokenType';
 
@@ -11,21 +11,21 @@ suite('GenericSymbolState', ()=> {
         state.add("<<", TokenType.Symbol);
         state.add("<>", TokenType.Symbol);
 
-        let reader = new StringPushbackReader("<A<<<>");
+        let scanner = new StringScanner("<A<<<>");
 
-        let token = state.nextToken(reader, null);
+        let token = state.nextToken(scanner, null);
         assert.equal("<", token.value);
         assert.equal(TokenType.Symbol, token.type);
 
-        token = state.nextToken(reader, null);
+        token = state.nextToken(scanner, null);
         assert.equal("A", token.value);
         assert.equal(TokenType.Symbol, token.type);
 
-        token = state.nextToken(reader, null);
+        token = state.nextToken(scanner, null);
         assert.equal("<<", token.value);
         assert.equal(TokenType.Symbol, token.type);
 
-        token = state.nextToken(reader, null);
+        token = state.nextToken(scanner, null);
         assert.equal("<>", token.value);
         assert.equal(TokenType.Symbol, token.type);
     });    

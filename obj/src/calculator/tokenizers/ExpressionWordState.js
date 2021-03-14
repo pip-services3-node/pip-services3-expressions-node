@@ -30,12 +30,12 @@ class ExpressionWordState extends GenericWordState_1.GenericWordState {
     }
     /**
       * Gets the next token from the stream started from the character linked to this state.
-      * @param reader A textual string to be tokenized.
+      * @param scanner A textual string to be tokenized.
       * @param tokenizer A tokenizer class that controls the process.
       * @returns The next token from the top of the stream.
       */
-    nextToken(reader, tokenizer) {
-        let token = super.nextToken(reader, tokenizer);
+    nextToken(scanner, tokenizer) {
+        let token = super.nextToken(scanner, tokenizer);
         let value = token.value.toUpperCase();
         for (let keyword of this.keywords) {
             if (keyword == value) {

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IPushbackReader | pip-services3-expressions-node</title>
+	<title>MustacheSpecialState | pip-services3-expressions-node</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/io.html">io</a>
+					<a href="../modules/mustache.html">mustache</a>
 				</li>
 				<li>
-					<a href="io.ipushbackreader.html">IPushbackReader</a>
+					<a href="mustache.mustachespecialstate.html">MustacheSpecialState</a>
 				</li>
 			</ul>
-			<h1>Interface IPushbackReader</h1>
+			<h1>Class MustacheSpecialState</h1>
 		</div>
 	</div>
 </header>
@@ -70,8 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Defines reader with ability to push back characters.
-						This reader is used by tokenizers to process input streams.</p>
+						<p>Implements a quote string state object for Mustache templates.</p>
 					</div>
 				</div>
 			</section>
@@ -79,14 +78,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IPushbackReader</span>
+						<span class="target">MustacheSpecialState</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
-				<h3>Implemented by</h3>
+				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../classes/io.stringpushbackreader.html" class="tsd-signature-type">StringPushbackReader</a></li>
+					<li><a href="../interfaces/tokenizers.itokenizerstate.html" class="tsd-signature-type">ITokenizerState</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -96,10 +95,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="io.ipushbackreader.html#peek" class="tsd-kind-icon">peek</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="io.ipushbackreader.html#pushback" class="tsd-kind-icon">pushback</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="io.ipushbackreader.html#pushbackstring" class="tsd-kind-icon">pushback<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="io.ipushbackreader.html#read" class="tsd-kind-icon">read</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mustache.mustachespecialstate.html#nexttoken" class="tsd-kind-icon">next<wbr>Token</a></li>
 							</ul>
 						</section>
 					</div>
@@ -107,111 +103,42 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="peek" class="tsd-anchor"></a>
-					<h3>peek</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">peek<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="nexttoken" class="tsd-anchor"></a>
+					<h3>next<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">next<wbr>Token<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a>, tokenizer<span class="tsd-signature-symbol">: </span><a href="../interfaces/tokenizers.itokenizer.html" class="tsd-signature-type">ITokenizer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.token.html" class="tsd-signature-type">Token</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tokenizers.itokenizerstate.html">ITokenizerState</a>.<a href="../interfaces/tokenizers.itokenizerstate.html#nexttoken">nextToken</a></p>
 								<ul>
-									<li>Defined in io/IPushbackReader.ts:18</li>
+									<li>Defined in mustache/tokenizers/MustacheSpecialState.ts:22</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the character from the top of the stream without moving the stream pointer.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>A character from the top of the stream or <code>-1</code> if stream is empty.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="pushback" class="tsd-anchor"></a>
-					<h3>pushback</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">pushback<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in io/IPushbackReader.ts:24</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Puts the specified character to the top of the stream.</p>
+									<p>Gets the next token from the stream started from the character linked to this state.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<h5>scanner: <a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>A character to be pushed back.</p>
+										<p>A textual string to be tokenized.</p>
 									</div>
 								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="pushbackstring" class="tsd-anchor"></a>
-					<h3>pushback<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">pushback<wbr>String<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in io/IPushbackReader.ts:30</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Pushes the specified string to the top of the stream.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<h5>tokenizer: <a href="../interfaces/tokenizers.itokenizer.html" class="tsd-signature-type">ITokenizer</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>A string to be pushed back.</p>
+										<p>A tokenizer class that controls the process.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="read" class="tsd-anchor"></a>
-					<h3>read</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in io/IPushbackReader.ts:12</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Reads character from the top of the stream.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>A read character or <code>-1</code> if stream processed to the end.</p>
+							<h4 class="tsd-returns-title">Returns <a href="tokenizers.token.html" class="tsd-signature-type">Token</a></h4>
+							<p>The next token from the top of the stream.</p>
 						</li>
 					</ul>
 				</section>
@@ -232,8 +159,11 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/index.html">index</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/io.html">io</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/mustache.html">mustache</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/tokenizers.html">tokenizers</a>
@@ -245,30 +175,39 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/mustache.mustachelexicalstate.html" class="tsd-kind-icon">Mustache<wbr>Lexical<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/mustache.mustachetokentype.html" class="tsd-kind-icon">Mustache<wbr>Token<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/io.stringpushbackreader.html" class="tsd-kind-icon">String<wbr>Pushback<wbr>Reader</a>
+						<a href="mustache.mustacheerrorcode.html" class="tsd-kind-icon">Mustache<wbr>Error<wbr>Code</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="mustache.mustacheexception.html" class="tsd-kind-icon">Mustache<wbr>Exception</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="io.ipushbackreader.html" class="tsd-kind-icon">IPushback<wbr>Reader</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="mustache.mustachespecialstate.html" class="tsd-kind-icon">Mustache<wbr>Special<wbr>State</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="io.ipushbackreader.html#peek" class="tsd-kind-icon">peek</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="io.ipushbackreader.html#pushback" class="tsd-kind-icon">pushback</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="io.ipushbackreader.html#pushbackstring" class="tsd-kind-icon">pushback<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="io.ipushbackreader.html#read" class="tsd-kind-icon">read</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="mustache.mustachespecialstate.html#nexttoken" class="tsd-kind-icon">next<wbr>Token</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="mustache.mustachetemplate.html" class="tsd-kind-icon">Mustache<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="mustache.mustachetoken.html" class="tsd-kind-icon">Mustache<wbr>Token</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="mustache.mustachetokenizer.html" class="tsd-kind-icon">Mustache<wbr>Tokenizer</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

@@ -1,7 +1,7 @@
 /** @module calculator */
 
 import { GenericNumberState } from "../../tokenizers/generic/GenericNumberState";
-import { IPushbackReader } from "../../io/IPushbackReader";
+import { IScanner } from "../../io/IScanner";
 import { ITokenizer } from "../../tokenizers/ITokenizer";
 import { Token } from "../../tokenizers/Token";
 import { TokenType } from "../../tokenizers/TokenType";
@@ -17,18 +17,18 @@ export class ExpressionNumberState extends GenericNumberState {
 
     /**
       * Gets the next token from the stream started from the character linked to this state.
-      * @param reader A textual string to be tokenized.
+      * @param scanner A textual string to be tokenized.
       * @param tokenizer A tokenizer class that controls the process.
       * @returns The next token from the top of the stream.
       */
-     public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
+     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
         // Process leading minus.
-        if (reader.peek() == this.MINUS) {
-            return tokenizer.symbolState.nextToken(reader, tokenizer);
+        if (scanner.peek() == this.MINUS) {
+            return tokenizer.symbolState.nextToken(scanner, tokenizer);
         }
 
         // Process numbers using base class algorithm.
-        let token = super.nextToken(reader, tokenizer);
+        let token = super.nextToken(scanner, tokenizer);
 
         // Exit if number was not detected.
         if (token.type != TokenType.Integer && token.type != TokenType.Float) {
@@ -36,30 +36,30 @@ export class ExpressionNumberState extends GenericNumberState {
         }
 
         // Exit if number is not in scientific format.
-        let nextChar = reader.peek();
+        let nextChar = scanner.peek();
         if (nextChar != this.EXP1 && nextChar != this.EXP2) {
             return token;
         }
 
         let tokenValue = "";
-        tokenValue = tokenValue + String.fromCharCode(reader.read());
+        tokenValue = tokenValue + String.fromCharCode(scanner.read());
 
         // Process '-' or '+' in mantissa
-        nextChar = reader.peek();
+        nextChar = scanner.peek();
         if (nextChar == this.MINUS || nextChar == this.PLUS) {
-            tokenValue = tokenValue + String.fromCharCode(reader.read());
-            nextChar = reader.peek();
+            tokenValue = tokenValue + String.fromCharCode(scanner.read());
+            nextChar = scanner.peek();
         }
 
         // Exit if mantissa has no digits.
         if (!CharValidator.isDigit(nextChar)) {
-            reader.pushbackString(tokenValue);
+            scanner.unreadMany(tokenValue.length);
             return token;
         }
 
         // Process matissa digits
-        for (; CharValidator.isDigit(nextChar); nextChar = reader.peek()) {
-            tokenValue = tokenValue + String.fromCharCode(reader.read());
+        for (; CharValidator.isDigit(nextChar); nextChar = scanner.peek()) {
+            tokenValue = tokenValue + String.fromCharCode(scanner.read());
         }
 
         return new Token(TokenType.Float, token.value + tokenValue);

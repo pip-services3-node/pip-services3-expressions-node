@@ -4,7 +4,7 @@ import { ISymbolState } from '../ISymbolState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 import { SymbolRootNode } from './SymbolRootNode';
 
 /**
@@ -27,13 +27,13 @@ export class GenericSymbolState implements ISymbolState {
     private _symbols: SymbolRootNode = new SymbolRootNode();
 
     /**
-     * Return a symbol token from a reader.
-     * @param reader A textual string to be tokenized.
+     * Return a symbol token from a scanner.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
-        return this._symbols.nextToken(reader);
+    public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        return this._symbols.nextToken(scanner);
     }
 
     /**

@@ -1,6 +1,6 @@
 /** @module csv */
 
-import { IPushbackReader } from "../io/IPushbackReader";
+import { IScanner } from "../io/IScanner";
 import { ITokenizer } from "../tokenizers/ITokenizer";
 import { Token } from "../tokenizers/Token";
 import { TokenType } from "../tokenizers/TokenType";
@@ -22,14 +22,14 @@ export class CsvSymbolState extends GenericSymbolState {
         this.add("\n\r", TokenType.Eol);
     }
 
-    public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
+    public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
         // Optimization...
-        let nextSymbol = reader.read();
+        let nextSymbol = scanner.read();
         if (nextSymbol != CsvConstant.LF && nextSymbol != CsvConstant.CR) {
             return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol));
         } else {
-            reader.pushback(nextSymbol);
-            return super.nextToken(reader, tokenizer);
+            scanner.unread();
+            return super.nextToken(scanner, tokenizer);
         }
     }
 

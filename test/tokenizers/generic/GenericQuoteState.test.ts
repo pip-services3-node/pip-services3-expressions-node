@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 
-import { StringPushbackReader } from '../../../src/io/StringPushbackReader';
+import { StringScanner } from '../../../src/io/StringScanner';
 import { GenericQuoteState } from '../../../src/tokenizers/generic/GenericQuoteState';
 import { TokenType } from '../../../src/tokenizers/TokenType';
 
@@ -8,13 +8,13 @@ suite('GenericQuoteState', ()=> {
     test('NextToken', () => {
         let state = new GenericQuoteState();
 
-        let reader = new StringPushbackReader("'ABC#DEF'#");
-        let token = state.nextToken(reader, null);
+        let scanner = new StringScanner("'ABC#DEF'#");
+        let token = state.nextToken(scanner, null);
         assert.equal("'ABC#DEF'", token.value);
         assert.equal(TokenType.Quoted, token.type);
 
-        reader = new StringPushbackReader("'ABC#DEF''");
-        token = state.nextToken(reader, null);
+        scanner = new StringScanner("'ABC#DEF''");
+        token = state.nextToken(scanner, null);
         assert.equal("'ABC#DEF'", token.value);
         assert.equal(TokenType.Quoted, token.type);
     });    

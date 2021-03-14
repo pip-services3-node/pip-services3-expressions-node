@@ -3,7 +3,7 @@ import { ISymbolState } from '../ISymbolState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 /**
   * The idea of a symbol is a character that stands on its own, such as an ampersand or a parenthesis.
   * For example, when tokenizing the expression <code>(isReady)& (isWilling) </code>, a typical
@@ -23,12 +23,12 @@ import { IPushbackReader } from '../../io/IPushbackReader';
 export declare class GenericSymbolState implements ISymbolState {
     private _symbols;
     /**
-     * Return a symbol token from a reader.
-     * @param reader A textual string to be tokenized.
+     * Return a symbol token from a scanner.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token;
+    nextToken(scanner: IScanner, tokenizer: ITokenizer): Token;
     /**
      * Add a multi-character symbol.
      * @param value The symbol to add, such as "=:="

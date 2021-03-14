@@ -36,11 +36,11 @@
         "pip-services3-commons-node": "^3.0.4"
     },
     "devDependencies": {
-        "@types/node": "*",
-        "@types/lodash": "^4.0.0",
         "@types/async": "^2.0.0",
-        "@types/mocha": "^7.0.0",
         "@types/chai": "*",
+        "@types/lodash": "^4.0.0",
+        "@types/mocha": "^7.0.0",
+        "@types/node": "*",
         "chai": "^3.5.0",
         "mocha": "^7.0.0"
     }

@@ -2,7 +2,7 @@
 
 import { CharReferenceMap } from '../utilities/CharReferenceMap';
 import { CharValidator } from '../utilities/CharValidator';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 import { TokenType } from '../TokenType';
 
 /**
@@ -82,17 +82,17 @@ export class SymbolNode {
 
     /**
      * Find the descendant that takes as many characters as possible from the input.
-     * @param reader 
+     * @param scanner 
      */
-    public deepestRead(reader: IPushbackReader): SymbolNode {
-        let nextSymbol = reader.read();
+    public deepestRead(scanner: IScanner): SymbolNode {
+        let nextSymbol = scanner.read();
         let childNode = !CharValidator.isEof(nextSymbol) 
             ? this.findChildWithChar(nextSymbol) : null;
         if (childNode == null) {
-            reader.pushback(nextSymbol);
+            scanner.unread();
             return this;
         }
-        return childNode.deepestRead(reader);
+        return childNode.deepestRead(scanner);
     }
 
     /**
@@ -119,12 +119,12 @@ export class SymbolNode {
     /**
      * Unwind to a valid node; this node is "valid" if its ancestry represents a complete symbol.
      * If this node is not valid, put back the character and ask the parent to unwind.
-     * @param reader 
+     * @param scanner 
      */
-    public unreadToValid(reader: IPushbackReader): SymbolNode {
+    public unreadToValid(scanner: IScanner): SymbolNode {
         if (!this._valid && this._parent != null) {
-            reader.pushback(this._character);
-            return this._parent.unreadToValid(reader);
+            scanner.unread();
+            return this._parent.unreadToValid(scanner);
         }
         return this;
     }

@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 
-import { StringPushbackReader } from '../../../src/io/StringPushbackReader';
+import { StringScanner } from '../../../src/io/StringScanner';
 import { GenericNumberState } from '../../../src/tokenizers/generic/GenericNumberState';
 import { TokenType } from '../../../src/tokenizers/TokenType';
 
@@ -8,11 +8,11 @@ suite('GenericNumberState', ()=> {
     test('NextToken', () => {
         var state = new GenericNumberState();
 
-        var reader = new StringPushbackReader("ABC");
+        var scanner = new StringScanner("ABC");
         var failed = false;
         try
         {
-            state.nextToken(reader, null);
+            state.nextToken(scanner, null);
         }
         catch
         {
@@ -20,28 +20,28 @@ suite('GenericNumberState', ()=> {
         }
         assert.isTrue(failed);
 
-        reader = new StringPushbackReader("123#");
-        var token = state.nextToken(reader, null);
+        scanner = new StringScanner("123#");
+        var token = state.nextToken(scanner, null);
         assert.equal("123", token.value);
         assert.equal(TokenType.Integer, token.type);
 
-        reader = new StringPushbackReader("-123#");
-        token = state.nextToken(reader, null);
+        scanner = new StringScanner("-123#");
+        token = state.nextToken(scanner, null);
         assert.equal("-123", token.value);
         assert.equal(TokenType.Integer, token.type);
         
-        reader = new StringPushbackReader("123.#");
-        token = state.nextToken(reader, null);
+        scanner = new StringScanner("123.#");
+        token = state.nextToken(scanner, null);
         assert.equal("123.", token.value);
         assert.equal(TokenType.Float, token.type);
 
-        reader = new StringPushbackReader("123.456#");
-        token = state.nextToken(reader, null);
+        scanner = new StringScanner("123.456#");
+        token = state.nextToken(scanner, null);
         assert.equal("123.456", token.value);
         assert.equal(TokenType.Float, token.type);
 
-        reader = new StringPushbackReader("-123.456#");
-        token = state.nextToken(reader, null);
+        scanner = new StringScanner("-123.456#");
+        token = state.nextToken(scanner, null);
         assert.equal("-123.456", token.value);
         assert.equal(TokenType.Float, token.type);
     });    

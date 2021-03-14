@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 
-import { StringPushbackReader } from '../../../src/io/StringPushbackReader';
+import { StringScanner } from '../../../src/io/StringScanner';
 import { SymbolRootNode } from '../../../src/tokenizers/generic/SymbolRootNode';
 import { TokenType } from '../../../src/tokenizers/TokenType';
 
@@ -11,18 +11,18 @@ suite('SymbolRootNode', ()=> {
         node.add("<<", TokenType.Symbol);
         node.add("<>", TokenType.Symbol);
 
-        let reader = new StringPushbackReader("<A<<<>");
+        let scanner = new StringScanner("<A<<<>");
 
-        let token = node.nextToken(reader);
+        let token = node.nextToken(scanner);
         assert.equal("<", token.value);
 
-        token = node.nextToken(reader);
+        token = node.nextToken(scanner);
         assert.equal("A", token.value);
 
-        token = node.nextToken(reader);
+        token = node.nextToken(scanner);
         assert.equal("<<", token.value);
 
-        token = node.nextToken(reader);
+        token = node.nextToken(scanner);
         assert.equal("<>", token.value);
     });    
 
@@ -31,9 +31,9 @@ suite('SymbolRootNode', ()=> {
         //node.add("<", TokenType.Symbol);
         //node.add("<<", TokenType.Symbol);
 
-        let reader = new StringPushbackReader("<A");
+        let scanner = new StringScanner("<A");
 
-        let token = node.nextToken(reader);
+        let token = node.nextToken(scanner);
         assert.equal("<", token.value);
         assert.equal(TokenType.Symbol, token.type);
     });    

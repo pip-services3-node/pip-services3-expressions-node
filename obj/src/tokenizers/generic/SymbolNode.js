@@ -73,17 +73,17 @@ class SymbolNode {
     }
     /**
      * Find the descendant that takes as many characters as possible from the input.
-     * @param reader
+     * @param scanner
      */
-    deepestRead(reader) {
-        let nextSymbol = reader.read();
+    deepestRead(scanner) {
+        let nextSymbol = scanner.read();
         let childNode = !CharValidator_1.CharValidator.isEof(nextSymbol)
             ? this.findChildWithChar(nextSymbol) : null;
         if (childNode == null) {
-            reader.pushback(nextSymbol);
+            scanner.unread();
             return this;
         }
-        return childNode.deepestRead(reader);
+        return childNode.deepestRead(scanner);
     }
     /**
      * Find a child with the given character.
@@ -107,12 +107,12 @@ class SymbolNode {
     /**
      * Unwind to a valid node; this node is "valid" if its ancestry represents a complete symbol.
      * If this node is not valid, put back the character and ask the parent to unwind.
-     * @param reader
+     * @param scanner
      */
-    unreadToValid(reader) {
+    unreadToValid(scanner) {
         if (!this._valid && this._parent != null) {
-            reader.pushback(this._character);
-            return this._parent.unreadToValid(reader);
+            scanner.unread();
+            return this._parent.unreadToValid(scanner);
         }
         return this;
     }

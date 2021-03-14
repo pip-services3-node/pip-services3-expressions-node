@@ -318,7 +318,7 @@
 					<a name="deepestread" class="tsd-anchor"></a>
 					<h3>deepest<wbr>Read</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">deepest<wbr>Read<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.symbolnode.html" class="tsd-signature-type">SymbolNode</a></li>
+						<li class="tsd-signature tsd-kind-icon">deepest<wbr>Read<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.symbolnode.html" class="tsd-signature-type">SymbolNode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -336,7 +336,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>reader: <a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+									<h5>scanner: <a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -411,7 +411,7 @@
 					<a name="nexttoken" class="tsd-anchor"></a>
 					<h3>next<wbr>Token</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">next<wbr>Token<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.token.html" class="tsd-signature-type">Token</a></li>
+						<li class="tsd-signature tsd-kind-icon">next<wbr>Token<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.token.html" class="tsd-signature-type">Token</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -422,20 +422,20 @@
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Return a symbol string from a reader.</p>
+									<p>Return a symbol string from a scanner.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>reader: <a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+									<h5>scanner: <a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>A reader to read from</p>
+										<p>A scanner to read from</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="tokenizers.token.html" class="tsd-signature-type">Token</a></h4>
-							<p>A symbol string from a reader</p>
+							<p>A symbol string from a scanner</p>
 						</li>
 					</ul>
 				</section>
@@ -443,7 +443,7 @@
 					<a name="unreadtovalid" class="tsd-anchor"></a>
 					<h3>unread<wbr>ToValid</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">unread<wbr>ToValid<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.symbolnode.html" class="tsd-signature-type">SymbolNode</a></li>
+						<li class="tsd-signature tsd-kind-icon">unread<wbr>ToValid<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tokenizers.symbolnode.html" class="tsd-signature-type">SymbolNode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -462,7 +462,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>reader: <a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+									<h5>scanner: <a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -490,6 +490,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/io.html">io</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/mustache.html">mustache</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/tokenizers.html">tokenizers</a>

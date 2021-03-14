@@ -4,7 +4,7 @@ import { IWhitespaceState } from '../IWhitespaceState';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 import { CharReferenceMap } from '../utilities/CharReferenceMap';
 import { CharValidator } from '../utilities/CharValidator';
 
@@ -24,19 +24,19 @@ export class GenericWhitespaceState implements IWhitespaceState {
 
     /**
      * Ignore whitespace (such as blanks and tabs), and return the tokenizer's next token.
-     * @param reader A textual string to be tokenized.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
+    public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
         let nextSymbol: number;
         let tokenValue = "";
-        for (nextSymbol = reader.read(); this._map.lookup(nextSymbol); nextSymbol = reader.read()) {
+        for (nextSymbol = scanner.read(); this._map.lookup(nextSymbol); nextSymbol = scanner.read()) {
             tokenValue = tokenValue + String.fromCharCode(nextSymbol);
         }
 
         if (!CharValidator.isEof(nextSymbol)) {
-            reader.pushback(nextSymbol);
+            scanner.unread();
         }
 
         return new Token(TokenType.Whitespace, tokenValue);

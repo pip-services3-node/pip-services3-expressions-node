@@ -33,16 +33,16 @@ class SymbolRootNode extends SymbolNode_1.SymbolNode {
         childNode.addDescendantLine(value.substring(1), tokenType);
     }
     /**
-     * Return a symbol string from a reader.
-     * @param reader A reader to read from
-     * @returns A symbol string from a reader
+     * Return a symbol string from a scanner.
+     * @param scanner A scanner to read from
+     * @returns A symbol string from a scanner
      */
-    nextToken(reader) {
-        let nextSymbol = reader.read();
+    nextToken(scanner) {
+        let nextSymbol = scanner.read();
         let childNode = this.findChildWithChar(nextSymbol);
         if (childNode != null) {
-            childNode = childNode.deepestRead(reader);
-            childNode = childNode.unreadToValid(reader);
+            childNode = childNode.deepestRead(scanner);
+            childNode = childNode.unreadToValid(scanner);
             return new Token_1.Token(childNode.tokenType, childNode.ancestry());
         }
         else {

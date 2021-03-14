@@ -1,5 +1,5 @@
 /** @module tokenizers */
-import { IPushbackReader } from "../io/IPushbackReader";
+import { IScanner } from "../io/IScanner";
 import { Token } from './Token';
 import { ICommentState } from './ICommentState';
 import { INumberState } from './INumberState';
@@ -95,25 +95,25 @@ export interface ITokenizer {
      */
     wordState: IWordState;
     /**
-     * The stream reader to tokenize.
+     * The stream scanner to tokenize.
      */
-    reader: IPushbackReader;
+    scanner: IScanner;
     /**
      * Checks if there is the next token exist.
-     * @returns <code>true</code> if reader has the next token.
+     * @returns <code>true</code> if scanner has the next token.
      */
     hasNextToken(): boolean;
     /**
-     * Gets the next token from the reader.
+     * Gets the next token from the scanner.
      * @returns Next token of <code>null</code> if there are no more tokens left.
      */
     nextToken(): Token;
     /**
      * Tokenizes a textual stream into a list of token structures.
-     * @param reader A textual stream to be tokenized.
+     * @param scanner A textual stream to be tokenized.
      * @returns A list of token structures.
      */
-    tokenizeStream(reader: IPushbackReader): Token[];
+    tokenizeStream(scanner: IScanner): Token[];
     /**
      * Tokenizes a string buffer into a list of tokens structures.
      * @param buffer A string buffer to be tokenized.
@@ -122,10 +122,10 @@ export interface ITokenizer {
     tokenizeBuffer(buffer: string): Token[];
     /**
      * Tokenizes a textual stream into a list of strings.
-     * @param reader A textual stream to be tokenized.
+     * @param scanner A textual stream to be tokenized.
      * @returns A list of token strings.
      */
-    tokenizeStreamToStrings(reader: IPushbackReader): string[];
+    tokenizeStreamToStrings(scanner: IScanner): string[];
     /**
      * Tokenizes a string buffer into a list of strings.
      * @param buffer A string buffer to be tokenized.

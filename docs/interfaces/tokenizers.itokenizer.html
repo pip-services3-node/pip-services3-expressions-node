@@ -120,6 +120,7 @@ From    To     State
 					<li><a href="../classes/csv.csvtokenizer.html" class="tsd-signature-type">CsvTokenizer</a></li>
 					<li><a href="../classes/calculator.expressiontokenizer.html" class="tsd-signature-type">ExpressionTokenizer</a></li>
 					<li><a href="../classes/tokenizers.generictokenizer.html" class="tsd-signature-type">GenericTokenizer</a></li>
+					<li><a href="../classes/mustache.mustachetokenizer.html" class="tsd-signature-type">MustacheTokenizer</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -134,7 +135,7 @@ From    To     State
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#mergewhitespaces" class="tsd-kind-icon">merge<wbr>Whitespaces</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#numberstate" class="tsd-kind-icon">number<wbr>State</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#quotestate" class="tsd-kind-icon">quote<wbr>State</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#reader" class="tsd-kind-icon">reader</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#scanner" class="tsd-kind-icon">scanner</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#skipcomments" class="tsd-kind-icon">skip<wbr>Comments</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#skipeof" class="tsd-kind-icon">skip<wbr>Eof</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tokenizers.itokenizer.html#skipunknown" class="tsd-kind-icon">skip<wbr>Unknown</a></li>
@@ -237,9 +238,9 @@ From    To     State
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="reader" class="tsd-anchor"></a>
-					<h3>reader</h3>
-					<div class="tsd-signature tsd-kind-icon">reader<span class="tsd-signature-symbol">:</span> <a href="io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></div>
+					<a name="scanner" class="tsd-anchor"></a>
+					<h3>scanner</h3>
+					<div class="tsd-signature tsd-kind-icon">scanner<span class="tsd-signature-symbol">:</span> <a href="io.iscanner.html" class="tsd-signature-type">IScanner</a></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in tokenizers/ITokenizer.ts:116</li>
@@ -247,7 +248,7 @@ From    To     State
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The stream reader to tokenize.</p>
+							<p>The stream scanner to tokenize.</p>
 						</div>
 					</div>
 				</section>
@@ -393,7 +394,7 @@ From    To     State
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p><code>true</code> if reader has the next token.</p>
+							<p><code>true</code> if scanner has the next token.</p>
 						</li>
 					</ul>
 				</section>
@@ -412,7 +413,7 @@ From    To     State
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the next token from the reader.</p>
+									<p>Gets the next token from the scanner.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/tokenizers.token.html" class="tsd-signature-type">Token</a></h4>
@@ -488,7 +489,7 @@ From    To     State
 					<a name="tokenizestream" class="tsd-anchor"></a>
 					<h3>tokenize<wbr>Stream</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/tokenizers.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="io.iscanner.html" class="tsd-signature-type">IScanner</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/tokenizers.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -505,7 +506,7 @@ From    To     State
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>reader: <a href="io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+									<h5>scanner: <a href="io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A textual stream to be tokenized.</p>
 									</div>
@@ -520,7 +521,7 @@ From    To     State
 					<a name="tokenizestreamtostrings" class="tsd-anchor"></a>
 					<h3>tokenize<wbr>Stream<wbr>ToStrings</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<wbr>ToStrings<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><a href="io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">tokenize<wbr>Stream<wbr>ToStrings<span class="tsd-signature-symbol">(</span>scanner<span class="tsd-signature-symbol">: </span><a href="io.iscanner.html" class="tsd-signature-type">IScanner</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -537,7 +538,7 @@ From    To     State
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>reader: <a href="io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></h5>
+									<h5>scanner: <a href="io.iscanner.html" class="tsd-signature-type">IScanner</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A textual stream to be tokenized.</p>
 									</div>
@@ -567,6 +568,9 @@ From    To     State
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/io.html">io</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/mustache.html">mustache</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/tokenizers.html">tokenizers</a>
@@ -662,7 +666,7 @@ From    To     State
 								<a href="tokenizers.itokenizer.html#quotestate" class="tsd-kind-icon">quote<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="tokenizers.itokenizer.html#reader" class="tsd-kind-icon">reader</a>
+								<a href="tokenizers.itokenizer.html#scanner" class="tsd-kind-icon">scanner</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="tokenizers.itokenizer.html#skipcomments" class="tsd-kind-icon">skip<wbr>Comments</a>

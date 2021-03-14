@@ -1,5 +1,5 @@
 /** @module tokenizers */
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 import { TokenType } from '../TokenType';
 /**
   * A <code>SymbolNode</code> object is a member of a tree that contains all possible prefixes
@@ -52,9 +52,9 @@ export declare class SymbolNode {
     addDescendantLine(value: string, tokenType: TokenType): void;
     /**
      * Find the descendant that takes as many characters as possible from the input.
-     * @param reader
+     * @param scanner
      */
-    deepestRead(reader: IPushbackReader): SymbolNode;
+    deepestRead(scanner: IScanner): SymbolNode;
     /**
      * Find a child with the given character.
      * @param value
@@ -63,9 +63,9 @@ export declare class SymbolNode {
     /**
      * Unwind to a valid node; this node is "valid" if its ancestry represents a complete symbol.
      * If this node is not valid, put back the character and ask the parent to unwind.
-     * @param reader
+     * @param scanner
      */
-    unreadToValid(reader: IPushbackReader): SymbolNode;
+    unreadToValid(scanner: IScanner): SymbolNode;
     get valid(): boolean;
     set valid(value: boolean);
     get tokenType(): TokenType;

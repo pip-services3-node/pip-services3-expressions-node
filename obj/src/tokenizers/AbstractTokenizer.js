@@ -6,7 +6,7 @@ const Token_1 = require("./Token");
 const TokenType_1 = require("./TokenType");
 const CharReferenceMap_1 = require("./utilities/CharReferenceMap");
 const CharValidator_1 = require("./utilities/CharValidator");
-const StringPushbackReader_1 = require("../io/StringPushbackReader");
+const StringScanner_1 = require("../io/StringScanner");
 /**
  * Implements an abstract tokenizer class.
  */
@@ -24,11 +24,11 @@ class AbstractTokenizer {
     clearCharacterStates() {
         this._map.clear();
     }
-    get reader() {
-        return this._reader;
+    get scanner() {
+        return this._scanner;
     }
-    set reader(value) {
-        this._reader = value;
+    set scanner(value) {
+        this._scanner = value;
         this._nextToken = null;
         this._lastTokenType = TokenType_1.TokenType.Unknown;
     }
@@ -42,13 +42,13 @@ class AbstractTokenizer {
         return token;
     }
     readNextToken() {
-        if (this._reader == null) {
+        if (this._scanner == null) {
             return null;
         }
         let token = null;
         while (true) {
             // Read character
-            let nextChar = this._reader.peek();
+            let nextChar = this._scanner.peek();
             // If reached Eof then exit
             if (CharValidator_1.CharValidator.isEof(nextChar)) {
                 token = null;
@@ -57,11 +57,11 @@ class AbstractTokenizer {
             // Get state for character
             let state = this.getCharacterState(nextChar);
             if (state != null) {
-                token = state.nextToken(this._reader, this);
+                token = state.nextToken(this._scanner, this);
             }
             // Check for unknown characters and endless loops...
             if (token == null || token.value == '') {
-                token = new Token_1.Token(TokenType_1.TokenType.Unknown, String.fromCharCode(this._reader.read()));
+                token = new Token_1.Token(TokenType_1.TokenType.Unknown, String.fromCharCode(this._scanner.read()));
             }
             // Skip unknown characters if option set.
             if (token.type == TokenType_1.TokenType.Unknown && this.skipUnknown) {
@@ -105,8 +105,8 @@ class AbstractTokenizer {
         this._lastTokenType = token != null ? token.type : TokenType_1.TokenType.Eof;
         return token;
     }
-    tokenizeStream(reader) {
-        this.reader = reader;
+    tokenizeStream(scanner) {
+        this.scanner = scanner;
         let tokenList = [];
         for (let token = this.nextToken(); token != null; token = this.nextToken()) {
             tokenList.push(token);
@@ -114,11 +114,11 @@ class AbstractTokenizer {
         return tokenList;
     }
     tokenizeBuffer(buffer) {
-        let reader = new StringPushbackReader_1.StringPushbackReader(buffer);
-        return this.tokenizeStream(reader);
+        let scanner = new StringScanner_1.StringScanner(buffer);
+        return this.tokenizeStream(scanner);
     }
-    tokenizeStreamToStrings(reader) {
-        this.reader = reader;
+    tokenizeStreamToStrings(scanner) {
+        this.scanner = scanner;
         let stringList = [];
         for (let token = this.nextToken(); token != null; token = this.nextToken()) {
             stringList.push(token.value);
@@ -126,8 +126,8 @@ class AbstractTokenizer {
         return stringList;
     }
     tokenizeBufferToStrings(buffer) {
-        let reader = new StringPushbackReader_1.StringPushbackReader(buffer);
-        return this.tokenizeStreamToStrings(reader);
+        let scanner = new StringScanner_1.StringScanner(buffer);
+        return this.tokenizeStreamToStrings(scanner);
     }
 }
 exports.AbstractTokenizer = AbstractTokenizer;

@@ -24,13 +24,13 @@ class GenericSymbolState {
         this._symbols = new SymbolRootNode_1.SymbolRootNode();
     }
     /**
-     * Return a symbol token from a reader.
-     * @param reader A textual string to be tokenized.
+     * Return a symbol token from a scanner.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    nextToken(reader, tokenizer) {
-        return this._symbols.nextToken(reader);
+    nextToken(scanner, tokenizer) {
+        return this._symbols.nextToken(scanner);
     }
     /**
      * Add a multi-character symbol.

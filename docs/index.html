@@ -70,6 +70,7 @@
 					<li><strong>Calculator</strong> - Expression calculator</li>
 					<li><strong>CSV</strong> - CSV tokenizer</li>
 					<li><strong>IO</strong> - input/output utility classes to support lexical analysis</li>
+					<li><strong>Mustache</strong> - Mustache templating engine</li>
 					<li><strong>Tokenizers</strong> - lexical analyzers to break incoming character streams into tokens</li>
 					<li><strong>Variants</strong> - dynamic objects that can hold any values and operators for them</li>
 				</ul>
@@ -107,6 +108,12 @@ calculator.evaluateWithVariables(vars, <span class="hljs-function">(<span class=
     ...
 });
 ...
+</code></pre>
+				<p>This is an example to process mustache templates.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> mustache = <span class="hljs-keyword">new</span> MustacheTemplate();
+mustache.template = <span class="hljs-string">"Hello, {{{NAME}}}{{#ESCLAMATION}}!{{/ESCLAMATION}}{{#unless ESCLAMATION}}.{{/unless}}"</span>;
+<span class="hljs-keyword">let</span> result = mustache.evaluateWithVariables({ NAME: <span class="hljs-string">'Mike'</span>, ESCLAMATION: <span class="hljs-literal">true</span> });
+<span class="hljs-built_in">console</span> log(<span class="hljs-string">"The result of template evaluation is '"</span> + result + <span class="hljs-string">"'"</span>);
 </code></pre>
 				<h2 id="develop">Develop</h2>
 				<p>For development you shall install the following prerequisites:</p>
@@ -154,6 +161,9 @@ calculator.evaluateWithVariables(vars, <span class="hljs-function">(<span class=
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/io.html">io</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/mustache.html">mustache</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/tokenizers.html">tokenizers</a>

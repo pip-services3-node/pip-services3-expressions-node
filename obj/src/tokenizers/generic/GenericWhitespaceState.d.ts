@@ -2,7 +2,7 @@
 import { IWhitespaceState } from '../IWhitespaceState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 /**
  * A whitespace state ignores whitespace (such as blanks and tabs), and returns the tokenizer's
  * next token. By default, all characters from 0 to 32 are whitespace.
@@ -15,11 +15,11 @@ export declare class GenericWhitespaceState implements IWhitespaceState {
     constructor();
     /**
      * Ignore whitespace (such as blanks and tabs), and return the tokenizer's next token.
-     * @param reader A textual string to be tokenized.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token;
+    nextToken(scanner: IScanner, tokenizer: ITokenizer): Token;
     /**
      * Establish the given characters as whitespace to ignore.
      * @param fromSymbol First character index of the interval.

@@ -43,7 +43,7 @@ class MustacheTokenizer extends AbstractTokenizer_1.AbstractTokenizer {
         this.skipEof = true;
     }
     readNextToken() {
-        if (this._reader == null) {
+        if (this._scanner == null) {
             return null;
         }
         // Check for initial state
@@ -52,7 +52,7 @@ class MustacheTokenizer extends AbstractTokenizer_1.AbstractTokenizer {
         }
         // Process quotes
         if (this._special) {
-            let token = this._specialState.nextToken(this._reader, this);
+            let token = this._specialState.nextToken(this._scanner, this);
             if (token != null && token.value != "") {
                 return token;
             }

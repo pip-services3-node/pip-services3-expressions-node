@@ -3,7 +3,7 @@
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 import { CppCommentState } from './CppCommentState';
 import { CharValidator } from '../utilities';
 
@@ -13,28 +13,28 @@ import { CharValidator } from '../utilities';
 export class CCommentState extends CppCommentState {
     /**
      * Either delegate to a comment-handling state, or return a token with just a slash in it.
-     * @param reader A textual string to be tokenized.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
-        let firstSymbol = reader.read();
+    public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let firstSymbol = scanner.read();
         if (firstSymbol != this.SLASH) {
-            reader.pushback(firstSymbol);
+            scanner.unread();
             throw new Error("Incorrect usage of CCommentState.");
         }
 
-        let secondSymbol = reader.read();
+        let secondSymbol = scanner.read();
         if (secondSymbol == this.STAR) {
-            return new Token(TokenType.Comment, "/*" + this.getMultiLineComment(reader));
+            return new Token(TokenType.Comment, "/*" + this.getMultiLineComment(scanner));
         } else {
             if (!CharValidator.isEof(secondSymbol)) {
-                reader.pushback(secondSymbol);
+                scanner.unread();
             }
             if (!CharValidator.isEof(firstSymbol)) {
-                reader.pushback(firstSymbol);
+                scanner.unread();
             }
-            return tokenizer.symbolState.nextToken(reader, tokenizer);
+            return tokenizer.symbolState.nextToken(scanner, tokenizer);
         }
     }
 }

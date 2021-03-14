@@ -1,6 +1,6 @@
 /** @module calculator */
 import { GenericWordState } from "../../tokenizers/generic/GenericWordState";
-import { IPushbackReader } from "../../io/IPushbackReader";
+import { IScanner } from "../../io/IScanner";
 import { ITokenizer } from "../../tokenizers/ITokenizer";
 import { Token } from "../../tokenizers/Token";
 import { TokenType } from "../../tokenizers/TokenType";
@@ -33,12 +33,12 @@ export class ExpressionWordState extends GenericWordState {
 
     /**
       * Gets the next token from the stream started from the character linked to this state.
-      * @param reader A textual string to be tokenized.
+      * @param scanner A textual string to be tokenized.
       * @param tokenizer A tokenizer class that controls the process.
       * @returns The next token from the top of the stream.
       */
-     public nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token {
-        let token = super.nextToken(reader, tokenizer);
+     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let token = super.nextToken(scanner, tokenizer);
         let value = token.value.toUpperCase();
 
         for (let keyword of this.keywords) {

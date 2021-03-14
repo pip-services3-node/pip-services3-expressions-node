@@ -2,5 +2,5 @@
  * @module io
  * @preferred
  */
-export { IPushbackReader } from './IPushbackReader';
-export { StringPushbackReader } from './StringPushbackReader';
+export { IScanner } from './IScanner';
+export { StringScanner } from './StringScanner';

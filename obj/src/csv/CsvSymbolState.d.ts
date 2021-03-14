@@ -1,5 +1,5 @@
 /** @module csv */
-import { IPushbackReader } from "../io/IPushbackReader";
+import { IScanner } from "../io/IScanner";
 import { ITokenizer } from "../tokenizers/ITokenizer";
 import { Token } from "../tokenizers/Token";
 import { GenericSymbolState } from "../tokenizers/generic/GenericSymbolState";
@@ -11,5 +11,5 @@ export declare class CsvSymbolState extends GenericSymbolState {
      * Constructs this object with specified parameters.
      */
     constructor();
-    nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token;
+    nextToken(scanner: IScanner, tokenizer: ITokenizer): Token;
 }

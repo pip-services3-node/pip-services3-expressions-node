@@ -2,24 +2,24 @@
 import { IQuoteState } from '../IQuoteState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 /**
-  * A quoteState returns a quoted string token from a reader. This state will collect characters
+  * A quoteState returns a quoted string token from a scanner. This state will collect characters
   * until it sees a match to the character that the tokenizer used to switch to this state.
   * For example, if a tokenizer uses a double-quote character to enter this state,
   * then <code>nextToken()</code> will search for another double-quote until it finds one
-  * or finds the end of the reader.
+  * or finds the end of the scanner.
   */
 export declare class GenericQuoteState implements IQuoteState {
     /**
-     * Return a quoted string token from a reader. This method will collect
+     * Return a quoted string token from a scanner. This method will collect
      * characters until it sees a match to the character that the tokenizer used
      * to switch to this state.
-     * @param reader A textual string to be tokenized.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token;
+    nextToken(scanner: IScanner, tokenizer: ITokenizer): Token;
     /**
      * Encodes a string value.
      * @param value A string value to be encoded.

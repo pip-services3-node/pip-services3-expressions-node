@@ -2,9 +2,9 @@
 import { IWordState } from '../IWordState';
 import { Token } from '../Token';
 import { ITokenizer } from '../ITokenizer';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 /**
-  * A wordState returns a word from a reader. Like other states, a tokenizer transfers the job
+  * A wordState returns a word from a scanner. Like other states, a tokenizer transfers the job
   * of reading to this state, depending on an initial character. Thus, the tokenizer decides
   * which characters may begin a word, and this state determines which characters may appear
   * as a second or later character in a word. These are typically different sets of characters;
@@ -31,11 +31,11 @@ export declare class GenericWordState implements IWordState {
     constructor();
     /**
      * Ignore word (such as blanks and tabs), and return the tokenizer's next token.
-     * @param reader A textual string to be tokenized.
+     * @param scanner A textual string to be tokenized.
      * @param tokenizer A tokenizer class that controls the process.
      * @returns The next token from the top of the stream.
      */
-    nextToken(reader: IPushbackReader, tokenizer: ITokenizer): Token;
+    nextToken(scanner: IScanner, tokenizer: ITokenizer): Token;
     /**
      * Establish characters in the given range as valid characters for part of a word after
      * the first character. Note that the tokenizer must determine which characters are valid

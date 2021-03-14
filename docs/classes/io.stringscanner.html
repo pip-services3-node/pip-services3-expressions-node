@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>StringPushbackReader | pip-services3-expressions-node</title>
+	<title>StringScanner | pip-services3-expressions-node</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/io.html">io</a>
 				</li>
 				<li>
-					<a href="io.stringpushbackreader.html">StringPushbackReader</a>
+					<a href="io.stringscanner.html">StringScanner</a>
 				</li>
 			</ul>
-			<h1>Class StringPushbackReader</h1>
+			<h1>Class StringScanner</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Wraps string to provide unlimited pushback that allows tokenizers
+						<p>Scan characters in a string that allows tokenizers
 						to look ahead through stream to perform lexical analysis.</p>
 					</div>
 				</div>
@@ -79,14 +79,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">StringPushbackReader</span>
+						<span class="target">StringScanner</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/io.ipushbackreader.html" class="tsd-signature-type">IPushbackReader</a></li>
+					<li><a href="../interfaces/io.iscanner.html" class="tsd-signature-type">IScanner</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -96,22 +96,25 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="io.stringpushbackreader.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="io.stringscanner.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="io.stringpushbackreader.html#eof" class="tsd-kind-icon">Eof</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="io.stringscanner.html#eof" class="tsd-kind-icon">Eof</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringpushbackreader.html#peek" class="tsd-kind-icon">peek</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringpushbackreader.html#pushback" class="tsd-kind-icon">pushback</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringpushbackreader.html#pushbackstring" class="tsd-kind-icon">pushback<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringpushbackreader.html#read" class="tsd-kind-icon">read</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#column" class="tsd-kind-icon">column</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#line" class="tsd-kind-icon">line</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#peek" class="tsd-kind-icon">peek</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#read" class="tsd-kind-icon">read</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#reset" class="tsd-kind-icon">reset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#unread" class="tsd-kind-icon">unread</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="io.stringscanner.html#unreadmany" class="tsd-kind-icon">unread<wbr>Many</a></li>
 							</ul>
 						</section>
 					</div>
@@ -123,13 +126,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>String<wbr>Pushback<wbr>Reader<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="io.stringpushbackreader.html" class="tsd-signature-type">StringPushbackReader</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>String<wbr>Scanner<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="io.stringscanner.html" class="tsd-signature-type">StringScanner</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in io/StringPushbackReader.ts:16</li>
+									<li>Defined in io/StringScanner.ts:15</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -148,7 +151,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="io.stringpushbackreader.html" class="tsd-signature-type">StringPushbackReader</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="io.stringscanner.html" class="tsd-signature-type">StringScanner</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -161,13 +164,61 @@
 					<div class="tsd-signature tsd-kind-icon">Eof<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in io/StringPushbackReader.ts:10</li>
+							<li>Defined in io/StringScanner.ts:10</li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="column" class="tsd-anchor"></a>
+					<h3>column</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">column<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#column">column</a></p>
+								<ul>
+									<li>Defined in io/StringScanner.ts:85</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the column in the current line</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The column in the current line in the stream</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="line" class="tsd-anchor"></a>
+					<h3>line</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">line<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#line">line</a></p>
+								<ul>
+									<li>Defined in io/StringScanner.ts:77</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the current line number</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The current line number in the stream</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="peek" class="tsd-anchor"></a>
 					<h3>peek</h3>
@@ -177,9 +228,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/io.ipushbackreader.html">IPushbackReader</a>.<a href="../interfaces/io.ipushbackreader.html#peek">peek</a></p>
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#peek">peek</a></p>
 								<ul>
-									<li>Defined in io/StringPushbackReader.ts:63</li>
+									<li>Defined in io/StringScanner.ts:126</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -193,70 +244,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="pushback" class="tsd-anchor"></a>
-					<h3>pushback</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">pushback<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/io.ipushbackreader.html">IPushbackReader</a>.<a href="../interfaces/io.ipushbackreader.html#pushback">pushback</a></p>
-								<ul>
-									<li>Defined in io/StringPushbackReader.ts:79</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Puts the specified character to the top of the stream.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>A character to be pushed back.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="pushbackstring" class="tsd-anchor"></a>
-					<h3>pushback<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">pushback<wbr>String<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/io.ipushbackreader.html">IPushbackReader</a>.<a href="../interfaces/io.ipushbackreader.html#pushbackstring">pushbackString</a></p>
-								<ul>
-									<li>Defined in io/StringPushbackReader.ts:100</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Pushes the specified string to the top of the stream.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>A string to be pushed back.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="read" class="tsd-anchor"></a>
 					<h3>read</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -265,9 +252,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/io.ipushbackreader.html">IPushbackReader</a>.<a href="../interfaces/io.ipushbackreader.html#read">read</a></p>
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#read">read</a></p>
 								<ul>
-									<li>Defined in io/StringPushbackReader.ts:34</li>
+									<li>Defined in io/StringScanner.ts:93</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -277,6 +264,84 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="reset" class="tsd-anchor"></a>
+					<h3>reset</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#reset">reset</a></p>
+								<ul>
+									<li>Defined in io/StringScanner.ts:186</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resets scanner to the initial position</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="unread" class="tsd-anchor"></a>
+					<h3>unread</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">unread<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#unread">unread</a></p>
+								<ul>
+									<li>Defined in io/StringScanner.ts:134</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Puts the one character back into the stream stream.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="unreadmany" class="tsd-anchor"></a>
+					<h3>unread<wbr>Many</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">unread<wbr>Many<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/io.iscanner.html">IScanner</a>.<a href="../interfaces/io.iscanner.html#unreadmany">unreadMany</a></p>
+								<ul>
+									<li>Defined in io/StringScanner.ts:176</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Pushes the specified number of characters to the top of the stream.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>count: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A number of characcted to be pushed back.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -301,6 +366,9 @@
 						<a href="../modules/io.html">io</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/mustache.html">mustache</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/tokenizers.html">tokenizers</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -313,32 +381,41 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="io.stringpushbackreader.html" class="tsd-kind-icon">String<wbr>Pushback<wbr>Reader</a>
+						<a href="io.stringscanner.html" class="tsd-kind-icon">String<wbr>Scanner</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="io.stringpushbackreader.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="io.stringscanner.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="io.stringpushbackreader.html#eof" class="tsd-kind-icon">Eof</a>
+								<a href="io.stringscanner.html#eof" class="tsd-kind-icon">Eof</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="io.stringpushbackreader.html#peek" class="tsd-kind-icon">peek</a>
+								<a href="io.stringscanner.html#column" class="tsd-kind-icon">column</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="io.stringpushbackreader.html#pushback" class="tsd-kind-icon">pushback</a>
+								<a href="io.stringscanner.html#line" class="tsd-kind-icon">line</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="io.stringpushbackreader.html#pushbackstring" class="tsd-kind-icon">pushback<wbr>String</a>
+								<a href="io.stringscanner.html#peek" class="tsd-kind-icon">peek</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="io.stringpushbackreader.html#read" class="tsd-kind-icon">read</a>
+								<a href="io.stringscanner.html#read" class="tsd-kind-icon">read</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="io.stringscanner.html#reset" class="tsd-kind-icon">reset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="io.stringscanner.html#unread" class="tsd-kind-icon">unread</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="io.stringscanner.html#unreadmany" class="tsd-kind-icon">unread<wbr>Many</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/io.ipushbackreader.html" class="tsd-kind-icon">IPushback<wbr>Reader</a>
+						<a href="../interfaces/io.iscanner.html" class="tsd-kind-icon">IScanner</a>
 					</li>
 				</ul>
 			</nav>

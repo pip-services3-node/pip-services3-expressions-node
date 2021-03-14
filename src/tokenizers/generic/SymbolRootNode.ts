@@ -3,7 +3,7 @@
 import { SymbolNode } from './SymbolNode';
 import { Token } from '../Token';
 import { TokenType } from '../TokenType';
-import { IPushbackReader } from '../../io/IPushbackReader';
+import { IScanner } from '../../io/IScanner';
 
 /**
  * This class is a special case of a <code>SymbolNode</code>. A <code>SymbolRootNode</code>
@@ -35,16 +35,16 @@ export class SymbolRootNode extends SymbolNode {
     }
 
     /**
-     * Return a symbol string from a reader.
-     * @param reader A reader to read from
-     * @returns A symbol string from a reader
+     * Return a symbol string from a scanner.
+     * @param scanner A scanner to read from
+     * @returns A symbol string from a scanner
      */
-    public nextToken(reader: IPushbackReader): Token {
-        let nextSymbol = reader.read();
+    public nextToken(scanner: IScanner): Token {
+        let nextSymbol = scanner.read();
         let childNode = this.findChildWithChar(nextSymbol);
         if (childNode != null) {
-            childNode = childNode.deepestRead(reader);
-            childNode = childNode.unreadToValid(reader);
+            childNode = childNode.deepestRead(scanner);
+            childNode = childNode.unreadToValid(scanner);
             return new Token(childNode.tokenType, childNode.ancestry());
         } else {
             return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol));

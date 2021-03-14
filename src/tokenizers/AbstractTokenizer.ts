@@ -12,8 +12,8 @@ import { Token } from './Token';
 import { TokenType } from './TokenType';
 import { CharReferenceMap } from './utilities/CharReferenceMap';
 import { CharValidator } from './utilities/CharValidator';
-import { IPushbackReader } from '../io/IPushbackReader';
-import { StringPushbackReader } from '../io/StringPushbackReader';
+import { IScanner } from '../io/IScanner';
+import { StringScanner } from '../io/StringScanner';
 
 /**
  * Implements an abstract tokenizer class.
@@ -36,7 +36,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
     public whitespaceState: IWhitespaceState;
     public wordState: IWordState;
 
-    protected _reader: IPushbackReader;
+    protected _scanner: IScanner;
     protected _nextToken: Token;
     protected _lastTokenType: TokenType = TokenType.Unknown;
 
@@ -55,12 +55,12 @@ export abstract class AbstractTokenizer implements ITokenizer {
         this._map.clear();
     }
 
-    public get reader(): IPushbackReader {
-        return this._reader;
+    public get scanner(): IScanner {
+        return this._scanner;
     }
 
-    public set reader(value: IPushbackReader) {
-        this._reader = value;
+    public set scanner(value: IScanner) {
+        this._scanner = value;
         this._nextToken = null;
         this._lastTokenType = TokenType.Unknown;
     }
@@ -77,7 +77,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
     }
 
     protected readNextToken(): Token {
-        if (this._reader == null) {
+        if (this._scanner == null) {
             return null;
         }
 
@@ -85,7 +85,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
 
         while (true) {
             // Read character
-            let nextChar = this._reader.peek();
+            let nextChar = this._scanner.peek();
 
             // If reached Eof then exit
             if (CharValidator.isEof(nextChar)) {
@@ -96,12 +96,12 @@ export abstract class AbstractTokenizer implements ITokenizer {
             // Get state for character
             let state = this.getCharacterState(nextChar);
             if (state != null) {
-                token = state.nextToken(this._reader, this);
+                token = state.nextToken(this._scanner, this);
             }
 
             // Check for unknown characters and endless loops...
             if (token == null || token.value == '') {
-                token = new Token(TokenType.Unknown, String.fromCharCode(this._reader.read()));
+                token = new Token(TokenType.Unknown, String.fromCharCode(this._scanner.read()));
             }
 
             // Skip unknown characters if option set.
@@ -156,8 +156,8 @@ export abstract class AbstractTokenizer implements ITokenizer {
         return token;
     }
 
-    public tokenizeStream(reader: IPushbackReader): Token[] {
-        this.reader = reader;
+    public tokenizeStream(scanner: IScanner): Token[] {
+        this.scanner = scanner;
         let tokenList: Token[] = [];
         for (let token = this.nextToken(); token != null; token = this.nextToken()) {
             tokenList.push(token);
@@ -166,12 +166,12 @@ export abstract class AbstractTokenizer implements ITokenizer {
     }
 
     public tokenizeBuffer(buffer: string): Token[] {
-        let reader = new StringPushbackReader(buffer);
-        return this.tokenizeStream(reader);
+        let scanner = new StringScanner(buffer);
+        return this.tokenizeStream(scanner);
     }
 
-    public tokenizeStreamToStrings(reader: IPushbackReader): string[] {
-        this.reader = reader;
+    public tokenizeStreamToStrings(scanner: IScanner): string[] {
+        this.scanner = scanner;
         let stringList: string[] = [];
         for (let token = this.nextToken(); token != null; token = this.nextToken()) {
             stringList.push(token.value);
@@ -180,7 +180,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
     }
 
     public tokenizeBufferToStrings(buffer: string): string[]  {
-        let reader = new StringPushbackReader(buffer);
-        return this.tokenizeStreamToStrings(reader);
+        let scanner = new StringScanner(buffer);
+        return this.tokenizeStreamToStrings(scanner);
     }
 }
