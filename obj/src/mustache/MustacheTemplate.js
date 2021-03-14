@@ -170,9 +170,9 @@ class MustacheTemplate {
                     }
                     break;
                 case MustacheTokenType_1.MustacheTokenType.Partial:
-                    throw new MustacheException_1.MustacheException(null, "PARTIALS_NOT_SUPPORTED", "Partials are not supported");
+                    throw new MustacheException_1.MustacheException(null, "PARTIALS_NOT_SUPPORTED", "Partials are not supported", token.line, token.column);
                 default:
-                    throw new MustacheException_1.MustacheException(null, "INTERNAL", "Internal error");
+                    throw new MustacheException_1.MustacheException(null, "INTERNAL", "Internal error", token.line, token.column);
             }
         }
         return result;

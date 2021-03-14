@@ -45,6 +45,8 @@ class AbstractTokenizer {
         if (this._scanner == null) {
             return null;
         }
+        let line = this._scanner.peekLine();
+        let column = this._scanner.peekColumn();
         let token = null;
         while (true) {
             // Read character
@@ -61,7 +63,7 @@ class AbstractTokenizer {
             }
             // Check for unknown characters and endless loops...
             if (token == null || token.value == '') {
-                token = new Token_1.Token(TokenType_1.TokenType.Unknown, String.fromCharCode(this._scanner.read()));
+                token = new Token_1.Token(TokenType_1.TokenType.Unknown, String.fromCharCode(this._scanner.read()), line, column);
             }
             // Skip unknown characters if option set.
             if (token.type == TokenType_1.TokenType.Unknown && this.skipUnknown) {
@@ -70,7 +72,7 @@ class AbstractTokenizer {
             }
             // Decode strings is option set.
             if (state != null && state.decodeString != null && this.decodeStrings) {
-                token = new Token_1.Token(token.type, this.quoteState.decodeString(token.value, nextChar));
+                token = new Token_1.Token(token.type, this.quoteState.decodeString(token.value, nextChar), line, column);
             }
             // Skips comments if option set.
             if (token.type == TokenType_1.TokenType.Comment && this.skipComments) {
@@ -86,20 +88,20 @@ class AbstractTokenizer {
             }
             // Unifies whitespaces if option set.
             if (token.type == TokenType_1.TokenType.Whitespace && this.mergeWhitespaces) {
-                token = new Token_1.Token(TokenType_1.TokenType.Whitespace, " ");
+                token = new Token_1.Token(TokenType_1.TokenType.Whitespace, " ", line, column);
             }
             // Unifies numbers if option set.
             if (this.unifyNumbers
                 && (token.type == TokenType_1.TokenType.Integer
                     || token.type == TokenType_1.TokenType.Float
                     || token.type == TokenType_1.TokenType.HexDecimal)) {
-                token = new Token_1.Token(TokenType_1.TokenType.Number, token.value);
+                token = new Token_1.Token(TokenType_1.TokenType.Number, token.value, line, column);
             }
             break;
         }
         // Adds an Eof if option is not set.
         if (token == null && this._lastTokenType != TokenType_1.TokenType.Eof && !this.skipEof) {
-            token = new Token_1.Token(TokenType_1.TokenType.Eof, null);
+            token = new Token_1.Token(TokenType_1.TokenType.Eof, null, line, column);
         }
         // Assigns the last token type
         this._lastTokenType = token != null ? token.type : TokenType_1.TokenType.Eof;

@@ -9,10 +9,10 @@ suite('ExpressionTokenizer', ()=> {
     test('QuoteToken', () => {
         let tokenString = "A'xyz'\"abc\ndeg\" 'jkl\"def'\"ab\"\"de\"'df''er'";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Word, "A"), new Token(TokenType.Quoted, "xyz"),
-            new Token(TokenType.Word, "abc\ndeg"), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Quoted, "jkl\"def"), new Token(TokenType.Word, "ab\"de"),
-            new Token(TokenType.Quoted, "df'er")
+            new Token(TokenType.Word, "A", 0, 0), new Token(TokenType.Quoted, "xyz", 0, 0),
+            new Token(TokenType.Word, "abc\ndeg", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Quoted, "jkl\"def", 0, 0), new Token(TokenType.Word, "ab\"de", 0, 0),
+            new Token(TokenType.Quoted, "df'er", 0, 0)
         ];
 
         let tokenizer = new ExpressionTokenizer();
@@ -26,9 +26,9 @@ suite('ExpressionTokenizer', ()=> {
     test('WordToken', () => {
         let tokenString = "A'xyz'Ebf_2\n2_2";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Word, "A"), new Token(TokenType.Quoted, "xyz"),
-            new Token(TokenType.Word, "Ebf_2"), new Token(TokenType.Whitespace, "\n"),
-            new Token(TokenType.Integer, "2"), new Token(TokenType.Word, "_2")
+            new Token(TokenType.Word, "A", 0, 0), new Token(TokenType.Quoted, "xyz", 0, 0),
+            new Token(TokenType.Word, "Ebf_2", 0, 0), new Token(TokenType.Whitespace, "\n", 0, 0),
+            new Token(TokenType.Integer, "2", 0, 0), new Token(TokenType.Word, "_2", 0, 0)
         ];
 
         let tokenizer = new ExpressionTokenizer();
@@ -42,17 +42,17 @@ suite('ExpressionTokenizer', ()=> {
     test('NumberToken', () => {
         let tokenString = "123-321 .543-.76-. 123.456 123e45 543.11E+43 1e 3E-";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Integer, "123"), new Token(TokenType.Symbol, "-"),
-            new Token(TokenType.Integer, "321"), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Float, ".543"), new Token(TokenType.Symbol, "-"),
-            new Token(TokenType.Float, ".76"), new Token(TokenType.Symbol, "-"),
-            new Token(TokenType.Symbol, "."), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Float, "123.456"), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Float, "123e45"), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Float, "543.11E+43"), new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Integer, "1"), new Token(TokenType.Word, "e"),
-            new Token(TokenType.Whitespace, " "), new Token(TokenType.Integer, "3"),
-            new Token(TokenType.Word, "E"), new Token(TokenType.Symbol, "-")
+            new Token(TokenType.Integer, "123", 0, 0), new Token(TokenType.Symbol, "-", 0, 0),
+            new Token(TokenType.Integer, "321", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Float, ".543", 0, 0), new Token(TokenType.Symbol, "-", 0, 0),
+            new Token(TokenType.Float, ".76", 0, 0), new Token(TokenType.Symbol, "-", 0, 0),
+            new Token(TokenType.Symbol, ".", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Float, "123.456", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Float, "123e45", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Float, "543.11E+43", 0, 0), new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Integer, "1", 0, 0), new Token(TokenType.Word, "e", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0), new Token(TokenType.Integer, "3", 0, 0),
+            new Token(TokenType.Word, "E", 0, 0), new Token(TokenType.Symbol, "-", 0, 0)
         ];
 
         let tokenizer = new ExpressionTokenizer();

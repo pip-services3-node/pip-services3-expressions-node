@@ -56,6 +56,16 @@ export declare class StringScanner implements IScanner {
      */
     peek(): number;
     /**
+     * Gets the next character line number
+     * @returns The next character line number in the stream
+     */
+    peekLine(): number;
+    /**
+     * Gets the next character column number
+     * @returns The next character column number in the stream
+     */
+    peekColumn(): number;
+    /**
      * Puts the one character back into the stream stream.
      * @param value A character to be pushed back.
      */

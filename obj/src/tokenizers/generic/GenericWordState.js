@@ -48,6 +48,8 @@ class GenericWordState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let nextSymbol;
         let tokenValue = "";
         for (nextSymbol = scanner.read(); this._map.lookup(nextSymbol); nextSymbol = scanner.read()) {
@@ -56,7 +58,7 @@ class GenericWordState {
         if (!CharValidator_1.CharValidator.isEof(nextSymbol)) {
             scanner.unread();
         }
-        return new Token_1.Token(TokenType_1.TokenType.Word, tokenValue);
+        return new Token_1.Token(TokenType_1.TokenType.Word, tokenValue, line, column);
     }
     /**
      * Establish characters in the given range as valid characters for part of a word after

@@ -7,7 +7,10 @@ const pip_services3_commons_node_1 = require("pip-services3-commons-node");
  * Exception that can be thrown by Expression Parser.
  */
 class SyntaxException extends pip_services3_commons_node_1.BadRequestException {
-    constructor(correlationId = null, code = null, message = null) {
+    constructor(correlationId, code, message, line, column) {
+        if (line != 0 || column != 0) {
+            message = message + " at line " + line + " and column " + column;
+        }
         super(correlationId, code, message);
     }
 }

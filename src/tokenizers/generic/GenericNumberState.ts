@@ -23,6 +23,8 @@ export class GenericNumberState implements INumberState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let absorbedDot = false;
         let gotADigit = false;
         let tokenValue = "";
@@ -70,6 +72,6 @@ export class GenericNumberState implements INumberState {
             }
         }
 
-        return new Token(absorbedDot ? TokenType.Float : TokenType.Integer, tokenValue);
+        return new Token(absorbedDot ? TokenType.Float : TokenType.Integer, tokenValue, line, column);
     }
 }

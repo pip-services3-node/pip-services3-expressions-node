@@ -38,12 +38,14 @@ export class ExpressionWordState extends GenericWordState {
       * @returns The next token from the top of the stream.
       */
      public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let token = super.nextToken(scanner, tokenizer);
         let value = token.value.toUpperCase();
 
         for (let keyword of this.keywords) {
             if (keyword == value) {
-                return new Token(TokenType.Keyword, token.value);
+                return new Token(TokenType.Keyword, token.value, line, column);
             }
         }
         return token;

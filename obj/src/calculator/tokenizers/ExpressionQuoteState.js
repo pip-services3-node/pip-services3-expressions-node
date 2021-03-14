@@ -18,6 +18,8 @@ class ExpressionQuoteState {
       * @returns The next token from the top of the stream.
       */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
         let tokenValue = "";
         tokenValue = tokenValue + String.fromCharCode(firstSymbol);
@@ -33,7 +35,7 @@ class ExpressionQuoteState {
                 }
             }
         }
-        return new Token_1.Token(firstSymbol == this.QUOTE ? TokenType_1.TokenType.Word : TokenType_1.TokenType.Quoted, tokenValue);
+        return new Token_1.Token(firstSymbol == this.QUOTE ? TokenType_1.TokenType.Word : TokenType_1.TokenType.Quoted, tokenValue, line, column);
     }
     /**
      * Encodes a string value.

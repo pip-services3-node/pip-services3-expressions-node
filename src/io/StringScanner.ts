@@ -128,6 +128,34 @@ export class StringScanner implements IScanner {
     }
 
     /**
+     * Gets the next character line number
+     * @returns The next character line number in the stream
+     */
+    public peekLine(): number {
+        let charBefore = this.charAt(this._position);
+        let charAt = this.charAt(this._position + 1);
+        let charAfter = this.charAt(this._position + 2);
+
+        return this.isLine(charBefore, charAt, charAfter) ? this._line + 1 : this._line;
+    }
+
+    /**
+     * Gets the next character column number
+     * @returns The next character column number in the stream
+     */
+    public peekColumn(): number {
+        let charBefore = this.charAt(this._position);
+        let charAt = this.charAt(this._position + 1);
+        let charAfter = this.charAt(this._position + 2);
+
+        if (this.isLine(charBefore, charAt, charAfter)) {
+            return 0;
+        }
+
+        return this.isColumn(charAt) ? this._column + 1 : this._column;
+    }
+
+    /**
      * Puts the one character back into the stream stream.
      * @param value A character to be pushed back.
      */

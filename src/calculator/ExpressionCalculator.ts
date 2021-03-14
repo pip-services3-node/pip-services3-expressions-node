@@ -217,7 +217,7 @@ export class ExpressionCalculator {
                 },
             ], (err) => {
                 if (err == null) {
-                    err = new ExpressionException(null, "INTERNAL", "Internal error.");
+                    err = new ExpressionException(null, "INTERNAL", "Internal error", token.line, token.column);
                 }
 
                 if (err == "PROCESSED") {
@@ -233,7 +233,7 @@ export class ExpressionCalculator {
             }
 
             if (stack.length != 1) {
-                err = new ExpressionException(null, "INTERNAL", "Internal error.");
+                err = new ExpressionException(null, "INTERNAL", "Internal error", 0, 0);
                 callback(err, null);
                 return;
             }
@@ -265,7 +265,12 @@ export class ExpressionCalculator {
 
         let variable = variables.findByName(token.value.asString);
         if (variable == null) {
-            let err = new ExpressionException(null, "VAR_NOT_FOUND", "Variable " + token.value.asString + " was not found.");
+            let err = new ExpressionException(
+                null,
+                "VAR_NOT_FOUND",
+                "Variable " + token.value.asString + " was not found",
+                token.line, token.column
+            );
             callback(err, false);
             return;
         }
@@ -285,7 +290,12 @@ export class ExpressionCalculator {
 
         let func = functions.findByName(token.value.asString);
         if (func == null) {
-            let err = new ExpressionException(null, "FUNC_NOT_FOUND", "Function " + token.value.asString + " was not found.");
+            let err = new ExpressionException(
+                null,
+                "FUNC_NOT_FOUND",
+                "Function " + token.value.asString + " was not found",
+                token.line, token.column
+            );
             callback(err, false);
             return;
         }

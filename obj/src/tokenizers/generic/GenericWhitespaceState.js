@@ -25,6 +25,8 @@ class GenericWhitespaceState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let nextSymbol;
         let tokenValue = "";
         for (nextSymbol = scanner.read(); this._map.lookup(nextSymbol); nextSymbol = scanner.read()) {
@@ -33,7 +35,7 @@ class GenericWhitespaceState {
         if (!CharValidator_1.CharValidator.isEof(nextSymbol)) {
             scanner.unread();
         }
-        return new Token_1.Token(TokenType_1.TokenType.Whitespace, tokenValue);
+        return new Token_1.Token(TokenType_1.TokenType.Whitespace, tokenValue, line, column);
     }
     /**
      * Establish the given characters as whitespace to ignore.

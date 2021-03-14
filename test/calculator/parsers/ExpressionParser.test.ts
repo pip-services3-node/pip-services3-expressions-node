@@ -9,14 +9,14 @@ suite('ExpressionParser', ()=> {
         let parser = new ExpressionParser();
         parser.expression = "(2+2)*ABS(-2)";
         let expectedTokens = [
-            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2)),
-            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2)),
-            new ExpressionToken(ExpressionTokenType.Plus, Variant.Empty),
-            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2)),
-            new ExpressionToken(ExpressionTokenType.Unary, Variant.Empty),
-            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(1)),
-            new ExpressionToken(ExpressionTokenType.Function, Variant.fromString("ABS")),
-            new ExpressionToken(ExpressionTokenType.Star, Variant.Empty),
+            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2), 0, 0),
+            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2), 0, 0),
+            new ExpressionToken(ExpressionTokenType.Plus, Variant.Empty, 0, 0),
+            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(2), 0, 0),
+            new ExpressionToken(ExpressionTokenType.Unary, Variant.Empty, 0, 0),
+            new ExpressionToken(ExpressionTokenType.Constant, Variant.fromInteger(1), 0, 0),
+            new ExpressionToken(ExpressionTokenType.Function, Variant.fromString("ABS"), 0, 0),
+            new ExpressionToken(ExpressionTokenType.Star, Variant.Empty, 0, 0),
         ];
 
         let tokens = parser.resultTokens;

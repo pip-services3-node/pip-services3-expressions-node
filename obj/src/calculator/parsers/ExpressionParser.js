@@ -128,7 +128,7 @@ class ExpressionParser {
      */
     checkForMoreTokens() {
         if (!this.hasMoreTokens()) {
-            throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.UnexpectedEnd, "Unexpected end of expression.");
+            throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.UnexpectedEnd, "Unexpected end of expression.", 0, 0);
         }
     }
     /**
@@ -157,9 +157,11 @@ class ExpressionParser {
      * Adds an expression to the result list
      * @param type The type of the token to be added.
      * @param value The value of the token to be added.
+     * @param line The line number where the token is.
+     * @param column The column number where the token is.
      */
-    addTokenToResult(type, value) {
-        this._resultTokens.push(new ExpressionToken_1.ExpressionToken(type, value));
+    addTokenToResult(type, value, line, column) {
+        this._resultTokens.push(new ExpressionToken_1.ExpressionToken(type, value, line, column));
     }
     /**
      * Matches available tokens types with types from the list.
@@ -209,7 +211,7 @@ class ExpressionParser {
             this.performSyntaxAnalysis();
             if (this.hasMoreTokens()) {
                 let token = this.getCurrentToken();
-                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.ErrorNear, "Syntax error near " + token.value);
+                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.ErrorNear, "Syntax error near " + token.value, token.line, token.column);
             }
         }
     }
@@ -282,9 +284,9 @@ class ExpressionParser {
                     }
             }
             if (tokenType == ExpressionTokenType_1.ExpressionTokenType.Unknown) {
-                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.UnknownSymbol, "Unknown symbol " + token.value);
+                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.UnknownSymbol, "Unknown symbol " + token.value, token.line, token.column);
             }
-            this._initialTokens.push(new ExpressionToken_1.ExpressionToken(tokenType, tokenValue));
+            this._initialTokens.push(new ExpressionToken_1.ExpressionToken(tokenType, tokenValue, token.line, token.column));
         }
     }
     /**
@@ -300,7 +302,7 @@ class ExpressionParser {
                 || token.type == ExpressionTokenType_1.ExpressionTokenType.Xor) {
                 this.moveToNextToken();
                 this.performSyntaxAnalysisAtLevel1();
-                this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+                this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
                 continue;
             }
             break;
@@ -315,7 +317,7 @@ class ExpressionParser {
         if (token.type == ExpressionTokenType_1.ExpressionTokenType.Not) {
             this.moveToNextToken();
             this.performSyntaxAnalysisAtLevel2();
-            this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+            this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
         }
         else {
             this.performSyntaxAnalysisAtLevel2();
@@ -337,7 +339,7 @@ class ExpressionParser {
                 || token.type == ExpressionTokenType_1.ExpressionTokenType.EqualLess) {
                 this.moveToNextToken();
                 this.performSyntaxAnalysisAtLevel3();
-                this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+                this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
                 continue;
             }
             break;
@@ -356,21 +358,21 @@ class ExpressionParser {
                 || token.type == ExpressionTokenType_1.ExpressionTokenType.Like) {
                 this.moveToNextToken();
                 this.performSyntaxAnalysisAtLevel4();
-                this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+                this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
             }
             else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Not, ExpressionTokenType_1.ExpressionTokenType.Like)) {
                 this.performSyntaxAnalysisAtLevel4();
-                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.NotLike, Variant_1.Variant.Empty);
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.NotLike, Variant_1.Variant.Empty, token.line, token.column);
             }
             else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Is, ExpressionTokenType_1.ExpressionTokenType.Null)) {
-                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.IsNull, Variant_1.Variant.Empty);
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.IsNull, Variant_1.Variant.Empty, token.line, token.column);
             }
             else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Is, ExpressionTokenType_1.ExpressionTokenType.Not, ExpressionTokenType_1.ExpressionTokenType.Null)) {
-                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.IsNotNull, Variant_1.Variant.Empty);
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.IsNotNull, Variant_1.Variant.Empty, token.line, token.column);
             }
             else if (this.matchTokensWithTypes(ExpressionTokenType_1.ExpressionTokenType.Not, ExpressionTokenType_1.ExpressionTokenType.In)) {
                 this.performSyntaxAnalysisAtLevel4();
-                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.NotIn, Variant_1.Variant.Empty);
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.NotIn, Variant_1.Variant.Empty, token.line, token.column);
             }
             else {
                 break;
@@ -390,7 +392,7 @@ class ExpressionParser {
                 || token.type == ExpressionTokenType_1.ExpressionTokenType.Procent) {
                 this.moveToNextToken();
                 this.performSyntaxAnalysisAtLevel5();
-                this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+                this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
                 continue;
             }
             break;
@@ -410,7 +412,7 @@ class ExpressionParser {
                 || token.type == ExpressionTokenType_1.ExpressionTokenType.ShiftRight) {
                 this.moveToNextToken();
                 this.performSyntaxAnalysisAtLevel6();
-                this.addTokenToResult(token.type, Variant_1.Variant.Empty);
+                this.addTokenToResult(token.type, Variant_1.Variant.Empty, token.line, token.column);
                 continue;
             }
             break;
@@ -428,7 +430,7 @@ class ExpressionParser {
             this.moveToNextToken();
         }
         else if (unaryToken.type == ExpressionTokenType_1.ExpressionTokenType.Minus) {
-            unaryToken = new ExpressionToken_1.ExpressionToken(ExpressionTokenType_1.ExpressionTokenType.Unary, unaryToken.value);
+            unaryToken = new ExpressionToken_1.ExpressionToken(ExpressionTokenType_1.ExpressionTokenType.Unary, unaryToken.value, unaryToken.line, unaryToken.line);
             this.moveToNextToken();
         }
         else {
@@ -440,11 +442,11 @@ class ExpressionParser {
         let nextToken = this.getNextToken();
         if (primitiveToken.type == ExpressionTokenType_1.ExpressionTokenType.Variable
             && nextToken != null && nextToken.type == ExpressionTokenType_1.ExpressionTokenType.LeftBrace) {
-            primitiveToken = new ExpressionToken_1.ExpressionToken(ExpressionTokenType_1.ExpressionTokenType.Function, primitiveToken.value);
+            primitiveToken = new ExpressionToken_1.ExpressionToken(ExpressionTokenType_1.ExpressionTokenType.Function, primitiveToken.value, primitiveToken.line, primitiveToken.column);
         }
         if (primitiveToken.type == ExpressionTokenType_1.ExpressionTokenType.Constant) {
             this.moveToNextToken();
-            this.addTokenToResult(primitiveToken.type, primitiveToken.value);
+            this.addTokenToResult(primitiveToken.type, primitiveToken.value, primitiveToken.line, primitiveToken.column);
         }
         else if (primitiveToken.type == ExpressionTokenType_1.ExpressionTokenType.Variable) {
             this.moveToNextToken();
@@ -452,7 +454,7 @@ class ExpressionParser {
             if (_.indexOf(this._variableNames, temp) < 0) {
                 this._variableNames.push(temp);
             }
-            this.addTokenToResult(primitiveToken.type, primitiveToken.value);
+            this.addTokenToResult(primitiveToken.type, primitiveToken.value, primitiveToken.line, primitiveToken.column);
         }
         else if (primitiveToken.type == ExpressionTokenType_1.ExpressionTokenType.LeftBrace) {
             this.moveToNextToken();
@@ -460,7 +462,7 @@ class ExpressionParser {
             this.checkForMoreTokens();
             primitiveToken = this.getCurrentToken();
             if (primitiveToken.type != ExpressionTokenType_1.ExpressionTokenType.RightBrace) {
-                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseParenthesis, "Expected ')' was not found");
+                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseParenthesis, "Expected ')' was not found", primitiveToken.line, primitiveToken.column);
             }
             this.moveToNextToken();
         }
@@ -468,7 +470,7 @@ class ExpressionParser {
             this.moveToNextToken();
             let token = this.getCurrentToken();
             if (token.type != ExpressionTokenType_1.ExpressionTokenType.LeftBrace) {
-                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.Internal, "Internal error.");
+                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.Internal, "Internal error", token.line, token.column);
             }
             let paramCount = 0;
             do {
@@ -483,17 +485,17 @@ class ExpressionParser {
             } while (token != null && token.type == ExpressionTokenType_1.ExpressionTokenType.Comma);
             this.checkForMoreTokens();
             if (token.type != ExpressionTokenType_1.ExpressionTokenType.RightBrace) {
-                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseParenthesis, "Expected ')' was not found.");
+                throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseParenthesis, "Expected ')' was not found", token.line, token.column);
             }
             this.moveToNextToken();
-            this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.Constant, new Variant_1.Variant(paramCount));
-            this.addTokenToResult(primitiveToken.type, primitiveToken.value);
+            this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.Constant, new Variant_1.Variant(paramCount), primitiveToken.line, primitiveToken.column);
+            this.addTokenToResult(primitiveToken.type, primitiveToken.value, primitiveToken.line, primitiveToken.column);
         }
         else {
-            throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.ErrorAt, "Syntax error at " + primitiveToken.value);
+            throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.ErrorAt, "Syntax error at " + primitiveToken.value, primitiveToken.line, primitiveToken.column);
         }
         if (unaryToken != null) {
-            this.addTokenToResult(unaryToken.type, Variant_1.Variant.Empty);
+            this.addTokenToResult(unaryToken.type, Variant_1.Variant.Empty, unaryToken.line, unaryToken.column);
         }
         // Process [] operator.
         if (this.hasMoreTokens()) {
@@ -504,10 +506,10 @@ class ExpressionParser {
                 this.checkForMoreTokens();
                 primitiveToken = this.getCurrentToken();
                 if (primitiveToken.type != ExpressionTokenType_1.ExpressionTokenType.RightSquareBrace) {
-                    throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseSquareBracket, "Expected ']' was not found");
+                    throw new SyntaxException_1.SyntaxException(null, SyntaxErrorCode_1.SyntaxErrorCode.MissedCloseSquareBracket, "Expected ']' was not found", primitiveToken.line, primitiveToken.column);
                 }
                 this.moveToNextToken();
-                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.Element, Variant_1.Variant.Empty);
+                this.addTokenToResult(ExpressionTokenType_1.ExpressionTokenType.Element, Variant_1.Variant.Empty, primitiveToken.line, primitiveToken.column);
             }
         }
     }

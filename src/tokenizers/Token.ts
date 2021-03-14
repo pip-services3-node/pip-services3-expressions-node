@@ -11,15 +11,21 @@ import { TokenType } from './TokenType';
 export class Token {
     private _type: TokenType;
     private _value: string;
+    private _line: number;
+    private _column: number;
 
     /**
      * Constructs this token with type and value.
      * @param type The type of this token.
      * @param value The token string value.
+     * @param line The line number where the token is.
+     * @param column The column number where the token is.
      */
-    public constructor(type: TokenType, value: string) {
+    public constructor(type: TokenType, value: string, line: number, column: number) {
         this._type = type;
         this._value = value;
+        this._line = line;
+        this._column = column;
     }
 
     /**
@@ -34,6 +40,20 @@ export class Token {
      */
     public get value(): string {
         return this._value;
+    }
+
+    /**
+     * The line number where the token is.
+     */
+    public get line(): number {
+        return this._line;
+    }
+
+    /**
+     * The column number where the token is.
+     */
+    public get column(): number {
+        return this._column;
     }
 
     public equals(obj: any): boolean {

@@ -52,6 +52,8 @@ import { CharReferenceMap } from '../utilities/CharReferenceMap';
       * @returns The next token from the top of the stream.
       */
      public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
          let nextSymbol: number;
          let tokenValue = "";
          for (nextSymbol = scanner.read(); this._map.lookup(nextSymbol); nextSymbol = scanner.read()) {
@@ -62,7 +64,7 @@ import { CharReferenceMap } from '../utilities/CharReferenceMap';
              scanner.unread();
          }
  
-         return new Token(TokenType.Word, tokenValue);
+         return new Token(TokenType.Word, tokenValue, line, column);
      }
  
      /**

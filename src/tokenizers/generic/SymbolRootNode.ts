@@ -40,14 +40,16 @@ export class SymbolRootNode extends SymbolNode {
      * @returns A symbol string from a scanner
      */
     public nextToken(scanner: IScanner): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let nextSymbol = scanner.read();
         let childNode = this.findChildWithChar(nextSymbol);
         if (childNode != null) {
             childNode = childNode.deepestRead(scanner);
             childNode = childNode.unreadToValid(scanner);
-            return new Token(childNode.tokenType, childNode.ancestry());
+            return new Token(childNode.tokenType, childNode.ancestry(), line, column);
         } else {
-            return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol));
+            return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol), line, column);
         }
     }
 }

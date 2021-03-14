@@ -22,6 +22,8 @@ class GenericNumberState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let absorbedDot = false;
         let gotADigit = false;
         let tokenValue = "";
@@ -63,7 +65,7 @@ class GenericNumberState {
                 throw new Error("Tokenizer must have an assigned symbol state.");
             }
         }
-        return new Token_1.Token(absorbedDot ? TokenType_1.TokenType.Float : TokenType_1.TokenType.Integer, tokenValue);
+        return new Token_1.Token(absorbedDot ? TokenType_1.TokenType.Float : TokenType_1.TokenType.Integer, tokenValue, line, column);
     }
 }
 exports.GenericNumberState = GenericNumberState;

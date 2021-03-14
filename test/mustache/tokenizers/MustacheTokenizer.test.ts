@@ -9,13 +9,13 @@ suite('MustacheTokenizer', ()=> {
     test('Template1', () => {
         let tokenString = "Hello, {{ Name }}!";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Special, "Hello, "),
-            new Token(TokenType.Symbol, "{{"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Word, "Name"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Symbol, "}}"),
-            new Token(TokenType.Special, "!"),
+            new Token(TokenType.Special, "Hello, ", 0, 0),
+            new Token(TokenType.Symbol, "{{", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Word, "Name", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Symbol, "}}", 0, 0),
+            new Token(TokenType.Special, "!", 0, 0),
         ];
 
         let tokenizer = new MustacheTokenizer();
@@ -28,13 +28,13 @@ suite('MustacheTokenizer', ()=> {
     test('Template2', () => {
         let tokenString = "Hello, {{{ Name }}}!";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Special, "Hello, "),
-            new Token(TokenType.Symbol, "{{{"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Word, "Name"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Symbol, "}}}"),
-            new Token(TokenType.Special, "!"),
+            new Token(TokenType.Special, "Hello, ", 0, 0),
+            new Token(TokenType.Symbol, "{{{", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Word, "Name", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Symbol, "}}}", 0, 0),
+            new Token(TokenType.Special, "!", 0, 0),
         ];
 
         let tokenizer = new MustacheTokenizer();
@@ -47,11 +47,11 @@ suite('MustacheTokenizer', ()=> {
     test('Template3', () => {
         let tokenString = "{{ Name }}}";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Symbol, "{{"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Word, "Name"),
-            new Token(TokenType.Whitespace, " "),
-            new Token(TokenType.Symbol, "}}}")
+            new Token(TokenType.Symbol, "{{", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Word, "Name", 0, 0),
+            new Token(TokenType.Whitespace, " ", 0, 0),
+            new Token(TokenType.Symbol, "}}}", 0, 0)
         ];
 
         let tokenizer = new MustacheTokenizer();
@@ -64,7 +64,7 @@ suite('MustacheTokenizer', ()=> {
     test('Template4', () => {
         let tokenString = "Hello, World!";
         let expectedTokens: Token[] = [
-            new Token(TokenType.Special, "Hello, World!")
+            new Token(TokenType.Special, "Hello, World!", 0, 0)
         ];
 
         let tokenizer = new MustacheTokenizer();

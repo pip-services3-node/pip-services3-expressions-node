@@ -16,6 +16,8 @@ class MustacheSpecialState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let tokenValue = "";
         for (let nextSymbol = scanner.read(); !CharValidator_1.CharValidator.isEof(nextSymbol); nextSymbol = scanner.read()) {
             if (nextSymbol == MustacheSpecialState.Bracket) {
@@ -26,7 +28,7 @@ class MustacheSpecialState {
             }
             tokenValue = tokenValue + String.fromCharCode(nextSymbol);
         }
-        return new Token_1.Token(TokenType_1.TokenType.Special, tokenValue);
+        return new Token_1.Token(TokenType_1.TokenType.Special, tokenValue, line, column);
     }
 }
 exports.MustacheSpecialState = MustacheSpecialState;

@@ -22,6 +22,9 @@ export class ExpressionNumberState extends GenericNumberState {
       * @returns The next token from the top of the stream.
       */
      public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
+
         // Process leading minus.
         if (scanner.peek() == this.MINUS) {
             return tokenizer.symbolState.nextToken(scanner, tokenizer);
@@ -41,8 +44,7 @@ export class ExpressionNumberState extends GenericNumberState {
             return token;
         }
 
-        let tokenValue = "";
-        tokenValue = tokenValue + String.fromCharCode(scanner.read());
+        let tokenValue = String.fromCharCode(scanner.read());
 
         // Process '-' or '+' in mantissa
         nextChar = scanner.peek();
@@ -62,6 +64,6 @@ export class ExpressionNumberState extends GenericNumberState {
             tokenValue = tokenValue + String.fromCharCode(scanner.read());
         }
 
-        return new Token(TokenType.Float, token.value + tokenValue);
+        return new Token(TokenType.Float, token.value + tokenValue, line, column);
     }
 }

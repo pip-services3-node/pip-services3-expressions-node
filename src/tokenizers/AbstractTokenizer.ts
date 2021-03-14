@@ -81,6 +81,8 @@ export abstract class AbstractTokenizer implements ITokenizer {
             return null;
         }
 
+        let line = this._scanner.peekLine();
+        let column = this._scanner.peekColumn();
         let token: Token = null;
 
         while (true) {
@@ -101,7 +103,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
 
             // Check for unknown characters and endless loops...
             if (token == null || token.value == '') {
-                token = new Token(TokenType.Unknown, String.fromCharCode(this._scanner.read()));
+                token = new Token(TokenType.Unknown, String.fromCharCode(this._scanner.read()), line, column);
             }
 
             // Skip unknown characters if option set.
@@ -112,7 +114,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
 
             // Decode strings is option set.
             if (state != null && (<any>state).decodeString != null && this.decodeStrings) {
-                token = new Token(token.type, this.quoteState.decodeString(token.value, nextChar));
+                token = new Token(token.type, this.quoteState.decodeString(token.value, nextChar), line, column);
             }
 
             // Skips comments if option set.
@@ -131,7 +133,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
 
             // Unifies whitespaces if option set.
             if (token.type == TokenType.Whitespace && this.mergeWhitespaces) {
-                token = new Token(TokenType.Whitespace, " ");
+                token = new Token(TokenType.Whitespace, " ", line, column);
             }
 
             // Unifies numbers if option set.
@@ -139,7 +141,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
                 && (token.type == TokenType.Integer
                 || token.type == TokenType.Float
                 || token.type == TokenType.HexDecimal)) {
-                token = new Token(TokenType.Number, token.value);
+                token = new Token(TokenType.Number, token.value, line, column);
             }
 
             break;
@@ -147,7 +149,7 @@ export abstract class AbstractTokenizer implements ITokenizer {
 
         // Adds an Eof if option is not set.
         if (token == null && this._lastTokenType != TokenType.Eof && !this.skipEof) {
-            token = new Token(TokenType.Eof, null);
+            token = new Token(TokenType.Eof, null, line, column);
         }
 
         // Assigns the last token type

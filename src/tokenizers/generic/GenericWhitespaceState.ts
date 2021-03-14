@@ -29,6 +29,8 @@ export class GenericWhitespaceState implements IWhitespaceState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let nextSymbol: number;
         let tokenValue = "";
         for (nextSymbol = scanner.read(); this._map.lookup(nextSymbol); nextSymbol = scanner.read()) {
@@ -39,7 +41,7 @@ export class GenericWhitespaceState implements IWhitespaceState {
             scanner.unread();
         }
 
-        return new Token(TokenType.Whitespace, tokenValue);
+        return new Token(TokenType.Whitespace, tokenValue, line, column);
     }
 
     /**

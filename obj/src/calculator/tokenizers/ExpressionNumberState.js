@@ -23,6 +23,8 @@ class ExpressionNumberState extends GenericNumberState_1.GenericNumberState {
       * @returns The next token from the top of the stream.
       */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         // Process leading minus.
         if (scanner.peek() == this.MINUS) {
             return tokenizer.symbolState.nextToken(scanner, tokenizer);
@@ -38,8 +40,7 @@ class ExpressionNumberState extends GenericNumberState_1.GenericNumberState {
         if (nextChar != this.EXP1 && nextChar != this.EXP2) {
             return token;
         }
-        let tokenValue = "";
-        tokenValue = tokenValue + String.fromCharCode(scanner.read());
+        let tokenValue = String.fromCharCode(scanner.read());
         // Process '-' or '+' in mantissa
         nextChar = scanner.peek();
         if (nextChar == this.MINUS || nextChar == this.PLUS) {
@@ -55,7 +56,7 @@ class ExpressionNumberState extends GenericNumberState_1.GenericNumberState {
         for (; CharValidator_1.CharValidator.isDigit(nextChar); nextChar = scanner.peek()) {
             tokenValue = tokenValue + String.fromCharCode(scanner.read());
         }
-        return new Token_1.Token(TokenType_1.TokenType.Float, token.value + tokenValue);
+        return new Token_1.Token(TokenType_1.TokenType.Float, token.value + tokenValue, line, column);
     }
 }
 exports.ExpressionNumberState = ExpressionNumberState;

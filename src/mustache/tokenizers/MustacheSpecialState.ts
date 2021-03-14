@@ -20,6 +20,8 @@ export class MustacheSpecialState implements ITokenizerState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let tokenValue = "";
 
         for (let nextSymbol = scanner.read(); !CharValidator.isEof(nextSymbol); nextSymbol = scanner.read()) {
@@ -33,7 +35,7 @@ export class MustacheSpecialState implements ITokenizerState {
             tokenValue = tokenValue + String.fromCharCode(nextSymbol);
         }
 
-        return new Token(TokenType.Special, tokenValue);
+        return new Token(TokenType.Special, tokenValue, line, column);
     }
 
 }

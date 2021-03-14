@@ -9,12 +9,16 @@ import { TokenType } from './TokenType';
 export declare class Token {
     private _type;
     private _value;
+    private _line;
+    private _column;
     /**
      * Constructs this token with type and value.
      * @param type The type of this token.
      * @param value The token string value.
+     * @param line The line number where the token is.
+     * @param column The column number where the token is.
      */
-    constructor(type: TokenType, value: string);
+    constructor(type: TokenType, value: string, line: number, column: number);
     /**
      * The token type.
      */
@@ -23,5 +27,13 @@ export declare class Token {
      * The token value.
      */
     get value(): string;
+    /**
+     * The line number where the token is.
+     */
+    get line(): number;
+    /**
+     * The column number where the token is.
+     */
+    get column(): number;
     equals(obj: any): boolean;
 }

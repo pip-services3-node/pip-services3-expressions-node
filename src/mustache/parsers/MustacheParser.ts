@@ -111,7 +111,7 @@ export class MustacheParser {
      */
     private checkForMoreTokens(): void {
         if (!this.hasMoreTokens()) {
-            throw new MustacheException(null, MustacheErrorCode.UnexpectedEnd, "Unexpected end of mustache.");
+            throw new MustacheException(null, MustacheErrorCode.UnexpectedEnd, "Unexpected end of mustache", 0, 0);
         }
     }
 
@@ -144,9 +144,11 @@ export class MustacheParser {
      * Adds an mustache to the result list
      * @param type The type of the token to be added.
      * @param value The value of the token to be added.
+     * @param line The line where the token is.
+     * @param column The column number where the token is.
      */
-    private addTokenToResult(type: MustacheTokenType, value: string): MustacheToken  {
-        let token = new MustacheToken(type, value);
+    private addTokenToResult(type: MustacheTokenType, value: string, line: number, column: number): MustacheToken  {
+        let token = new MustacheToken(type, value, line, column);
         this._resultTokens.push(token);
         return token;
     }
@@ -178,7 +180,7 @@ export class MustacheParser {
             this.performSyntaxAnalysis();
             if (this.hasMoreTokens()) {
                 let token = this.getCurrentToken();
-                throw new MustacheException(null, MustacheErrorCode.ErrorNear, "Syntax error near " + token.value);
+                throw new MustacheException(null, MustacheErrorCode.ErrorNear, "Syntax error near " + token.value, token.line, token.column);
             }
             this.lookupVariables();
         }
@@ -240,7 +242,7 @@ export class MustacheParser {
                     }
                     if (state == MustacheLexicalState.Closure && (token.value == "}}" || token.value == "}}}")) {
                         if (closingBracket != token.value) {
-                            throw new MustacheException(null, MustacheErrorCode.MismatchedBrackets, "Mismatched brackets. Expected '" + closingBracket + "'");
+                            throw new MustacheException(null, MustacheErrorCode.MismatchedBrackets, "Mismatched brackets. Expected '" + closingBracket + "'", token.line, token.column);
                         }
 
                         if (operator1 == "#" && (operator2 == null || operator2 == "if")) {
@@ -269,7 +271,7 @@ export class MustacheParser {
                         }
 
                         if (tokenValue == MustacheTokenType.Unknown) {
-                            throw new MustacheException(null, MustacheErrorCode.Internal, "Internal error");
+                            throw new MustacheException(null, MustacheErrorCode.Internal, "Internal error", token.line, token.column);
                         }
 
                         operator1 = null;
@@ -300,13 +302,13 @@ export class MustacheParser {
                     continue;
             }
             if (tokenType == MustacheTokenType.Unknown) {
-                throw new MustacheException(null, MustacheErrorCode.UnexpectedSymbol, "Unexpected symbol '" + token.value + "'");
+                throw new MustacheException(null, MustacheErrorCode.UnexpectedSymbol, "Unexpected symbol '" + token.value + "'", token.line, token.column);
             }
-            this._initialTokens.push(new MustacheToken(tokenType, tokenValue));
+            this._initialTokens.push(new MustacheToken(tokenType, tokenValue, token.line, token.column));
         }
 
         if (state != MustacheLexicalState.Value) {
-            throw new MustacheException(null, MustacheErrorCode.UnexpectedEnd, "Unexpected end of file");
+            throw new MustacheException(null, MustacheErrorCode.UnexpectedEnd, "Unexpected end of file", 0, 0);
         }
     }
 
@@ -320,10 +322,10 @@ export class MustacheParser {
             this.moveToNextToken();
 
             if (token.type == MustacheTokenType.SectionEnd) {
-                throw new MustacheException(null, MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + token.value + "'");
+                throw new MustacheException(null, MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + token.value + "'", token.line, token.column);
             }
 
-            let result = this.addTokenToResult(token.type, token.value);
+            let result = this.addTokenToResult(token.type, token.value, token.line, token.column);
 
             if (token.type == MustacheTokenType.Section || token.type == MustacheTokenType.InvertedSection) {
                 result.tokens.push(...this.performSyntaxAnalysisForSection(token.value));
@@ -347,10 +349,10 @@ export class MustacheParser {
             }
             
             if (token.type == MustacheTokenType.SectionEnd) {
-                throw new MustacheException(null, MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + variable + "'");
+                throw new MustacheException(null, MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + variable + "'", token.line, token.column);
             }
 
-            let resultToken = new MustacheToken(token.type, token.value);
+            let resultToken = new MustacheToken(token.type, token.value, token.line, token.column);
 
             if (token.type == MustacheTokenType.Section || token.type == MustacheTokenType.InvertedSection) {
                 resultToken.tokens.push(...this.performSyntaxAnalysisForSection(token.value));
@@ -359,7 +361,8 @@ export class MustacheParser {
             result.push(resultToken);
         }
 
-        throw new MustacheException(null, MustacheErrorCode.NotClosedSection, "Not closed section for variable '" + variable + "'");
+        let token = this.getCurrentToken();
+        throw new MustacheException(null, MustacheErrorCode.NotClosedSection, "Not closed section for variable '" + variable + "'", token.line, token.column);
     }
 
     /**

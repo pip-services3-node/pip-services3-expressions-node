@@ -10,14 +10,14 @@ suite('MustacheParser', ()=> {
         let parser = new MustacheParser();
         parser.template = "Hello, {{{NAME}}}{{ #if ESCLAMATION }}!{{/if}}{{{^ESCLAMATION}}}.{{{/ESCLAMATION}}}";
         let expectedTokens = [
-            new MustacheToken(MustacheTokenType.Value, "Hello, "),
-            new MustacheToken(MustacheTokenType.EscapedVariable, "NAME"),
-            new MustacheToken(MustacheTokenType.Section, "ESCLAMATION"),
-            new MustacheToken(MustacheTokenType.Value, "!"),
-            new MustacheToken(MustacheTokenType.SectionEnd, null),
-            new MustacheToken(MustacheTokenType.InvertedSection, "ESCLAMATION"),
-            new MustacheToken(MustacheTokenType.Value, "."),
-            new MustacheToken(MustacheTokenType.SectionEnd, "ESCLAMATION"),
+            new MustacheToken(MustacheTokenType.Value, "Hello, ", 0, 0),
+            new MustacheToken(MustacheTokenType.EscapedVariable, "NAME", 0, 0),
+            new MustacheToken(MustacheTokenType.Section, "ESCLAMATION", 0, 0),
+            new MustacheToken(MustacheTokenType.Value, "!", 0, 0),
+            new MustacheToken(MustacheTokenType.SectionEnd, null, 0, 0),
+            new MustacheToken(MustacheTokenType.InvertedSection, "ESCLAMATION", 0, 0),
+            new MustacheToken(MustacheTokenType.Value, ".", 0, 0),
+            new MustacheToken(MustacheTokenType.SectionEnd, "ESCLAMATION", 0, 0),
         ];
 
         let tokens = parser.initialTokens;
@@ -33,10 +33,10 @@ suite('MustacheParser', ()=> {
         let parser = new MustacheParser();
         parser.template = "Hello, {{{NAME}}}{{ #if ESCLAMATION }}!{{/if}}{{{^ESCLAMATION}}}.{{{/ESCLAMATION}}}";
         let expectedTokens = [
-            new MustacheToken(MustacheTokenType.Value, "Hello, "),
-            new MustacheToken(MustacheTokenType.EscapedVariable, "NAME"),
-            new MustacheToken(MustacheTokenType.Section, "ESCLAMATION"),
-            new MustacheToken(MustacheTokenType.InvertedSection, "ESCLAMATION"),
+            new MustacheToken(MustacheTokenType.Value, "Hello, ", 0, 0),
+            new MustacheToken(MustacheTokenType.EscapedVariable, "NAME", 0, 0),
+            new MustacheToken(MustacheTokenType.Section, "ESCLAMATION", 0, 0),
+            new MustacheToken(MustacheTokenType.InvertedSection, "ESCLAMATION", 0, 0),
         ];
 
         let tokens = parser.resultTokens;

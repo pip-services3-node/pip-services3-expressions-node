@@ -17,6 +17,8 @@ class CCommentState extends CppCommentState_1.CppCommentState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
         if (firstSymbol != this.SLASH) {
             scanner.unread();
@@ -24,7 +26,7 @@ class CCommentState extends CppCommentState_1.CppCommentState {
         }
         let secondSymbol = scanner.read();
         if (secondSymbol == this.STAR) {
-            return new Token_1.Token(TokenType_1.TokenType.Comment, "/*" + this.getMultiLineComment(scanner));
+            return new Token_1.Token(TokenType_1.TokenType.Comment, "/*" + this.getMultiLineComment(scanner), line, column);
         }
         else {
             if (!utilities_1.CharValidator.isEof(secondSymbol)) {

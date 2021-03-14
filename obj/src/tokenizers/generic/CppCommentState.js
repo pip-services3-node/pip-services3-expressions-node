@@ -54,6 +54,8 @@ class CppCommentState extends GenericCommentState_1.GenericCommentState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
         if (firstSymbol != this.SLASH) {
             scanner.unread();
@@ -61,10 +63,10 @@ class CppCommentState extends GenericCommentState_1.GenericCommentState {
         }
         let secondSymbol = scanner.read();
         if (secondSymbol == this.STAR) {
-            return new Token_1.Token(TokenType_1.TokenType.Comment, "/*" + this.getMultiLineComment(scanner));
+            return new Token_1.Token(TokenType_1.TokenType.Comment, "/*" + this.getMultiLineComment(scanner), line, column);
         }
         else if (secondSymbol == this.SLASH) {
-            return new Token_1.Token(TokenType_1.TokenType.Comment, "//" + this.getSingleLineComment(scanner));
+            return new Token_1.Token(TokenType_1.TokenType.Comment, "//" + this.getSingleLineComment(scanner), line, column);
         }
         else {
             if (!CharValidator_1.CharValidator.isEof(secondSymbol)) {

@@ -24,6 +24,8 @@ export class GenericQuoteState implements IQuoteState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
         let tokenValue = String.fromCharCode(firstSymbol);
 
@@ -35,7 +37,7 @@ export class GenericQuoteState implements IQuoteState {
             }
         }
 
-        return new Token(TokenType.Quoted, tokenValue);
+        return new Token(TokenType.Quoted, tokenValue, line, column);
     }
 
     /**

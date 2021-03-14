@@ -98,7 +98,7 @@ class MustacheParser {
      */
     checkForMoreTokens() {
         if (!this.hasMoreTokens()) {
-            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedEnd, "Unexpected end of mustache.");
+            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedEnd, "Unexpected end of mustache", 0, 0);
         }
     }
     /**
@@ -127,9 +127,11 @@ class MustacheParser {
      * Adds an mustache to the result list
      * @param type The type of the token to be added.
      * @param value The value of the token to be added.
+     * @param line The line where the token is.
+     * @param column The column number where the token is.
      */
-    addTokenToResult(type, value) {
-        let token = new MustacheToken_1.MustacheToken(type, value);
+    addTokenToResult(type, value, line, column) {
+        let token = new MustacheToken_1.MustacheToken(type, value, line, column);
         this._resultTokens.push(token);
         return token;
     }
@@ -159,7 +161,7 @@ class MustacheParser {
             this.performSyntaxAnalysis();
             if (this.hasMoreTokens()) {
                 let token = this.getCurrentToken();
-                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.ErrorNear, "Syntax error near " + token.value);
+                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.ErrorNear, "Syntax error near " + token.value, token.line, token.column);
             }
             this.lookupVariables();
         }
@@ -217,7 +219,7 @@ class MustacheParser {
                     }
                     if (state == MustacheLexicalState_1.MustacheLexicalState.Closure && (token.value == "}}" || token.value == "}}}")) {
                         if (closingBracket != token.value) {
-                            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.MismatchedBrackets, "Mismatched brackets. Expected '" + closingBracket + "'");
+                            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.MismatchedBrackets, "Mismatched brackets. Expected '" + closingBracket + "'", token.line, token.column);
                         }
                         if (operator1 == "#" && (operator2 == null || operator2 == "if")) {
                             tokenType = MustacheTokenType_1.MustacheTokenType.Section;
@@ -240,7 +242,7 @@ class MustacheParser {
                             tokenValue = variable;
                         }
                         if (tokenValue == MustacheTokenType_1.MustacheTokenType.Unknown) {
-                            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.Internal, "Internal error");
+                            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.Internal, "Internal error", token.line, token.column);
                         }
                         operator1 = null;
                         operator2 = null;
@@ -270,12 +272,12 @@ class MustacheParser {
                     continue;
             }
             if (tokenType == MustacheTokenType_1.MustacheTokenType.Unknown) {
-                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSymbol, "Unexpected symbol '" + token.value + "'");
+                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSymbol, "Unexpected symbol '" + token.value + "'", token.line, token.column);
             }
-            this._initialTokens.push(new MustacheToken_1.MustacheToken(tokenType, tokenValue));
+            this._initialTokens.push(new MustacheToken_1.MustacheToken(tokenType, tokenValue, token.line, token.column));
         }
         if (state != MustacheLexicalState_1.MustacheLexicalState.Value) {
-            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedEnd, "Unexpected end of file");
+            throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedEnd, "Unexpected end of file", 0, 0);
         }
     }
     /**
@@ -287,9 +289,9 @@ class MustacheParser {
             let token = this.getCurrentToken();
             this.moveToNextToken();
             if (token.type == MustacheTokenType_1.MustacheTokenType.SectionEnd) {
-                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + token.value + "'");
+                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + token.value + "'", token.line, token.column);
             }
-            let result = this.addTokenToResult(token.type, token.value);
+            let result = this.addTokenToResult(token.type, token.value, token.line, token.column);
             if (token.type == MustacheTokenType_1.MustacheTokenType.Section || token.type == MustacheTokenType_1.MustacheTokenType.InvertedSection) {
                 result.tokens.push(...this.performSyntaxAnalysisForSection(token.value));
             }
@@ -308,15 +310,16 @@ class MustacheParser {
                 return result;
             }
             if (token.type == MustacheTokenType_1.MustacheTokenType.SectionEnd) {
-                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + variable + "'");
+                throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.UnexpectedSectionEnd, "Unexpected section end for variable '" + variable + "'", token.line, token.column);
             }
-            let resultToken = new MustacheToken_1.MustacheToken(token.type, token.value);
+            let resultToken = new MustacheToken_1.MustacheToken(token.type, token.value, token.line, token.column);
             if (token.type == MustacheTokenType_1.MustacheTokenType.Section || token.type == MustacheTokenType_1.MustacheTokenType.InvertedSection) {
                 resultToken.tokens.push(...this.performSyntaxAnalysisForSection(token.value));
             }
             result.push(resultToken);
         }
-        throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.NotClosedSection, "Not closed section for variable '" + variable + "'");
+        let token = this.getCurrentToken();
+        throw new MustacheException_1.MustacheException(null, MustacheErrorCode_1.MustacheErrorCode.NotClosedSection, "Not closed section for variable '" + variable + "'", token.line, token.column);
     }
     /**
      * Retrieves variables from the parsed output.

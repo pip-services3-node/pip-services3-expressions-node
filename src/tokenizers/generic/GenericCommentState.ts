@@ -21,6 +21,8 @@ export class GenericCommentState implements ICommentState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
+        let line = scanner.peekLine();
+        let column = scanner.peekColumn();
         let tokenValue = "";
         let nextSymbol: number;
         for (nextSymbol = scanner.read(); !CharValidator.isEof(nextSymbol)
@@ -31,6 +33,6 @@ export class GenericCommentState implements ICommentState {
             scanner.unread();
         }
 
-        return new Token(TokenType.Comment, tokenValue);
+        return new Token(TokenType.Comment, tokenValue, line, column);
     }
 }

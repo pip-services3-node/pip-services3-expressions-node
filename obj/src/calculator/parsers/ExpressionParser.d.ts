@@ -79,6 +79,8 @@ export declare class ExpressionParser {
      * Adds an expression to the result list
      * @param type The type of the token to be added.
      * @param value The value of the token to be added.
+     * @param line The line number where the token is.
+     * @param column The column number where the token is.
      */
     private addTokenToResult;
     /**
