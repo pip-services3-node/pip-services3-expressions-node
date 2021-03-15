@@ -18,9 +18,9 @@ class ExpressionQuoteState {
       * @returns The next token from the top of the stream.
       */
     nextToken(scanner, tokenizer) {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
         let tokenValue = "";
         tokenValue = tokenValue + String.fromCharCode(firstSymbol);
         for (let nextSymbol = scanner.read(); !CharValidator_1.CharValidator.isEof(nextSymbol); nextSymbol = scanner.read()) {

@@ -17,9 +17,9 @@ class CCommentState extends CppCommentState_1.CppCommentState {
      * @returns The next token from the top of the stream.
      */
     nextToken(scanner, tokenizer) {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
         if (firstSymbol != this.SLASH) {
             scanner.unread();
             throw new Error("Incorrect usage of CCommentState.");

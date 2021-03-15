@@ -36,7 +36,6 @@ export interface IScanner {
     peekColumn(): number;
     /**
      * Puts the one character back into the stream stream.
-     * @param value A character to be pushed back.
      */
     unread(): void;
     /**

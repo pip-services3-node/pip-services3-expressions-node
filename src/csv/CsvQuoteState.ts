@@ -18,9 +18,9 @@ export class CsvQuoteState implements IQuoteState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
         let tokenValue = "";
         tokenValue = tokenValue + String.fromCharCode(firstSymbol);
 

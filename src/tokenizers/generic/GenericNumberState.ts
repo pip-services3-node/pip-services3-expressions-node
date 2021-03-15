@@ -23,12 +23,12 @@ export class GenericNumberState implements INumberState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         let absorbedDot = false;
         let gotADigit = false;
         let tokenValue = "";
         let nextSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
 
         // Parses leading minus.
         if (nextSymbol == this.MINUS) {

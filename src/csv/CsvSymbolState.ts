@@ -23,11 +23,11 @@ export class CsvSymbolState extends GenericSymbolState {
     }
 
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
-
         // Optimization...
         let nextSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
+
         if (nextSymbol != CsvConstant.LF && nextSymbol != CsvConstant.CR) {
             return new Token(TokenType.Symbol, String.fromCharCode(nextSymbol), line, column);
         } else {

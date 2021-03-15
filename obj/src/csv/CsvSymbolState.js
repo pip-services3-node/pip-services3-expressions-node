@@ -21,10 +21,10 @@ class CsvSymbolState extends GenericSymbolState_1.GenericSymbolState {
         this.add("\n\r", TokenType_1.TokenType.Eol);
     }
     nextToken(scanner, tokenizer) {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         // Optimization...
         let nextSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
         if (nextSymbol != CsvConstant_1.CsvConstant.LF && nextSymbol != CsvConstant_1.CsvConstant.CR) {
             return new Token_1.Token(TokenType_1.TokenType.Symbol, String.fromCharCode(nextSymbol), line, column);
         }

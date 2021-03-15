@@ -57,9 +57,10 @@ export class CppCommentState extends GenericCommentState {
      * @returns The next token from the top of the stream.
      */
     public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
         let firstSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
+
         if (firstSymbol != this.SLASH) {
             scanner.unread();
             throw new Error("Incorrect usage of CppCommentState.");

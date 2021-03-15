@@ -19,10 +19,9 @@ export class ExpressionQuoteState implements IQuoteState {
       * @returns The next token from the top of the stream.
       */
      public nextToken(scanner: IScanner, tokenizer: ITokenizer): Token {
-        let line = scanner.peekLine();
-        let column = scanner.peekColumn();
-
         let firstSymbol = scanner.read();
+        let line = scanner.line();
+        let column = scanner.column();
         let tokenValue = "";
         tokenValue = tokenValue + String.fromCharCode(firstSymbol);
 
@@ -40,9 +39,7 @@ export class ExpressionQuoteState implements IQuoteState {
 
         return new Token(
             firstSymbol == this.QUOTE ? TokenType.Word : TokenType.Quoted,
-            tokenValue,
-            line,
-            column
+            tokenValue, line, column
         );
     }
 
