@@ -157,6 +157,20 @@ export class MustacheTemplate {
         return value != null && value != "" && value != 0 && value != false;
     }
 
+    private escapeString(value: string): string {
+        if (value == null) return null;
+
+        return value
+            .replace(/[\\]/g, '\\\\')
+            .replace(/[\"]/g, '\\\"')
+            .replace(/[\/]/g, '\\/')
+            .replace(/[\b]/g, '\\b')
+            .replace(/[\f]/g, '\\f')
+            .replace(/[\n]/g, '\\n')
+            .replace(/[\r]/g, '\\r')
+            .replace(/[\t]/g, '\\t');
+    }
+
     private evaluateTokens(tokens: MustacheToken[], variables: any): string {
         if (tokens == null) return null;
 
@@ -176,7 +190,7 @@ export class MustacheTemplate {
                     break;
                 case MustacheTokenType.EscapedVariable:
                     let value2 = this.getVariable(variables, token.value);
-                    value2 = querystring.escape(value2);
+                    value2 = this.escapeString(value2);
                     result += value2 || "";
                     break;
                 case MustacheTokenType.Section:

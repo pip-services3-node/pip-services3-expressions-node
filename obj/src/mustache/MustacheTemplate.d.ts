@@ -70,5 +70,6 @@ export declare class MustacheTemplate {
      */
     evaluateWithVariables(variables: any): string;
     private isDefinedVariable;
+    private escapeString;
     private evaluateTokens;
 }
